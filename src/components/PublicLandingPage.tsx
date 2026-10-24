@@ -241,23 +241,14 @@ export default function PublicLandingPage({
               />
             </div>
 
-            {/* Brand Logo & Name */}
-            <a href="#" className="flex items-center gap-3 group">
-              <div className="w-11 h-11 rounded-xl bg-white p-1 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform overflow-hidden border border-[#D5E5B2]">
-                <img
-                  src={profile.logo_url || "/logo-dapoer-pmcsu.png"}
-                  alt={profile.name}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div>
-                <span className="text-lg sm:text-xl font-black tracking-tight text-[#23382C] block leading-tight font-serif drop-shadow-xs">
-                  {profile.name}
-                </span>
-                <span className="text-[10px] sm:text-[11px] font-bold text-[#8D6B26] uppercase tracking-wider block">
-                  Catering & Culinary Service
-                </span>
-              </div>
+            {/* Brand Name */}
+            <a href="#" className="flex flex-col group">
+              <span className="text-lg sm:text-xl font-black tracking-tight text-[#23382C] block leading-tight font-serif drop-shadow-xs group-hover:text-[#9F7A2D] transition-colors">
+                {profile.name}
+              </span>
+              <span className="text-[10px] sm:text-[11px] font-bold text-[#8D6B26] uppercase tracking-wider block">
+                Catering &amp; Culinary Service
+              </span>
             </a>
           </div>
 
@@ -412,17 +403,28 @@ export default function PublicLandingPage({
                 </span>
               </div>
 
-              {/* Bold Title */}
-              <div className="space-y-2">
-                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-black text-[#23382C] tracking-tight uppercase leading-[1.02] font-serif">
-                  {settings.hero_title_1 || "Catering Lezat,"} <br className="hidden sm:inline" />
-                  <span className="text-[#9F7A2D] italic font-normal inline-block">
-                    {settings.hero_title_2 || "Higienis & Terpercaya"}
-                  </span>
-                </h1>
-                <p className="text-xl sm:text-2xl font-bold text-[#4B6152] pt-1">
-                  {settings.hero_subtitle || "Solusi Praktis & Istimewa untuk Setiap Acara Anda"}
-                </p>
+              {/* Bold Title with Brand Logo beside */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-7">
+                {/* Brand Logo beside Heading */}
+                <div className="w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-3xl bg-white p-2.5 sm:p-3 shrink-0 shadow-lg shadow-[#23382C]/10 border-2 border-[#D5E5B2] flex items-center justify-center hover:scale-105 transition-transform">
+                  <img
+                    src={profile.logo_url || "/logo-dapoer-pmcsu.png"}
+                    alt={profile.name}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+
+                <div className="space-y-2 flex-1">
+                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-black text-[#23382C] tracking-tight uppercase leading-[1.02] font-serif">
+                    {settings.hero_title_1 || "Catering Lezat,"} <br className="hidden sm:inline" />
+                    <span className="text-[#9F7A2D] italic font-normal inline-block">
+                      {settings.hero_title_2 || "Higienis & Terpercaya"}
+                    </span>
+                  </h1>
+                  <p className="text-xl sm:text-2xl font-bold text-[#4B6152] pt-1">
+                    {settings.hero_subtitle || "Solusi Praktis & Istimewa untuk Setiap Acara Anda"}
+                  </p>
+                </div>
               </div>
 
               {/* Key Features Checklist (seperti contoh referensi) */}
