@@ -168,9 +168,20 @@ export default function PublicLandingPage({
   )}`;
 
   return (
-    <div className="min-h-screen bg-[#E6F0CA] text-[#23382C] flex flex-col font-sans selection:bg-[#C9A24D] selection:text-white">
+    <div className="min-h-screen bg-[#E6F0CA] text-[#23382C] flex flex-col font-sans selection:bg-[#C9A24D] selection:text-white relative">
+      {/* Continuous Seamless Full-Page Photographic Background */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <img
+          src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=2500&q=85"
+          alt="Continuous Catering Background"
+          className="w-full h-full object-cover object-center opacity-25 mix-blend-multiply"
+        />
+        {/* Continuous Soft Sage Overlay */}
+        <div className="absolute inset-0 bg-[#E6F0CA]/80 backdrop-blur-[0.5px]" />
+      </div>
+
       {/* Top Announcement Bar with Running Marquee Text */}
-      <div className="bg-[#DFECC0] text-[#3D5245] py-2 overflow-hidden text-xs font-medium border-b border-[#D2E2AF]">
+      <div className="relative z-40 bg-[#DFECC0]/90 backdrop-blur-sm text-[#3D5245] py-2 overflow-hidden text-xs font-medium border-b border-[#D2E2AF]/60">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between gap-4">
           {/* Running Marquee Container */}
           <div className="flex-1 overflow-hidden relative select-none">
@@ -285,7 +296,16 @@ export default function PublicLandingPage({
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] active:scale-95 text-[#212E24] text-sm font-extrabold rounded-full shadow-md shadow-[#C9A24D]/30 transition-all border border-[#DFBF73] whitespace-nowrap"
             >
-              <MessageCircle className="w-4 h-4 text-[#212E24]" />
+              <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
+                <path
+                  fill="#25D366"
+                  d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2Z"
+                />
+                <path
+                  fill="#FFFFFF"
+                  d="M17.53 14.45C17.23 14.3 15.75 13.57 15.48 13.47C15.2 13.37 15 13.32 14.8 13.62C14.6 13.92 14.03 14.6 13.85 14.8C13.68 15.01 13.5 15.03 13.2 14.88C12.9 14.73 11.95 14.42 10.82 13.41C9.94 12.63 9.35 11.66 9.17 11.36C9 11.06 9.15 10.9 9.3 10.75C9.44 10.62 9.6 10.4 9.75 10.23C9.9 10.05 9.95 9.92 10.05 9.72C10.15 9.52 10.1 9.35 10.03 9.2C9.95 9.05 9.35 7.57 9.1 6.98C8.86 6.4 8.61 6.48 8.43 6.47C8.26 6.46 8.06 6.46 7.86 6.46C7.66 6.46 7.33 6.53 7.06 6.83C6.78 7.13 6 7.86 6 9.35C6 10.83 7.08 12.27 7.23 12.47C7.38 12.67 9.35 15.71 12.37 17.01C13.09 17.32 13.65 17.51 14.09 17.65C14.81 17.88 15.47 17.85 15.99 17.77C16.57 17.68 17.77 17.04 18.02 16.34C18.27 15.63 18.27 15.03 18.2 14.9C18.12 14.78 17.93 14.7 17.63 14.55L17.53 14.45Z"
+                />
+              </svg>
               <span>Hubungi WhatsApp</span>
             </a>
           </div>
@@ -370,7 +390,16 @@ export default function PublicLandingPage({
                 rel="noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-[#D7B465] to-[#BFA052] text-[#212E24] rounded-full font-bold text-sm shadow-md border border-[#DFBF73]"
               >
-                <MessageCircle className="w-4 h-4 text-[#212E24]" />
+                <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
+                  <path
+                    fill="#25D366"
+                    d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2Z"
+                  />
+                  <path
+                    fill="#FFFFFF"
+                    d="M17.53 14.45C17.23 14.3 15.75 13.57 15.48 13.47C15.2 13.37 15 13.32 14.8 13.62C14.6 13.92 14.03 14.6 13.85 14.8C13.68 15.01 13.5 15.03 13.2 14.88C12.9 14.73 11.95 14.42 10.82 13.41C9.94 12.63 9.35 11.66 9.17 11.36C9 11.06 9.15 10.9 9.3 10.75C9.44 10.62 9.6 10.4 9.75 10.23C9.9 10.05 9.95 9.92 10.05 9.72C10.15 9.52 10.1 9.35 10.03 9.2C9.95 9.05 9.35 7.57 9.1 6.98C8.86 6.4 8.61 6.48 8.43 6.47C8.26 6.46 8.06 6.46 7.86 6.46C7.66 6.46 7.33 6.53 7.06 6.83C6.78 7.13 6 7.86 6 9.35C6 10.83 7.08 12.27 7.23 12.47C7.38 12.67 9.35 15.71 12.37 17.01C13.09 17.32 13.65 17.51 14.09 17.65C14.81 17.88 15.47 17.85 15.99 17.77C16.57 17.68 17.77 17.04 18.02 16.34C18.27 15.63 18.27 15.03 18.2 14.9C18.12 14.78 17.93 14.7 17.63 14.55L17.53 14.45Z"
+                  />
+                </svg>
                 <span>Konsultasi via WhatsApp</span>
               </a>
             </div>
@@ -378,23 +407,12 @@ export default function PublicLandingPage({
         )}
       </header>
 
-      {/* Hero Section with Rich Photographic Background */}
-      <section className="relative overflow-hidden bg-[#E6F0CA] text-[#23382C] min-h-[580px] lg:min-h-[640px] flex items-center py-16 lg:py-24 border-b border-[#D5E5B2]">
-        {/* Background Image & Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=2000&q=85"
-            alt="Dapoer PMCSU Catering Background"
-            className="w-full h-full object-cover object-center opacity-30 mix-blend-multiply"
-          />
-          {/* Gradient Overlay: soft olive sage on the left, translucent towards right */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#E6F0CA] via-[#E6F0CA]/90 to-[#E6F0CA]/40" />
-        </div>
-
+      {/* Hero Section */}
+      <section className="relative overflow-hidden text-[#23382C] min-h-[580px] lg:min-h-[640px] flex items-center py-16 lg:py-24">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-center">
             {/* Left Column: Heading, Subtitle, Checklists & Action */}
-            <div className="lg:col-span-12 xl:col-span-11 max-w-4xl space-y-6">
+            <div className="lg:col-span-7 xl:col-span-8 space-y-6">
               {/* Top Tagline */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DFECC0] border border-[#CBDFA5] text-[#8D6B26] text-xs font-black uppercase tracking-wider shadow-xs">
                 <Sparkles className="w-3.5 h-3.5 text-[#C9A24D]" />
@@ -403,28 +421,17 @@ export default function PublicLandingPage({
                 </span>
               </div>
 
-              {/* Bold Title with Brand Logo beside */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-7">
-                {/* Brand Logo beside Heading */}
-                <div className="w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-3xl bg-white p-2.5 sm:p-3 shrink-0 shadow-lg shadow-[#23382C]/10 border-2 border-[#D5E5B2] flex items-center justify-center hover:scale-105 transition-transform">
-                  <img
-                    src={profile.logo_url || "/logo-dapoer-pmcsu.png"}
-                    alt={profile.name}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-
-                <div className="space-y-2 flex-1">
-                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-black text-[#23382C] tracking-tight uppercase leading-[1.02] font-serif">
-                    {settings.hero_title_1 || "Catering Lezat,"} <br className="hidden sm:inline" />
-                    <span className="text-[#9F7A2D] italic font-normal inline-block">
-                      {settings.hero_title_2 || "Higienis & Terpercaya"}
-                    </span>
-                  </h1>
-                  <p className="text-xl sm:text-2xl font-bold text-[#4B6152] pt-1">
-                    {settings.hero_subtitle || "Solusi Praktis & Istimewa untuk Setiap Acara Anda"}
-                  </p>
-                </div>
+              {/* Bold Title */}
+              <div className="space-y-2">
+                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[60px] xl:text-[68px] font-black text-[#23382C] tracking-tight uppercase leading-[1.02] font-serif">
+                  {settings.hero_title_1 || "Catering Lezat,"} <br className="hidden sm:inline" />
+                  <span className="text-[#9F7A2D] italic font-normal inline-block">
+                    {settings.hero_title_2 || "Higienis & Terpercaya"}
+                  </span>
+                </h1>
+                <p className="text-lg sm:text-2xl font-bold text-[#4B6152] pt-1">
+                  {settings.hero_subtitle || "Solusi Praktis & Istimewa untuk Setiap Acara Anda"}
+                </p>
               </div>
 
               {/* Key Features Checklist (seperti contoh referensi) */}
@@ -510,12 +517,23 @@ export default function PublicLandingPage({
                 </div>
               </div>
             </div>
+
+            {/* Right Column: Logo PMC SU (kotak rounded seperti awal dengan ukuran besar) */}
+            <div className="lg:col-span-5 xl:col-span-4 flex items-center justify-center pt-6 lg:pt-0">
+              <div className="w-64 h-64 sm:w-72 sm:h-72 xl:w-80 xl:h-80 rounded-3xl bg-white p-6 sm:p-8 flex items-center justify-center shadow-lg shadow-[#23382C]/10 border-2 border-[#D5E5B2] hover:scale-105 transition-transform overflow-hidden">
+                <img
+                  src={profile.logo_url || "/logo-dapoer-pmcsu.png"}
+                  alt={profile.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Section: Layanan Catering */}
-      <section id="layanan" className="relative py-24 bg-[#E2ECC6] text-[#23382C] overflow-hidden border-b border-[#D5E5B2]">
+      <section id="layanan" className="relative py-24 text-[#23382C] overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
@@ -583,7 +601,7 @@ export default function PublicLandingPage({
       {/* Section: Katalog Menu & WhatsApp Order Trigger */}
       <section 
         id="menu" 
-        className="relative py-24 bg-[#E6F0CA] text-[#23382C] overflow-hidden border-b border-[#D5E5B2]"
+        className="relative py-24 text-[#23382C] overflow-hidden"
       >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
@@ -605,12 +623,9 @@ export default function PublicLandingPage({
                     ? settings.pdf_catalog_url.startsWith("http")
                       ? settings.pdf_catalog_url
                       : `https://${settings.pdf_catalog_url}`
-                    : `https://wa.me/${waPhone}?text=${encodeURIComponent(
-                        `Halo ${profile.name || "DAPOER PMCSU"}, saya ingin meminta file PDF / E-Brosur Katalog Menu lengkap untuk dibagikan ke panitia acara kami. Terima kasih!`
-                      )}`
+                    : "/katalog-menu-pmcsu.pdf"
                 }
-                target="_blank"
-                rel="noreferrer"
+                download="Katalog-Menu-Dapoer-PMCSU.pdf"
                 className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#FCFBF6] hover:bg-white text-[#2E4235] hover:text-[#9F7A2D] text-xs font-bold border border-[#CBDFA5] hover:border-[#9F7A2D] shadow-xs hover:shadow-md transition-all active:scale-95 group"
               >
                 <div className="w-6 h-6 rounded-full bg-[#DFECC0] group-hover:bg-[#D8B669] flex items-center justify-center transition-colors">
@@ -624,12 +639,28 @@ export default function PublicLandingPage({
             </div>
           </div>
 
-          {/* Category Filter - Horizontal Scroll Slider */}
-          <div className="relative mb-12">
-            <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide pb-1 px-1 scroll-smooth" id="cat-slider">
+          {/* Category Filter - Horizontal Scroll Slider with Navigation Arrows */}
+          <div className="relative mb-12 max-w-5xl mx-auto px-10">
+            {/* Left Scroll Button */}
+            <button
+              onClick={() => {
+                const el = document.getElementById("cat-slider");
+                if (el) el.scrollBy({ left: -220, behavior: "smooth" });
+              }}
+              aria-label="Geser Kategori Kiri"
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-[#CBDFA5] text-[#23382C] shadow-md hover:bg-[#D8B669] hover:border-[#D8B669] transition-all flex items-center justify-center z-10 active:scale-95 cursor-pointer"
+            >
+              <ChevronRight className="w-4 h-4 rotate-180" />
+            </button>
+
+            {/* Slider Container */}
+            <div
+              className="flex items-center gap-2.5 overflow-x-auto scrollbar-hide py-2 px-1 scroll-smooth select-none cursor-grab active:cursor-grabbing"
+              id="cat-slider"
+            >
               <button
                 onClick={() => handleSetCat("all")}
-                className={`flex-shrink-0 px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-200 ${
+                className={`flex-shrink-0 px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                   selectedCat === "all"
                     ? "bg-[#D8B669] text-[#212E24] shadow-md shadow-[#D8B669]/30 scale-105 border border-[#E5CA8A]"
                     : "bg-[#F7F9EC] text-[#415549] hover:bg-white border border-[#D5E5B2]"
@@ -641,7 +672,7 @@ export default function PublicLandingPage({
                 <button
                   key={c.id}
                   onClick={() => handleSetCat(String(c.id))}
-                  className={`flex-shrink-0 px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-200 whitespace-nowrap ${
+                  className={`flex-shrink-0 px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-200 whitespace-nowrap cursor-pointer ${
                     selectedCat === String(c.id)
                       ? "bg-[#D8B669] text-[#212E24] shadow-md shadow-[#D8B669]/30 scale-105 border border-[#E5CA8A]"
                       : "bg-[#F7F9EC] text-[#415549] hover:bg-white border border-[#D5E5B2]"
@@ -651,6 +682,18 @@ export default function PublicLandingPage({
                 </button>
               ))}
             </div>
+
+            {/* Right Scroll Button */}
+            <button
+              onClick={() => {
+                const el = document.getElementById("cat-slider");
+                if (el) el.scrollBy({ left: 220, behavior: "smooth" });
+              }}
+              aria-label="Geser Kategori Kanan"
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-[#CBDFA5] text-[#23382C] shadow-md hover:bg-[#D8B669] hover:border-[#D8B669] transition-all flex items-center justify-center z-10 active:scale-95 cursor-pointer"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
 
           {/* Menu Carousel */}
@@ -801,8 +844,8 @@ export default function PublicLandingPage({
       </section>
 
       {/* Section: Galeri Acara (Event Highlights) - Portofolio Suasana Acara */}
-      <section id="galeri" className="py-24 bg-[#E2ECC6] text-[#23382C] border-b border-[#D5E5B2]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="galeri" className="relative py-24 text-[#23382C] overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Galeri Acara &bull; Event Highlights
@@ -1004,7 +1047,7 @@ export default function PublicLandingPage({
 
 
       {/* Combined Section: Panduan Pemesanan & Tentang Brand Kami (Seamless) */}
-      <div className="relative bg-[#E6F0CA] text-[#23382C] overflow-hidden border-b border-[#D5E5B2]">
+      <div className="relative text-[#23382C] overflow-hidden">
         {/* Section: Panduan Pemesanan */}
         <section id="cara-pesan" className="relative z-10 pt-24 pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1125,8 +1168,8 @@ export default function PublicLandingPage({
       </section>
 
       {/* Section: Bukti Sosial & Ulasan (Social Proof & Testimonials) */}
-      <section id="testimoni" className="relative z-10 py-20 border-t border-[#D5E5B2] bg-[#E2ECC6]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="testimoni" className="relative z-10 py-20 overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Bukti Sosial & Kepuasan Klien
@@ -1226,8 +1269,8 @@ export default function PublicLandingPage({
       </section>
 
       {/* Section: Transparansi Area Pengiriman & Syarat (Logistics & FAQ) */}
-      <section id="faq" className="relative z-10 py-20 bg-[#E6F0CA] border-t border-[#D5E5B2]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="faq" className="relative z-10 py-20 overflow-hidden">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Informasi Logistik & FAQ
@@ -1343,8 +1386,8 @@ export default function PublicLandingPage({
     </div>
 
       {/* Footer (Warm Golden Ochre Marquee Tone matching the banner in Image 1) */}
-      <footer className="bg-[#DFECC0] text-[#3D5245] pt-12 pb-6 px-4 border-t border-[#D5E5B2]">
-        <div className="max-w-7xl mx-auto">
+      <footer className="relative z-10 bg-[#DFECC0]/80 backdrop-blur-xs text-[#3D5245] pt-12 pb-6 px-4 border-t border-[#D5E5B2]/60 overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto">
           {/* Ringkasan Logistik & Area Pengiriman di Footer */}
           <div className="mb-10 pb-8 border-b border-[#CBDFA5] grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 justify-center md:justify-start">
