@@ -19,14 +19,34 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Dapoer PMC SU - Catering & Culinary Service",
-  description: "Layanan catering prasmanan, nasi kotak, tumpeng, dan coffee break bersertifikat Halal resmi.",
+  title: "DAPOER PMCSU - Jasa Catering Prasmanan, Nasi Kotak & Tumpeng Jakarta",
+  description: "Dapoer Pasar Minggu Catering Service Utama (PMCSU). Melayani paket prasmanan (buffet), nasi kotak (box makan), tumpeng selamatan, dan coffee break halal resmi di Jakarta & Jabodetabek.",
+  keywords: [
+    "Dapoer PMCSU",
+    "Pasar Minggu Catering Service Utama",
+    "Catering Jakarta",
+    "Catering Jakarta Selatan",
+    "Catering Prasmanan Halal",
+    "Nasi Kotak Jakarta",
+    "Tumpeng Jakarta",
+    "Paket Pernikahan Catering",
+    "Catering Kantor Jabodetabek"
+  ],
+  authors: [{ name: "DAPOER PMCSU" }],
+  openGraph: {
+    title: "DAPOER PMCSU - Catering Pilihan Jakarta",
+    description: "Where Traditions Always Tastes Delicious. Solusi praktis & istimewa catering prasmanan, nasi kotak, dan tumpeng halal Jabodetabek.",
+    url: "https://dapoer-pmcsu.vercel.app",
+    siteName: "DAPOER PMCSU",
+    locale: "id_ID",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="id"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
