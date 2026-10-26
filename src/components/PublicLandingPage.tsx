@@ -1172,14 +1172,28 @@ export default function PublicLandingPage({
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
-              Bukti Sosial & Kepuasan Klien
+              Ulasan Nyata Google Maps
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-3 font-serif">
               Apa Kata Klien & Tamu Kami?
             </h2>
             <p className="text-[#4B6152] text-sm mt-3 leading-relaxed">
-              Pengalaman nyata dari ribuan porsi yang telah kami sajikan untuk pernikahan, corporate gathering, syukuran, dan instansi resmi.
+              Pengalaman nyata pelanggan dari ulasan bintang 4 & 5 di Google Maps untuk prasmanan pernikahan, gathering kantor, selamatan, dan syukuran keluarga.
             </p>
+            <div className="mt-4 flex items-center justify-center gap-2">
+              <a
+                href={profile.maps_url || "https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z"}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#CBDFA5] text-[#23382C] hover:text-[#9F7A2D] text-xs font-bold shadow-xs hover:shadow-md transition-all"
+              >
+                <div className="flex items-center text-[#F59E0B]">
+                  {"★★★★★"}
+                </div>
+                <span>Lihat Ulasan di Google Maps</span>
+                <ExternalLink className="w-3.5 h-3.5 text-[#8D6B26]" />
+              </a>
+            </div>
           </div>
 
           {/* Testimonial Cards */}
