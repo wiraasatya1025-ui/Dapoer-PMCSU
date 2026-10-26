@@ -1182,10 +1182,16 @@ export default function PublicLandingPage({
             </p>
             <div className="mt-4 flex items-center justify-center gap-2">
               <a
-                href={profile.maps_url || "https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z"}
+                href={
+                  profile.maps_url
+                    ? profile.maps_url.startsWith("http")
+                      ? profile.maps_url
+                      : `https://${profile.maps_url}`
+                    : "https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z/data=!4m18!1m9!3m8!1s0x2e69f272f042f0fd:0x5fa547fbfd9ec7ef!2sPasar+Minggu+Catering+Service!8m2!3d-6.2900409!4d106.8438304!9m1!1b1!16s%2Fg%2F11cm13p_qy!3m7!1s0x2e69f272f042f0fd:0x5fa547fbfd9ec7ef!8m2!3d-6.2900409!4d106.8438304!9m1!1b1!16s%2Fg%2F11cm13p_qy?hl=id"
+                }
                 target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#CBDFA5] text-[#23382C] hover:text-[#9F7A2D] text-xs font-bold shadow-xs hover:shadow-md transition-all"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#CBDFA5] text-[#23382C] hover:text-[#9F7A2D] text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer"
               >
                 <div className="flex items-center text-[#F59E0B]">
                   {"★★★★★"}
