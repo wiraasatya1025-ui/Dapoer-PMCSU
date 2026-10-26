@@ -112,6 +112,7 @@ export default function PublicLandingPage({
   const [selectedVariant, setSelectedVariant] = useState<Variant | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [activeGalleryTab, setActiveGalleryTab] = useState<string>("all");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeNavPopup, setActiveNavPopup] = useState<string | null>(null);
@@ -1202,63 +1203,111 @@ export default function PublicLandingPage({
             </div>
           </div>
 
-          {/* Testimonial Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-            {(testimonials && testimonials.length > 0
+          {/* Testimonial Cards - Horizontal Slider */}
+          {(() => {
+            const testimonialList = testimonials && testimonials.length > 0
               ? testimonials
               : [
                   {
                     id: 1,
-                    client_name: "Ibu Ratna Dewi, S.E.",
-                    role_or_event: "Resepsi Pernikahan (800 Pax) - Gedung Sasana Pakarti",
+                    client_name: "meeva kitchen",
+                    role_or_event: "Ulasan Google Maps",
                     rating: 5,
-                    comment:
-                      "Alhamdulillah semua tamu memuji rasa makanannya, terutama Daging Balado dan Sop Penganten-nya juara! Penataan meja prasmanannya sangat elegan dan pramusajinya sigap sekali.",
+                    comment: "Rasanya enak, pelayanannya ramah dan cepat. Recommended banget!",
                   },
                   {
                     id: 2,
-                    client_name: "Bpk. Hendra Gunawan",
-                    role_or_event: "General Assembly PT Telkom Akses (350 Pax)",
-                    rating: 5,
-                    comment:
-                      "Pengiriman tepat waktu 45 menit sebelum acara dimulai, packaging box bento rapat & higienis. Porsinya mengenyangkan dan variasi lauknya pas dengan selera karyawan kantor.",
+                    client_name: "Susila Hesti Purnami",
+                    role_or_event: "Ulasan Google Maps",
+                    rating: 4,
+                    comment: "Makanannya enak, porsinya pas. Cuma tempatnya agak kecil.",
                   },
                   {
                     id: 3,
-                    client_name: "Dr. Maya Anindita",
-                    role_or_event: "Acara Syukuran Akikah & Keluarga Besar (150 Pax)",
+                    client_name: "Nina Nasution",
+                    role_or_event: "Ulasan Google Maps",
                     rating: 5,
-                    comment:
-                      "Sangat terbantu dengan konsultasi admin WA yang ramah dan solutif. Pondokan sate dan es dogernya jadi rebutan anak-anak dan orang tua. Pasti pesan lagi untuk acara berikutnya!",
+                    comment: "Cateringnya mantap, harga terjangkau, rasa juara!",
                   },
-                ]
-            ).map((t) => (
-              <div
-                key={t.id}
-                className="p-7 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center gap-1 mb-4 text-[#D8B669]">
-                    {Array.from({ length: t.rating || 5 }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#D8B669]" />
-                    ))}
+                ];
+            const maxTestimonialIndex = Math.max(0, testimonialList.length - 3);
+            const safeTestimonialIdx = Math.min(testimonialIndex, maxTestimonialIndex);
+
+            return (
+              <>
+                <div className="relative mb-16">
+                  <div className="overflow-hidden px-8 md:px-20">
+                    <div
+                      className="flex gap-4 md:gap-6 transition-transform duration-500 ease-in-out"
+                      style={{ transform: `translateX(calc(-${safeTestimonialIdx} * (100% / 3 + 8px)))` }}
+                    >
+                      {testimonialList.map((t) => (
+                        <div
+                          key={t.id}
+                          className="flex-shrink-0 w-[calc(100%-40px)] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] p-7 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                        >
+                          <div>
+                            <div className="flex items-center gap-1 mb-4 text-[#D8B669]">
+                              {Array.from({ length: t.rating || 5 }).map((_, i) => (
+                                <Star key={i} className="w-4 h-4 fill-[#D8B669]" />
+                              ))}
+                            </div>
+                            <p className="text-xs sm:text-sm text-[#3D5245] leading-relaxed italic mb-6">
+                              &ldquo;{t.comment}&rdquo;
+                            </p>
+                          </div>
+                          <div className="pt-4 border-t border-[#CBDFA5]/60 flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-[#DFECC0] border border-[#CBDFA5] flex items-center justify-center font-bold text-[#23382C] text-sm">
+                              {t.client_name ? t.client_name.charAt(0) : "K"}
+                            </div>
+                            <div>
+                              <h5 className="font-bold text-[#23382C] text-xs">{t.client_name}</h5>
+                              <p className="text-[11px] text-[#8D6B26] font-medium">{t.role_or_event}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <p className="text-xs sm:text-sm text-[#3D5245] leading-relaxed italic mb-6">
-                    "{t.comment}"
-                  </p>
+
+                  {/* Arrow Buttons */}
+                  {safeTestimonialIdx > 0 && (
+                    <button
+                      onClick={() => setTestimonialIndex(i => Math.max(0, i - 1))}
+                      className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md flex items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10"
+                    >
+                      <ChevronRight className="w-5 h-5 rotate-180" />
+                    </button>
+                  )}
+                  {safeTestimonialIdx < maxTestimonialIndex && (
+                    <button
+                      onClick={() => setTestimonialIndex(i => Math.min(maxTestimonialIndex, i + 1))}
+                      className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md flex items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  )}
+
+                  {/* Dot Indicators */}
+                  {maxTestimonialIndex > 0 && (
+                    <div className="flex items-center justify-center gap-2 mt-8">
+                      {Array.from({ length: maxTestimonialIndex + 1 }).map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setTestimonialIndex(idx)}
+                          className={`rounded-full transition-all duration-300 ${
+                            idx === safeTestimonialIdx
+                              ? "w-6 h-3 bg-[#D8B669]"
+                              : "w-3 h-3 bg-[#CBDFA5] hover:bg-[#B6CD8E]"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
-                <div className="pt-4 border-t border-[#CBDFA5]/60 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#DFECC0] border border-[#CBDFA5] flex items-center justify-center font-bold text-[#23382C] text-sm">
-                    {t.client_name ? t.client_name.charAt(0) : "K"}
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-[#23382C] text-xs">{t.client_name}</h5>
-                    <p className="text-[11px] text-[#8D6B26] font-medium">{t.role_or_event}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+              </>
+            );
+          })()}
 
           {/* Monochrome Corporate Clients Logo Strip */}
           <div className="pt-8 border-t border-[#CBDFA5]">
