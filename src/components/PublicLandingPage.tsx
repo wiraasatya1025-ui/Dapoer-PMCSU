@@ -119,7 +119,7 @@ export default function PublicLandingPage({
   const waPhone = settings.wa_phone || "6281234567890";
   const rawTemplate =
     settings.wa_template ||
-    `Halo {brand_name}, saya tertarik dan ingin memesan:\n\n*Menu:* {menu_name}\n*Harga:* {menu_price}\n*Pilihan:* {menu_variant}\n\nMohon info ketersediaannya. Terima kasih!`;
+    `Halo *{brand_name}*,\n\nSaya tertarik dan ingin memesan menu catering:\n🍱 *Nama Menu:* {menu_name}\n💵 *Harga:* {menu_price}\n✨ *Pilihan:* {menu_variant}\n\n*Format Data Acara:*\n• Nama Pemesan:\n• Tanggal & Waktu Acara:\n• Jumlah Porsi (Pax):\n• Alamat Pengantaran:\n\nMohon info ketersediaan dan detail selengkapnya. Terima kasih!`;
 
   const filteredMenus = menus.filter((m) => {
     if (selectedCat === "all") return true;
@@ -164,7 +164,7 @@ export default function PublicLandingPage({
   };
 
   const generalWaUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(
-    `Halo ${profile.name || "DAPOER PMCSU"}, saya ingin konsultasi kebutuhan catering untuk acara saya.`
+    `Halo *${profile.name || "DAPOER PMCSU"}*,\n\nSaya ingin konsultasi pemesanan catering untuk acara:\n\n• Jenis Acara (Pernikahan / Kantor / Syukuran / Lainnya):\n• Rencana Tanggal Acara:\n• Perkiraan Jumlah Porsi:\n• Lokasi Acara:\n\nMohon rekomendasi paket menu dan penawaran terbaiknya. Terima kasih!`
   )}`;
 
   return (
@@ -1431,7 +1431,7 @@ export default function PublicLandingPage({
           <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6 mb-6">
             {/* Phone / WhatsApp */}
             <a
-              href={`https://wa.me/${waPhone}`}
+              href={generalWaUrl}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 text-[#415549] hover:text-[#9F7A2D] transition-colors group"
