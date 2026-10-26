@@ -112,6 +112,7 @@ export default function PublicLandingPage({
   const [selectedVariant, setSelectedVariant] = useState<Variant | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [carouselIndex, setCarouselIndex] = useState(0);
+  const menuScrollRef = useRef<HTMLDivElement>(null);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const testimonialScrollRef = useRef<HTMLDivElement>(null);
   const [activeGalleryTab, setActiveGalleryTab] = useState<string>("all");
@@ -132,6 +133,9 @@ export default function PublicLandingPage({
   const handleSetCat = (cat: string) => {
     setSelectedCat(cat);
     setCarouselIndex(0);
+    if (menuScrollRef.current) {
+      menuScrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+    }
   };
 
   const handleOpenDetail = (menu: Menu) => {
@@ -698,140 +702,162 @@ export default function PublicLandingPage({
             </button>
           </div>
 
-          {/* Menu Carousel */}
+          {/* Menu Carousel - Responsive Slider (Touch-swipe & Smooth Arrows) */}
           {filteredMenus.length === 0 ? (
             <div className="text-center py-20 text-[#6B8072]">
               <UtensilsCrossed className="w-10 h-10 mx-auto mb-3 opacity-40" />
               <p className="text-sm font-medium">Belum ada menu untuk kategori ini.</p>
             </div>
           ) : (
-            <div className="relative">
-              {/* Carousel Track */}
+            <div className="relative group">
               {(() => {
-                // Maksimum indeks agar item terakhir pas di sisi kanan (tidak ada ruang kosong)
-                // Di layar besar tampil 3 item, jadi maxIndex = filteredMenus.length - 3 (min 0)
-                const maxSlideIndex = Math.max(0, filteredMenus.length - 3);
-                const safeIndex = Math.min(carouselIndex, maxSlideIndex);
+                const scrollMenu = (direction: "left" | "right") => {
+                  const container = menuScrollRef.current;
+                  if (!container) return;
+                  const cardWidth = container.firstElementChild ? (container.firstElementChild as HTMLElement).offsetWidth + 20 : 320;
+                  container.scrollBy({
+                    left: direction === "left" ? -cardWidth : cardWidth,
+                    behavior: "smooth",
+                  });
+                };
+
+                const scrollMenuToIndex = (index: number) => {
+                  const container = menuScrollRef.current;
+                  if (!container) return;
+                  const cardWidth = container.firstElementChild ? (container.firstElementChild as HTMLElement).offsetWidth + 20 : 320;
+                  container.scrollTo({
+                    left: index * cardWidth,
+                    behavior: "smooth",
+                  });
+                  setCarouselIndex(index);
+                };
+
+                const handleMenuScroll = () => {
+                  const container = menuScrollRef.current;
+                  if (!container) return;
+                  const cardWidth = container.firstElementChild ? (container.firstElementChild as HTMLElement).offsetWidth + 20 : 320;
+                  const newIndex = Math.round(container.scrollLeft / cardWidth);
+                  setCarouselIndex(Math.min(newIndex, filteredMenus.length - 1));
+                };
 
                 return (
                   <>
-                    <div className="overflow-hidden px-8 md:px-20">
-                      <div
-                        className="flex gap-4 md:gap-6 transition-transform duration-500 ease-in-out"
-                        style={{ transform: `translateX(calc(-${safeIndex} * (100% / 3 + 8px)))` }}
-                      >
-                        {filteredMenus.map((menu, idx) => {
-                          let variants: Variant[] = [];
-                          try { variants = JSON.parse(menu.variants || "[]"); } catch { variants = []; }
+                    {/* Horizontal Scrollable Menu Row */}
+                    <div
+                      ref={menuScrollRef}
+                      onScroll={handleMenuScroll}
+                      className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-4 px-4 sm:px-8 md:px-12 scrollbar-hide -mx-4 sm:mx-0"
+                      style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                    >
+                      {filteredMenus.map((menu, idx) => {
+                        let variants: Variant[] = [];
+                        try { variants = JSON.parse(menu.variants || "[]"); } catch { variants = []; }
 
-                          return (
-                            <div
-                              key={menu.id}
-                              onClick={() => setCarouselIndex(Math.min(idx, maxSlideIndex))}
-                              className="flex-shrink-0 w-[calc(100%-40px)] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-[#FCFBF6] rounded-3xl border border-[#E1DEC9] overflow-hidden flex flex-col cursor-pointer transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-[#C9A24D]/15 hover:border-[#C9A24D] hover:-translate-y-1"
-                            >
-                              {/* Image */}
-                              <Link href={`/menus/${menu.id}`} className="h-52 bg-[#F1EFE6] relative overflow-hidden block">
-                                {menu.image_url ? (
-                                  <img src={menu.image_url} alt={menu.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-                                ) : (
-                                  <div className="w-full h-full flex flex-col items-center justify-center bg-[#F1EFE6] text-[#8C9E91]">
-                                    <UtensilsCrossed className="w-8 h-8 mb-1" />
-                                    <span className="text-xs font-medium">Foto Menu Catering</span>
+                        return (
+                          <div
+                            key={menu.id}
+                            className="flex-shrink-0 snap-center w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-[#FCFBF6] rounded-3xl border border-[#E1DEC9] overflow-hidden flex flex-col cursor-pointer transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-[#C9A24D]/15 hover:border-[#C9A24D]"
+                          >
+                            {/* Image */}
+                            <Link href={`/menus/${menu.id}`} className="h-52 bg-[#F1EFE6] relative overflow-hidden block">
+                              {menu.image_url ? (
+                                <img src={menu.image_url} alt={menu.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                              ) : (
+                                <div className="w-full h-full flex flex-col items-center justify-center bg-[#F1EFE6] text-[#8C9E91]">
+                                  <UtensilsCrossed className="w-8 h-8 mb-1" />
+                                  <span className="text-xs font-medium">Foto Menu Catering</span>
+                                </div>
+                              )}
+                              <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                                {menu.category_name && (
+                                  <span className="px-2.5 py-1 bg-white/90 backdrop-blur-md text-[#23382C] text-[10px] font-bold rounded-lg uppercase shadow-xs border border-[#E1DEC9]">
+                                    {menu.category_name}
+                                  </span>
+                                )}
+                                {menu.is_featured === 1 && (
+                                  <span className="px-2.5 py-1 bg-[#D8B669] text-[#212E24] text-[10px] font-bold rounded-lg flex items-center gap-1 shadow-xs border border-[#E5CA8A]">
+                                    <Star className="w-3 h-3 fill-[#212E24]" /><span>Unggulan</span>
+                                  </span>
+                                )}
+                              </div>
+                              {!menu.is_available && (
+                                <div className="absolute inset-0 bg-[#23382C]/70 backdrop-blur-[2px] flex items-center justify-center">
+                                  <span className="px-4 py-1.5 bg-rose-600 text-white text-xs font-extrabold uppercase rounded-xl tracking-wider">Habis / Sold Out</span>
+                                </div>
+                              )}
+
+                              {/* Floating Gold Price Badge on Card */}
+                              <div className="absolute bottom-3 right-3 bg-[#DEBF7E] text-[#212E24] px-3.5 py-1.5 rounded-xl font-black text-xs shadow-md border border-[#EBCE8F]">
+                                Rp {menu.price.toLocaleString("id-ID")}
+                              </div>
+                            </Link>
+
+                            {/* Body */}
+                            <div className="p-6 flex-1 flex flex-col justify-between">
+                              <div>
+                                <Link href={`/menus/${menu.id}`} className="text-lg font-bold text-[#23382C] line-clamp-1 hover:text-[#9F7A2D] transition-colors block mb-1 font-serif">
+                                  {menu.name}
+                                </Link>
+                                <Link href={`/menus/${menu.id}`} className="block mb-4">
+                                  <p className="text-xs text-[#55695D] line-clamp-2 leading-relaxed">{menu.description || "Hubungi admin untuk kustomisasi lauk dan menu."}</p>
+                                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#9F7A2D] mt-1 hover:underline">Lihat Menu Lengkap &rarr;</span>
+                                </Link>
+                                {variants.length > 0 && (
+                                  <div className="flex flex-wrap gap-1.5 mb-4">
+                                    {variants.map((v, i) => (
+                                      <span key={i} className="text-[11px] px-2 py-0.5 rounded-md bg-[#F4F2E7] text-[#4F6255] font-medium border border-[#E1DEC9]">{v.name}</span>
+                                    ))}
                                   </div>
                                 )}
-                                <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                                  {menu.category_name && (
-                                    <span className="px-2.5 py-1 bg-white/90 backdrop-blur-md text-[#23382C] text-[10px] font-bold rounded-lg uppercase shadow-xs border border-[#E1DEC9]">
-                                      {menu.category_name}
-                                    </span>
-                                  )}
-                                  {menu.is_featured === 1 && (
-                                    <span className="px-2.5 py-1 bg-[#D8B669] text-[#212E24] text-[10px] font-bold rounded-lg flex items-center gap-1 shadow-xs border border-[#E5CA8A]">
-                                      <Star className="w-3 h-3 fill-[#212E24]" /><span>Unggulan</span>
-                                    </span>
-                                  )}
-                                </div>
-                                {!menu.is_available && (
-                                  <div className="absolute inset-0 bg-[#23382C]/70 backdrop-blur-[2px] flex items-center justify-center">
-                                    <span className="px-4 py-1.5 bg-rose-600 text-white text-xs font-extrabold uppercase rounded-xl tracking-wider">Habis / Sold Out</span>
-                                  </div>
-                                )}
-
-                                {/* Floating Gold Price Badge on Card (seperti pada gambar referensi) */}
-                                <div className="absolute bottom-3 right-3 bg-[#DEBF7E] text-[#212E24] px-3.5 py-1.5 rounded-xl font-black text-xs shadow-md border border-[#EBCE8F]">
-                                  Rp {menu.price.toLocaleString("id-ID")}
-                                </div>
-                              </Link>
-
-                              {/* Body */}
-                              <div className="p-6 flex-1 flex flex-col justify-between">
+                              </div>
+                              <div className="pt-4 border-t border-[#EFECE0] flex items-center justify-between gap-3">
                                 <div>
-                                  <Link href={`/menus/${menu.id}`} className="text-lg font-bold text-[#23382C] line-clamp-1 hover:text-[#9F7A2D] transition-colors block mb-1 font-serif">
-                                    {menu.name}
-                                  </Link>
-                                  <Link href={`/menus/${menu.id}`} className="block mb-4">
-                                    <p className="text-xs text-[#55695D] line-clamp-2 leading-relaxed">{menu.description || "Hubungi admin untuk kustomisasi lauk dan menu."}</p>
-                                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#9F7A2D] mt-1 hover:underline">Lihat Menu Lengkap &rarr;</span>
-                                  </Link>
-                                  {variants.length > 0 && (
-                                    <div className="flex flex-wrap gap-1.5 mb-4">
-                                      {variants.map((v, i) => (
-                                        <span key={i} className="text-[11px] px-2 py-0.5 rounded-md bg-[#F4F2E7] text-[#4F6255] font-medium border border-[#E1DEC9]">{v.name}</span>
-                                      ))}
-                                    </div>
-                                  )}
+                                  <span className="text-[10px] text-[#7A8E81] block font-medium">Mulai dari</span>
+                                  <span className="text-base font-extrabold text-[#8D6B26]">Rp {menu.price.toLocaleString("id-ID")}</span>
                                 </div>
-                                <div className="pt-4 border-t border-[#EFECE0] flex items-center justify-between gap-3">
-                                  <div>
-                                    <span className="text-[10px] text-[#7A8E81] block font-medium">Mulai dari</span>
-                                    <span className="text-base font-extrabold text-[#8D6B26]">Rp {menu.price.toLocaleString("id-ID")}</span>
-                                  </div>
-                                  <button
-                                    onClick={(e) => { e.stopPropagation(); handleOpenDetail(menu); }}
-                                    disabled={!menu.is_available}
-                                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] disabled:bg-stone-300 active:scale-95 text-[#212E24] text-xs font-bold rounded-xl shadow-sm border border-[#DFBF73] transition-all"
-                                  >
-                                    <MessageCircle className="w-3.5 h-3.5 text-[#212E24]" />
-                                    <span>Pesan via WA</span>
-                                  </button>
-                                </div>
+                                <button
+                                  onClick={(e) => { e.stopPropagation(); handleOpenDetail(menu); }}
+                                  disabled={!menu.is_available}
+                                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] disabled:bg-stone-300 active:scale-95 text-[#212E24] text-xs font-bold rounded-xl shadow-sm border border-[#DFBF73] transition-all"
+                                >
+                                  <MessageCircle className="w-3.5 h-3.5 text-[#212E24]" />
+                                  <span>Pesan via WA</span>
+                                </button>
                               </div>
                             </div>
-                          );
-                        })}
-                      </div>
+                          </div>
+                        );
+                      })}
                     </div>
 
-                    {/* Arrow Buttons */}
-                    {safeIndex > 0 && (
-                      <button
-                        onClick={() => setCarouselIndex(i => Math.max(0, i - 1))}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md flex items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10"
-                      >
-                        <ChevronRight className="w-5 h-5 rotate-180" />
-                      </button>
-                    )}
-                    {safeIndex < maxSlideIndex && (
-                      <button
-                        onClick={() => setCarouselIndex(i => Math.min(maxSlideIndex, i + 1))}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md flex items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10"
-                      >
-                        <ChevronRight className="w-5 h-5" />
-                      </button>
-                    )}
+                    {/* Arrow Buttons (Desktop & Tablet) */}
+                    <button
+                      onClick={() => scrollMenu("left")}
+                      aria-label="Geser Menu Kiri"
+                      className="hidden sm:flex absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10 active:scale-95 cursor-pointer"
+                    >
+                      <ChevronRight className="w-5 h-5 rotate-180" />
+                    </button>
+                    <button
+                      onClick={() => scrollMenu("right")}
+                      aria-label="Geser Menu Kanan"
+                      className="hidden sm:flex absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10 active:scale-95 cursor-pointer"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
 
                     {/* Dot Indicators */}
-                    {maxSlideIndex > 0 && (
-                      <div className="flex items-center justify-center gap-2 mt-8">
-                        {Array.from({ length: maxSlideIndex + 1 }).map((_, idx) => (
+                    {filteredMenus.length > 1 && (
+                      <div className="flex items-center justify-center gap-1.5 sm:gap-2 mt-6">
+                        {filteredMenus.map((_, idx) => (
                           <button
                             key={idx}
-                            onClick={() => setCarouselIndex(idx)}
+                            onClick={() => scrollMenuToIndex(idx)}
+                            aria-label={`Ke menu ${idx + 1}`}
                             className={`rounded-full transition-all duration-300 ${
-                              idx === safeIndex
-                                ? "w-6 h-3 bg-[#D8B669]"
-                                : "w-3 h-3 bg-[#CBDFA5] hover:bg-[#B6CD8E]"
+                              idx === carouselIndex
+                                ? "w-6 h-2.5 bg-[#D8B669]"
+                                : "w-2.5 h-2.5 bg-[#CBDFA5] hover:bg-[#B6CD8E]"
                             }`}
                           />
                         ))}
