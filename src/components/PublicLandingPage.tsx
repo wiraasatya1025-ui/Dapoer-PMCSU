@@ -1653,8 +1653,14 @@ export default function PublicLandingPage({
 
       {/* Detail Menu Modal & WhatsApp Direct Action */}
       {selectedMenu && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-          <div className="bg-white rounded-3xl shadow-2xl border border-[#e6e3da] w-full max-w-lg overflow-hidden my-8">
+        <div
+          onClick={() => setSelectedMenu(null)}
+          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto transition-opacity duration-300"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white rounded-3xl shadow-2xl border border-[#CBDFA5] w-full max-w-lg overflow-hidden my-8 animate-slide-down will-change-transform"
+          >
             <div className="relative h-60 bg-stone-100 overflow-hidden">
               {selectedMenu.image_url ? (
                 <img
