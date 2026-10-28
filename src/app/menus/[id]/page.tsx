@@ -17,7 +17,14 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 
-export const revalidate = 0;
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const { data: menus } = await supabaseAdmin.from("menus").select("id");
+  return (menus || []).map((m: { id: number }) => ({
+    id: String(m.id),
+  }));
+}
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -199,7 +206,7 @@ export default async function MenuDetailPage({ params }: PageProps) {
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 animate-slide-down">
+      <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-xs text-[#55695D] mb-6 flex-wrap">
           <Link href="/" className="hover:text-[#23382C] transition-colors">

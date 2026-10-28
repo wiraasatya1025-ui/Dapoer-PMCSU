@@ -414,13 +414,13 @@ export default function PublicLandingPage({
       </header>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden text-[#23382C] min-h-[580px] lg:min-h-[640px] flex items-center py-16 lg:py-24">
+      <section className="relative overflow-hidden text-[#23382C] min-h-0 sm:min-h-[580px] lg:min-h-[640px] flex items-center py-8 sm:py-16 lg:py-24">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 xl:gap-12 items-center">
             {/* Left Column: Heading, Subtitle, Checklists & Action */}
-            <div className="lg:col-span-7 xl:col-span-8 space-y-6">
+            <div className="lg:col-span-7 xl:col-span-8 space-y-4 sm:space-y-6">
               {/* Top Tagline */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DFECC0] border border-[#CBDFA5] text-[#8D6B26] text-xs font-black uppercase tracking-wider shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#DFECC0] border border-[#CBDFA5] text-[#8D6B26] text-[11px] sm:text-xs font-black uppercase tracking-wider shadow-xs">
                 <Sparkles className="w-3.5 h-3.5 text-[#C9A24D]" />
                 <span>
                   {profile.name} &bull; {settings.hero_tagline || "Catering Pilihan Jakarta"}
@@ -428,105 +428,105 @@ export default function PublicLandingPage({
               </div>
 
               {/* Bold Title */}
-              <div className="space-y-2">
-                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[60px] xl:text-[68px] font-black text-[#23382C] tracking-tight uppercase leading-[1.02] font-serif">
+              <div className="space-y-1 sm:space-y-2">
+                <h1 className="text-2xl sm:text-5xl md:text-6xl lg:text-[60px] xl:text-[68px] font-black text-[#23382C] tracking-tight uppercase leading-[1.08] sm:leading-[1.02] font-serif">
                   {settings.hero_title_1 || "Catering Lezat,"} <br className="hidden sm:inline" />
                   <span className="text-[#9F7A2D] italic font-normal inline-block">
                     {settings.hero_title_2 || "Higienis & Terpercaya"}
                   </span>
                 </h1>
-                <p className="text-lg sm:text-2xl font-bold text-[#4B6152] pt-1">
+                <p className="text-sm sm:text-2xl font-bold text-[#4B6152] pt-0.5 sm:pt-1">
                   {settings.hero_subtitle || "Solusi Praktis & Istimewa untuk Setiap Acara Anda"}
                 </p>
               </div>
 
-              {/* Key Features Checklist (seperti contoh referensi) */}
-              <div className="space-y-2.5 pt-1">
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#C9A24D] flex items-center justify-center text-white shrink-0 font-bold text-xs shadow-xs">
+              {/* Key Features Checklist */}
+              <div className="space-y-2 sm:space-y-2.5 pt-1">
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#C9A24D] flex items-center justify-center text-white shrink-0 font-bold text-[10px] sm:text-xs shadow-xs">
                     ✓
                   </div>
-                  <span className="text-sm sm:text-base font-bold text-[#2A3F33]">
+                  <span className="text-xs sm:text-base font-bold text-[#2A3F33]">
                     {settings.hero_feature_1 || "100% Halal & Bahan Baku Segar Berkualitas"}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#C9A24D] flex items-center justify-center text-white shrink-0 font-bold text-xs shadow-xs">
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#C9A24D] flex items-center justify-center text-white shrink-0 font-bold text-[10px] sm:text-xs shadow-xs">
                     ✓
                   </div>
-                  <span className="text-sm sm:text-base font-bold text-[#2A3F33]">
+                  <span className="text-xs sm:text-base font-bold text-[#2A3F33]">
                     {settings.hero_feature_2 || "Mulai dari Rp 45.000,- / Porsi (Harga Bersahabat)"}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#C9A24D] flex items-center justify-center text-white shrink-0 font-bold text-xs shadow-xs">
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#C9A24D] flex items-center justify-center text-white shrink-0 font-bold text-[10px] sm:text-xs shadow-xs">
                     ✓
                   </div>
-                  <span className="text-sm sm:text-base font-bold text-[#2A3F33]">
+                  <span className="text-xs sm:text-base font-bold text-[#2A3F33]">
                     {settings.hero_feature_3 || "Lebih dari 50+ Variasi Menu Masakan Nusantara & Internasional"}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[#C9A24D] flex items-center justify-center text-white shrink-0 font-bold text-xs shadow-xs">
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#C9A24D] flex items-center justify-center text-white shrink-0 font-bold text-[10px] sm:text-xs shadow-xs">
                     ✓
                   </div>
-                  <span className="text-sm sm:text-base font-bold text-[#2A3F33]">
+                  <span className="text-xs sm:text-base font-bold text-[#2A3F33]">
                     {settings.hero_feature_4 || "Pengiriman Tepat Waktu untuk Seluruh Jabodetabek"}
                   </span>
                 </div>
               </div>
 
               {/* CTA Button */}
-              <div className="pt-4 flex flex-wrap items-center gap-4">
+              <div className="pt-2 sm:pt-4 flex flex-wrap items-center gap-3 sm:gap-4">
                 <a
                   href="#menu"
                   onClick={(e) => {
                     e.preventDefault();
                     document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] active:scale-95 text-[#212E24] font-extrabold text-base rounded-full shadow-lg shadow-[#C9A24D]/35 hover:shadow-xl transition-all border border-[#DFBF73] cursor-pointer"
+                  className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] active:scale-95 text-[#212E24] font-extrabold text-sm sm:text-base rounded-full shadow-lg shadow-[#C9A24D]/35 hover:shadow-xl transition-all border border-[#DFBF73] cursor-pointer"
                 >
                   <span>Pilih Menu Sekarang</span>
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </a>
 
                 <a
                   href={generalWaUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-7 py-4 bg-transparent hover:bg-[#DFECC0] text-[#23382C] font-extrabold text-base rounded-full border-2 border-[#23382C]/30 hover:border-[#23382C] transition-all"
+                  className="inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-4 bg-transparent hover:bg-[#DFECC0] text-[#23382C] font-extrabold text-sm sm:text-base rounded-full border-2 border-[#23382C]/30 hover:border-[#23382C] transition-all"
                 >
                   <span>Konsultasi WA</span>
                 </a>
               </div>
 
-              {/* Trust Badges Dinamis: 100% Halal & Standar Higienis */}
-              <div className="pt-2 flex flex-wrap items-center gap-3">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FCFBF6]/90 border border-[#CBDFA5] text-[#2E4235] text-xs font-bold shadow-xs">
-                  <span className="w-5 h-5 rounded-full bg-[#EBF4D6] border border-[#CBDFA5] flex items-center justify-center text-[#4B6152] font-black text-[10px]">
+              {/* Trust Badges */}
+              <div className="pt-1 sm:pt-2 flex flex-wrap items-center gap-2 sm:gap-3">
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#FCFBF6]/90 border border-[#CBDFA5] text-[#2E4235] text-[11px] sm:text-xs font-bold shadow-xs">
+                  <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#EBF4D6] border border-[#CBDFA5] flex items-center justify-center text-[#4B6152] font-black text-[9px] sm:text-[10px]">
                     حلال
                   </span>
                   <span>{settings.trust_badge_1 || "100% Halal Terjamin"}</span>
                 </div>
 
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FCFBF6]/90 border border-[#CBDFA5] text-[#2E4235] text-xs font-bold shadow-xs">
-                  <ShieldCheck className="w-4 h-4 text-[#C9A24D]" />
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#FCFBF6]/90 border border-[#CBDFA5] text-[#2E4235] text-[11px] sm:text-xs font-bold shadow-xs">
+                  <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C9A24D]" />
                   <span>{settings.trust_badge_2 || "Standar Higienis & Dapur Steril"}</span>
                 </div>
 
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FCFBF6]/90 border border-[#CBDFA5] text-[#2E4235] text-xs font-bold shadow-xs">
-                  <CheckCircle2 className="w-4 h-4 text-[#8D6B26]" />
+                <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#FCFBF6]/90 border border-[#CBDFA5] text-[#2E4235] text-[11px] sm:text-xs font-bold shadow-xs">
+                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#8D6B26]" />
                   <span>{settings.trust_badge_3 || "Bahan Pangan Segar Pilihan"}</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Logo PMC SU (kotak rounded seperti awal dengan ukuran besar) */}
-            <div className="lg:col-span-5 xl:col-span-4 flex items-center justify-center pt-6 lg:pt-0">
-              <div className="w-64 h-64 sm:w-72 sm:h-72 xl:w-80 xl:h-80 rounded-3xl bg-white p-6 sm:p-8 flex items-center justify-center shadow-lg shadow-[#23382C]/10 border-2 border-[#D5E5B2] hover:scale-105 transition-transform overflow-hidden">
+            {/* Right Column: Logo PMC SU */}
+            <div className="lg:col-span-5 xl:col-span-4 flex items-center justify-center pt-4 sm:pt-6 lg:pt-0">
+              <div className="w-44 h-44 sm:w-72 sm:h-72 xl:w-80 xl:h-80 rounded-3xl bg-white p-4 sm:p-8 flex items-center justify-center shadow-lg shadow-[#23382C]/10 border-2 border-[#D5E5B2] hover:scale-105 transition-transform overflow-hidden">
                 <img
                   src={profile.logo_url || "/logo-dapoer-pmcsu.png"}
                   alt={profile.name}
@@ -539,21 +539,21 @@ export default function PublicLandingPage({
       </section>
 
       {/* Section: Layanan Catering */}
-      <section id="layanan" className="relative py-24 text-[#23382C] overflow-hidden">
+      <section id="layanan" className="relative py-12 sm:py-24 text-[#23382C] overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Layanan Kami
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-3 tracking-tight font-serif">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-2 sm:mt-3 tracking-tight font-serif">
               Solusi Kuliner untuk Segala Kebutuhan Acara
             </h2>
-            <p className="text-[#4B6152] text-sm mt-3 leading-relaxed">
+            <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
               Mulai dari makan siang kantor hingga pesta syukuran keluarga, kami siap melayani dengan standar terbaik.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
             {services.map((service, idx) => {
               let features: string[] = [];
               try {
@@ -565,21 +565,21 @@ export default function PublicLandingPage({
               return (
                 <div
                   key={service.id}
-                  className="bg-[#FCFBF6] rounded-3xl p-8 border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 flex flex-col justify-between group"
+                  className="bg-[#FCFBF6] rounded-3xl p-5 sm:p-8 border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#DFECC0] to-[#CFE2A8] border border-[#CBDFA5] text-[#8D6B26] flex items-center justify-center font-black text-xl mb-6 group-hover:scale-105 transition-transform">
+                    <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-[#DFECC0] to-[#CFE2A8] border border-[#CBDFA5] text-[#8D6B26] flex items-center justify-center font-black text-base sm:text-xl mb-4 sm:mb-6 group-hover:scale-105 transition-transform">
                       0{idx + 1}
                     </div>
-                    <h3 className="text-xl font-bold text-[#23382C] mb-3 group-hover:text-[#9F7A2D] transition-colors font-serif">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#23382C] mb-2 sm:mb-3 group-hover:text-[#9F7A2D] transition-colors font-serif">
                       {service.name}
                     </h3>
-                    <p className="text-[#55695D] text-sm leading-relaxed mb-6">{service.description}</p>
+                    <p className="text-[#55695D] text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">{service.description}</p>
 
                     {features.length > 0 && (
-                      <ul className="space-y-2.5 mb-8">
+                      <ul className="space-y-1.5 sm:space-y-2.5 mb-5 sm:mb-8">
                         {features.map((feat, i) => (
-                          <li key={i} className="flex items-center gap-2.5 text-xs text-[#3A4E42] font-medium">
+                          <li key={i} className="flex items-center gap-2 text-xs text-[#3A4E42] font-medium">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24D]"></span>
                             <span>{feat}</span>
                           </li>
@@ -592,7 +592,7 @@ export default function PublicLandingPage({
                     href={generalWaUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-bold text-[#9F7A2D] hover:text-[#7A5B1A] transition-colors"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#9F7A2D] hover:text-[#7A5B1A] transition-colors pt-2 border-t border-[#EFECE0] sm:border-0"
                   >
                     <span>Konsultasikan Acara Ini</span>
                     <ChevronRight className="w-4 h-4" />
@@ -607,22 +607,22 @@ export default function PublicLandingPage({
       {/* Section: Katalog Menu & WhatsApp Order Trigger */}
       <section 
         id="menu" 
-        className="relative py-24 text-[#23382C] overflow-hidden"
+        className="relative py-12 sm:py-24 text-[#23382C] overflow-hidden"
       >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Katalog Pilihan
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-3 tracking-tight font-serif">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-2 sm:mt-3 tracking-tight font-serif">
               Daftar <span className="italic font-normal text-[#9F7A2D]">menu lengkap</span>
             </h2>
-            <p className="text-[#4B6152] text-sm mt-3 leading-relaxed">
+            <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
               Pilih menu yang Anda minati untuk melihat rincian paket dan langsung memesan via WhatsApp.
             </p>
 
             {/* Secondary Button: Unduh Menu PDF (E-Brochure) */}
-            <div className="mt-5 flex justify-center">
+            <div className="mt-3 sm:mt-5 flex justify-center">
               <a
                 href={
                   settings.pdf_catalog_url && settings.pdf_catalog_url.trim().length > 0
@@ -632,21 +632,18 @@ export default function PublicLandingPage({
                     : "/katalog-menu-pmcsu.pdf"
                 }
                 download="Katalog-Menu-Dapoer-PMCSU.pdf"
-                className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#FCFBF6] hover:bg-white text-[#2E4235] hover:text-[#9F7A2D] text-xs font-bold border border-[#CBDFA5] hover:border-[#9F7A2D] shadow-xs hover:shadow-md transition-all active:scale-95 group"
+                className="inline-flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#FCFBF6] hover:bg-white text-[#2E4235] hover:text-[#9F7A2D] text-[11px] sm:text-xs font-bold border border-[#CBDFA5] hover:border-[#9F7A2D] shadow-xs hover:shadow-md transition-all active:scale-95 group"
               >
-                <div className="w-6 h-6 rounded-full bg-[#DFECC0] group-hover:bg-[#D8B669] flex items-center justify-center transition-colors">
-                  <FileDown className="w-3.5 h-3.5 text-[#212E24]" />
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#DFECC0] group-hover:bg-[#D8B669] flex items-center justify-center transition-colors">
+                  <FileDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#212E24]" />
                 </div>
                 <span>Unduh Katalog Menu (PDF / E-Brochure)</span>
-                <span className="text-[10px] text-[#8D6B26] font-semibold bg-[#EBF4D6] px-2 py-0.5 rounded-full">
-                  Untuk Panitia & Keluarga
-                </span>
               </a>
             </div>
           </div>
 
           {/* Category Filter - Horizontal Scroll Slider with Navigation Arrows */}
-          <div className="relative mb-12 max-w-5xl mx-auto px-10">
+          <div className="relative mb-6 sm:mb-12 max-w-5xl mx-auto px-6 sm:px-10">
             {/* Left Scroll Button */}
             <button
               onClick={() => {
@@ -654,19 +651,19 @@ export default function PublicLandingPage({
                 if (el) el.scrollBy({ left: -220, behavior: "smooth" });
               }}
               aria-label="Geser Kategori Kiri"
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-[#CBDFA5] text-[#23382C] shadow-md hover:bg-[#D8B669] hover:border-[#D8B669] transition-all flex items-center justify-center z-10 active:scale-95 cursor-pointer"
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white border border-[#CBDFA5] text-[#23382C] shadow-md hover:bg-[#D8B669] hover:border-[#D8B669] transition-all flex items-center justify-center z-10 active:scale-95 cursor-pointer"
             >
-              <ChevronRight className="w-4 h-4 rotate-180" />
+              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 rotate-180" />
             </button>
 
             {/* Slider Container */}
             <div
-              className="flex items-center gap-2.5 overflow-x-auto scrollbar-hide py-2 px-1 scroll-smooth select-none cursor-grab active:cursor-grabbing"
+              className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto scrollbar-hide py-2 px-1 scroll-smooth select-none cursor-grab active:cursor-grabbing"
               id="cat-slider"
             >
               <button
                 onClick={() => handleSetCat("all")}
-                className={`flex-shrink-0 px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
+                className={`flex-shrink-0 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                   selectedCat === "all"
                     ? "bg-[#D8B669] text-[#212E24] shadow-md shadow-[#D8B669]/30 scale-105 border border-[#E5CA8A]"
                     : "bg-[#F7F9EC] text-[#415549] hover:bg-white border border-[#D5E5B2]"
@@ -678,7 +675,7 @@ export default function PublicLandingPage({
                 <button
                   key={c.id}
                   onClick={() => handleSetCat(String(c.id))}
-                  className={`flex-shrink-0 px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-200 whitespace-nowrap cursor-pointer ${
+                  className={`flex-shrink-0 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-bold transition-all duration-200 whitespace-nowrap cursor-pointer ${
                     selectedCat === String(c.id)
                       ? "bg-[#D8B669] text-[#212E24] shadow-md shadow-[#D8B669]/30 scale-105 border border-[#E5CA8A]"
                       : "bg-[#F7F9EC] text-[#415549] hover:bg-white border border-[#D5E5B2]"
@@ -696,9 +693,9 @@ export default function PublicLandingPage({
                 if (el) el.scrollBy({ left: 220, behavior: "smooth" });
               }}
               aria-label="Geser Kategori Kanan"
-              className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-[#CBDFA5] text-[#23382C] shadow-md hover:bg-[#D8B669] hover:border-[#D8B669] transition-all flex items-center justify-center z-10 active:scale-95 cursor-pointer"
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white border border-[#CBDFA5] text-[#23382C] shadow-md hover:bg-[#D8B669] hover:border-[#D8B669] transition-all flex items-center justify-center z-10 active:scale-95 cursor-pointer"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
           </div>
 
@@ -872,22 +869,22 @@ export default function PublicLandingPage({
       </section>
 
       {/* Section: Galeri Acara (Event Highlights) - Portofolio Suasana Acara */}
-      <section id="galeri" className="relative py-24 text-[#23382C] overflow-hidden">
+      <section id="galeri" className="relative py-12 sm:py-24 text-[#23382C] overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Galeri Acara &bull; Event Highlights
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-3 font-serif">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-2 sm:mt-3 font-serif">
               Portofolio Suasana Acara
             </h2>
-            <p className="text-[#4B6152] text-sm mt-3 leading-relaxed">
+            <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
               Dokumentasi nyata tata letak meja buffet berkelas, dekorasi pondokan (food stall) tematik, dan kerapian seragam staf pramusaji profesional di lokasi nyata.
             </p>
           </div>
 
-          {/* Sub-filter Kategori Suasana Acara */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
+          {/* Sub-filter Kategori Suasana Acara (Horizontal swipe on mobile, wrap on desktop) */}
+          <div className="flex items-center sm:justify-center gap-2 mb-6 sm:mb-10 overflow-x-auto scrollbar-hide py-1 -mx-4 px-4 sm:mx-0 sm:px-0">
             {[
               { id: "all", label: "Semua Dokumentasi" },
               { id: "buffet", label: "Tata Letak Meja Buffet" },
@@ -898,7 +895,7 @@ export default function PublicLandingPage({
               <button
                 key={tab.id}
                 onClick={() => setActiveGalleryTab(tab.id)}
-                className={`px-4 py-2 rounded-full text-xs font-bold transition-all ${
+                className={`px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
                   activeGalleryTab === tab.id
                     ? "bg-[#D8B669] text-[#212E24] shadow-md shadow-[#D8B669]/30 scale-105 border border-[#E5CA8A]"
                     : "bg-[#FCFBF6] text-[#415549] hover:bg-white border border-[#CBDFA5]"
@@ -909,7 +906,7 @@ export default function PublicLandingPage({
             ))}
           </div>
 
-          {/* Grid Galeri Acara */}
+          {/* Grid Galeri Acara (2 Kolom Kompak di HP seperti katalog rapi, 4 di Desktop) */}
           {(() => {
             // Curated real event gallery showcase items
             const defaultEventShowcase = [
@@ -1013,11 +1010,11 @@ export default function PublicLandingPage({
                 : combinedList.filter((item) => item.category === activeGalleryTab);
 
             return (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
                 {filteredItems.map((item) => (
                   <div
                     key={item.id}
-                    className="group rounded-3xl overflow-hidden bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col"
+                    className="group rounded-2xl sm:rounded-3xl overflow-hidden bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col"
                   >
                     <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">
                       <img
@@ -1025,18 +1022,18 @@ export default function PublicLandingPage({
                         alt={item.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute top-3 left-3">
-                        <span className="px-2.5 py-1 bg-[#23382C]/85 backdrop-blur-xs text-[#E6F0CA] text-[10px] font-bold rounded-lg uppercase tracking-wide">
+                      <div className="absolute top-2 left-2 sm:top-3 sm:left-3">
+                        <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-[#23382C]/85 backdrop-blur-xs text-[#E6F0CA] text-[9px] sm:text-[10px] font-bold rounded-md sm:rounded-lg uppercase tracking-wide">
                           {item.category_label}
                         </span>
                       </div>
                     </div>
-                    <div className="p-4 flex-1 flex flex-col justify-between">
+                    <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between">
                       <div>
-                        <h4 className="font-bold text-[#23382C] text-sm group-hover:text-[#9F7A2D] transition-colors line-clamp-1 font-serif">
+                        <h4 className="font-bold text-[#23382C] text-xs sm:text-sm group-hover:text-[#9F7A2D] transition-colors line-clamp-1 font-serif">
                           {item.title}
                         </h4>
-                        <p className="text-[11px] text-[#55695D] mt-1.5 leading-relaxed">
+                        <p className="text-[10px] sm:text-[11px] text-[#55695D] mt-1 sm:mt-1.5 leading-relaxed line-clamp-2 sm:line-clamp-none">
                           {item.note}
                         </p>
                       </div>
@@ -1077,62 +1074,62 @@ export default function PublicLandingPage({
       {/* Combined Section: Panduan Pemesanan & Tentang Brand Kami (Seamless) */}
       <div className="relative text-[#23382C] overflow-hidden">
         {/* Section: Panduan Pemesanan */}
-        <section id="cara-pesan" className="relative z-10 pt-24 pb-16">
+        <section id="cara-pesan" className="relative z-10 pt-12 sm:pt-24 pb-8 sm:pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
               <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
                 Cara Pemesanan
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-3 tracking-tight font-serif">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-2 sm:mt-3 tracking-tight font-serif">
                 Alur Mudah Pemesanan via WhatsApp
               </h2>
-              <p className="text-[#4B6152] text-sm mt-3 leading-relaxed">
+              <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
                 Cukup 4 langkah praktis untuk menikmati sajian istimewa kami di hari acara Anda.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="p-6 rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group">
-                <span className="w-10 h-10 rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-base flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group">
+                <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-sm sm:text-base flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-xs">
                   1
                 </span>
-                <h4 className="font-bold text-[#23382C] text-base mb-1.5 group-hover:text-[#9F7A2D] transition-colors font-serif">
+                <h4 className="font-bold text-[#23382C] text-sm sm:text-base mb-1 group-hover:text-[#9F7A2D] transition-colors font-serif">
                   Pilih Menu
                 </h4>
-                <p className="text-[#55695D] text-xs leading-relaxed">
+                <p className="text-[#55695D] text-[11px] sm:text-xs leading-relaxed">
                   Jelajahi ragam pilihan menu makanan, minuman, dan paket prasmanan sesuai selera Anda.
                 </p>
               </div>
-              <div className="p-6 rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group">
-                <span className="w-10 h-10 rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-base flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-xs">
+              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group">
+                <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-sm sm:text-base flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-xs">
                   2
                 </span>
-                <h4 className="font-bold text-[#23382C] text-base mb-1.5 group-hover:text-[#9F7A2D] transition-colors font-serif">
-                  Klik Pesan via WA
+                <h4 className="font-bold text-[#23382C] text-sm sm:text-base mb-1 group-hover:text-[#9F7A2D] transition-colors font-serif">
+                  Pesan via WA
                 </h4>
-                <p className="text-[#55695D] text-xs leading-relaxed">
+                <p className="text-[#55695D] text-[11px] sm:text-xs leading-relaxed">
                   Pilih varian atau paket yang diinginkan lalu tekan tombol pemesanan WhatsApp otomatis.
                 </p>
               </div>
-              <div className="p-6 rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group">
-                <span className="w-10 h-10 rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-base flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-xs">
+              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group">
+                <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-sm sm:text-base flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-xs">
                   3
                 </span>
-                <h4 className="font-bold text-[#23382C] text-base mb-1.5 group-hover:text-[#9F7A2D] transition-colors font-serif">
+                <h4 className="font-bold text-[#23382C] text-sm sm:text-base mb-1 group-hover:text-[#9F7A2D] transition-colors font-serif">
                   Konsultasi Detail
                 </h4>
-                <p className="text-[#55695D] text-xs leading-relaxed">
+                <p className="text-[#55695D] text-[11px] sm:text-xs leading-relaxed">
                   Kirim pesan ke admin, lengkapi tanggal acara, jumlah porsi, serta alamat pengantaran.
                 </p>
               </div>
-              <div className="p-6 rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group">
-                <span className="w-10 h-10 rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-base flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-xs">
+              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group">
+                <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-sm sm:text-base flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-xs">
                   4
                 </span>
-                <h4 className="font-bold text-[#23382C] text-base mb-1.5 group-hover:text-[#9F7A2D] transition-colors font-serif">
+                <h4 className="font-bold text-[#23382C] text-sm sm:text-base mb-1 group-hover:text-[#9F7A2D] transition-colors font-serif">
                   Konfirmasi & Antar
                 </h4>
-                <p className="text-[#55695D] text-xs leading-relaxed">
+                <p className="text-[#55695D] text-[11px] sm:text-xs leading-relaxed">
                   Admin mengonfirmasi rincian pesanan dan hidangan lezat siap diantar tepat waktu.
                 </p>
               </div>
@@ -1141,7 +1138,7 @@ export default function PublicLandingPage({
         </section>
 
         {/* Section: Tentang Kami & Visi Misi */}
-        <section id="tentang" className="relative z-10 pt-12 pb-24">
+        <section id="tentang" className="relative z-10 pt-8 sm:pt-12 pb-12 sm:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -1196,16 +1193,16 @@ export default function PublicLandingPage({
       </section>
 
       {/* Section: Bukti Sosial & Ulasan (Social Proof & Testimonials) */}
-      <section id="testimoni" className="relative z-10 py-20 overflow-hidden">
+      <section id="testimoni" className="relative z-10 py-12 sm:py-20 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Ulasan Nyata Google Maps
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-3 font-serif">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-2 sm:mt-3 font-serif">
               Apa Kata Klien & Tamu Kami?
             </h2>
-            <p className="text-[#4B6152] text-sm mt-3 leading-relaxed">
+            <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
               Pengalaman nyata pelanggan dari ulasan bintang 4 & 5 di Google Maps untuk prasmanan pernikahan, gathering kantor, selamatan, dan syukuran keluarga.
             </p>
             <div className="mt-4 flex items-center justify-center gap-2">
@@ -1392,47 +1389,47 @@ export default function PublicLandingPage({
       </section>
 
       {/* Section: Transparansi Area Pengiriman & Syarat (Logistics & FAQ) */}
-      <section id="faq" className="relative z-10 py-20 overflow-hidden">
+      <section id="faq" className="relative z-10 py-12 sm:py-20 overflow-hidden">
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Informasi Logistik & FAQ
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#23382C] mt-3 font-serif">
+            <h2 className="text-2xl sm:text-4xl font-black text-[#23382C] mt-2 sm:mt-3 font-serif">
               Transparansi Area Pengiriman & Syarat
             </h2>
-            <p className="text-[#4B6152] text-sm mt-3 leading-relaxed">
+            <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
               Jawaban cepat seputar minimum pemesanan, jangkauan kurir Jabodetabek, dan panduan pembayaran.
             </p>
           </div>
 
           {/* Quick Highlight Cards: Minimum Order & Coverage */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-            <div className="p-6 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] shadow-xs flex items-start gap-4">
-              <div className="w-10 h-10 rounded-2xl bg-[#DFECC0] flex items-center justify-center text-[#212E24] shrink-0">
-                <Truck className="w-5 h-5 text-[#8D6B26]" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-5 mb-6 sm:mb-10">
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] shadow-xs flex items-start gap-3 sm:gap-4">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#DFECC0] flex items-center justify-center text-[#212E24] shrink-0">
+                <Truck className="w-4 h-4 sm:w-5 sm:h-5 text-[#8D6B26]" />
               </div>
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#8D6B26] block">Jangkauan Antar</span>
-                <h4 className="font-bold text-[#23382C] text-sm mt-0.5">
+                <h4 className="font-bold text-[#23382C] text-xs sm:text-sm mt-0.5">
                   {settings.delivery_area_text ? settings.delivery_area_text.split("(")[0].trim() : "Seluruh Jabodetabek"}
                 </h4>
-                <p className="text-[11px] text-[#55695D] mt-1 leading-normal">
+                <p className="text-[10px] sm:text-[11px] text-[#55695D] mt-1 leading-normal">
                   {settings.delivery_area_text || "Armada berpendingin / box khusus menjamin hidangan tetap hangat & higienis sampai tujuan."}
                 </p>
               </div>
             </div>
 
-            <div className="p-6 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] shadow-xs flex items-start gap-4">
-              <div className="w-10 h-10 rounded-2xl bg-[#DFECC0] flex items-center justify-center text-[#212E24] shrink-0">
-                <UtensilsCrossed className="w-5 h-5 text-[#8D6B26]" />
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] shadow-xs flex items-start gap-3 sm:gap-4">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#DFECC0] flex items-center justify-center text-[#212E24] shrink-0">
+                <UtensilsCrossed className="w-4 h-4 sm:w-5 sm:h-5 text-[#8D6B26]" />
               </div>
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#8D6B26] block">Minimum Pemesanan</span>
-                <h4 className="font-bold text-[#23382C] text-sm mt-0.5">
+                <h4 className="font-bold text-[#23382C] text-xs sm:text-sm mt-0.5">
                   {settings.min_order_text ? settings.min_order_text.split("&bull;")[0].trim() : "Mulai 20 Pax (Nasi Box)"}
                 </h4>
-                <p className="text-[11px] text-[#55695D] mt-1 leading-normal">
+                <p className="text-[10px] sm:text-[11px] text-[#55695D] mt-1 leading-normal">
                   {settings.min_order_text || "Untuk buffet/prasmanan min. 50 pax sudah lengkap dengan meja, chafing dish, dan staf."}
                 </p>
               </div>
