@@ -553,7 +553,7 @@ export default function PublicLandingPage({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
             {services.map((service, idx) => {
               let features: string[] = [];
               try {
@@ -565,21 +565,23 @@ export default function PublicLandingPage({
               return (
                 <div
                   key={service.id}
-                  className="bg-[#FCFBF6] rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 flex flex-col justify-between group"
+                  className="bg-[#FCFBF6] rounded-2xl sm:rounded-3xl p-3 sm:p-6 border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#DFECC0] to-[#CFE2A8] border border-[#CBDFA5] text-[#8D6B26] flex items-center justify-center font-black text-sm sm:text-lg mb-3 sm:mb-4 group-hover:scale-105 transition-transform">
+                    <div className="w-7 h-7 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-gradient-to-br from-[#DFECC0] to-[#CFE2A8] border border-[#CBDFA5] text-[#8D6B26] flex items-center justify-center font-black text-xs sm:text-lg mb-2 sm:mb-4 group-hover:scale-105 transition-transform">
                       0{idx + 1}
                     </div>
-                    <h3 className="text-sm sm:text-base font-bold text-[#23382C] mb-1.5 sm:mb-2 group-hover:text-[#9F7A2D] transition-colors font-serif">
+                    <h3 className="text-xs sm:text-base font-bold text-[#23382C] mb-1 sm:mb-2 group-hover:text-[#9F7A2D] transition-colors font-serif line-clamp-1">
                       {service.name}
                     </h3>
-                    <p className="text-[#55695D] text-[11px] sm:text-xs leading-relaxed mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">{service.description}</p>
+                    <p className="text-[#55695D] text-[10px] sm:text-xs leading-relaxed mb-2 sm:mb-4 line-clamp-2">
+                      {service.description}
+                    </p>
 
                     {features.length > 0 && (
-                      <ul className="space-y-1 sm:space-y-1.5 mb-3 sm:mb-5">
-                        {features.map((feat, i) => (
-                          <li key={i} className="flex items-center gap-1.5 text-[10px] sm:text-xs text-[#3A4E42] font-medium">
+                      <ul className="space-y-1 mb-2 sm:mb-5">
+                        {features.slice(0, 2).map((feat, i) => (
+                          <li key={i} className="flex items-center gap-1.5 text-[9px] sm:text-xs text-[#3A4E42] font-medium">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24D] shrink-0"></span>
                             <span className="truncate">{feat}</span>
                           </li>
@@ -592,10 +594,10 @@ export default function PublicLandingPage({
                     href={generalWaUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold text-[#9F7A2D] hover:text-[#7A5B1A] transition-colors pt-2 border-t border-[#EFECE0]"
+                    className="inline-flex items-center gap-1 text-[10px] sm:text-xs font-bold text-[#9F7A2D] hover:text-[#7A5B1A] transition-colors pt-2 border-t border-[#EFECE0]"
                   >
-                    <span>Konsultasikan Acara</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
+                    <span>Konsultasi</span>
+                    <ChevronRight className="w-3 h-3" />
                   </a>
                 </div>
               );
