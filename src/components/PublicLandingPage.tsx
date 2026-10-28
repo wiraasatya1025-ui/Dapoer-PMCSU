@@ -553,7 +553,7 @@ export default function PublicLandingPage({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
+          <div className="grid grid-cols-3 gap-6">
             {services.map((service, idx) => {
               let features: string[] = [];
               try {
@@ -565,10 +565,10 @@ export default function PublicLandingPage({
               return (
                 <div
                   key={service.id}
-                  className="bg-[#FCFBF6] rounded-3xl p-5 sm:p-8 border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 flex flex-col justify-between group"
+                  className="bg-[#FCFBF6] rounded-3xl p-6 sm:p-8 border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-[#DFECC0] to-[#CFE2A8] border border-[#CBDFA5] text-[#8D6B26] flex items-center justify-center font-black text-base sm:text-xl mb-4 sm:mb-6 group-hover:scale-105 transition-transform">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-[#DFECC0] to-[#CFE2A8] border border-[#CBDFA5] text-[#8D6B26] flex items-center justify-center font-black text-lg sm:text-xl mb-5 sm:mb-6 group-hover:scale-105 transition-transform">
                       0{idx + 1}
                     </div>
                     <h3 className="text-lg sm:text-xl font-bold text-[#23382C] mb-2 sm:mb-3 group-hover:text-[#9F7A2D] transition-colors font-serif">
@@ -577,7 +577,7 @@ export default function PublicLandingPage({
                     <p className="text-[#55695D] text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">{service.description}</p>
 
                     {features.length > 0 && (
-                      <ul className="space-y-1.5 sm:space-y-2.5 mb-5 sm:mb-8">
+                      <ul className="space-y-2 mb-6 sm:mb-8">
                         {features.map((feat, i) => (
                           <li key={i} className="flex items-center gap-2 text-xs text-[#3A4E42] font-medium">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24D]"></span>
@@ -592,7 +592,7 @@ export default function PublicLandingPage({
                     href={generalWaUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#9F7A2D] hover:text-[#7A5B1A] transition-colors pt-2 border-t border-[#EFECE0] sm:border-0"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#9F7A2D] hover:text-[#7A5B1A] transition-colors"
                   >
                     <span>Konsultasikan Acara Ini</span>
                     <ChevronRight className="w-4 h-4" />
@@ -753,7 +753,7 @@ export default function PublicLandingPage({
                         return (
                           <div
                             key={menu.id}
-                            className="flex-shrink-0 snap-center w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-[#FCFBF6] rounded-3xl border border-[#E1DEC9] overflow-hidden flex flex-col cursor-pointer transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-[#C9A24D]/15 hover:border-[#C9A24D]"
+                            className="flex-shrink-0 snap-center w-[340px] lg:w-[calc(33.333%-16px)] bg-[#FCFBF6] rounded-3xl border border-[#E1DEC9] overflow-hidden flex flex-col cursor-pointer transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-[#C9A24D]/15 hover:border-[#C9A24D]"
                           >
                             {/* Image */}
                             <Link href={`/menus/${menu.id}`} className="h-52 bg-[#F1EFE6] relative overflow-hidden block">
@@ -831,14 +831,14 @@ export default function PublicLandingPage({
                     <button
                       onClick={() => scrollMenu("left")}
                       aria-label="Geser Menu Kiri"
-                      className="hidden sm:flex absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10 active:scale-95 cursor-pointer"
+                      className="flex absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10 active:scale-95 cursor-pointer"
                     >
                       <ChevronRight className="w-5 h-5 rotate-180" />
                     </button>
                     <button
                       onClick={() => scrollMenu("right")}
                       aria-label="Geser Menu Kanan"
-                      className="hidden sm:flex absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10 active:scale-95 cursor-pointer"
+                      className="flex absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10 active:scale-95 cursor-pointer"
                     >
                       <ChevronRight className="w-5 h-5" />
                     </button>
@@ -1297,7 +1297,7 @@ export default function PublicLandingPage({
                     {testimonialList.map((t) => (
                       <div
                         key={t.id}
-                        className="flex-shrink-0 snap-center w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] p-6 sm:p-7 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                        className="flex-shrink-0 snap-center w-[340px] lg:w-[calc(33.333%-16px)] p-6 sm:p-7 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
                       >
                         <div>
                           <div className="flex items-center gap-1 mb-4 text-[#D8B669]">
@@ -1326,14 +1326,14 @@ export default function PublicLandingPage({
                   <button
                     onClick={() => scrollSlide("left")}
                     aria-label="Geser Ulasan Kiri"
-                    className="hidden sm:flex absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10 active:scale-95 cursor-pointer"
+                    className="flex absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10 active:scale-95 cursor-pointer"
                   >
                     <ChevronRight className="w-5 h-5 rotate-180" />
                   </button>
                   <button
                     onClick={() => scrollSlide("right")}
                     aria-label="Geser Ulasan Kanan"
-                    className="hidden sm:flex absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10 active:scale-95 cursor-pointer"
+                    className="flex absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10 active:scale-95 cursor-pointer"
                   >
                     <ChevronRight className="w-5 h-5" />
                   </button>
