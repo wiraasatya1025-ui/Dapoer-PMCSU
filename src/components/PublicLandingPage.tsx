@@ -611,7 +611,7 @@ export default function PublicLandingPage({
                     <div className="w-7 h-7 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-gradient-to-br from-[#DFECC0] to-[#CFE2A8] border border-[#CBDFA5] text-[#8D6B26] flex items-center justify-center font-black text-xs sm:text-lg mb-2 sm:mb-4 group-hover:scale-105 transition-transform">
                       0{idx + 1}
                     </div>
-                    <h3 className="text-xs sm:text-base font-bold text-[#23382C] mb-1 sm:mb-2 group-hover:text-[#9F7A2D] transition-colors font-serif line-clamp-1">
+                    <h3 className="text-xs sm:text-base font-bold text-[#23382C] mb-1 sm:mb-2 group-hover:text-[#9F7A2D] transition-colors font-serif">
                       {service.name}
                     </h3>
                     <p className="text-[#55695D] text-[10px] sm:text-xs leading-relaxed mb-2 sm:mb-4">
@@ -623,7 +623,7 @@ export default function PublicLandingPage({
                         {features.slice(0, 2).map((feat, i) => (
                           <li key={i} className="flex items-center gap-1.5 text-[9px] sm:text-xs text-[#3A4E42] font-medium">
                             <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24D] shrink-0"></span>
-                            <span className="truncate">{feat}</span>
+                            <span>{feat}</span>
                           </li>
                         ))}
                       </ul>
