@@ -581,14 +581,14 @@ export default function PublicLandingPage({
       {/* Section: Layanan Catering */}
       <section id="layanan" className="relative py-12 sm:py-24 text-[#23382C] overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
+          <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-16">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Layanan Kami
             </span>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-normal text-[#9F7A2D] mt-2 sm:mt-3 tracking-tight font-serif">
               Solusi Kuliner untuk Segala Kebutuhan Acara
             </h2>
-            <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
+            <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed max-w-full">
               Mulai dari makan siang kantor hingga pesta syukuran keluarga, kami siap melayani dengan standar terbaik.
             </p>
           </div>
