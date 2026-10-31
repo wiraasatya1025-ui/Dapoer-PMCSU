@@ -475,7 +475,7 @@ export default function PublicLandingPage({
                 <h1 className="text-2xl sm:text-5xl md:text-6xl lg:text-[60px] xl:text-[68px] font-medium text-[#23382C] tracking-tight leading-[1.12] sm:leading-[1.08] font-serif">
                   {settings.hero_title_1 || "When Tradition"} <br className="hidden sm:inline" />
                   <span className="text-[#9F7A2D] italic font-normal inline-block">
-                    {settings.hero_title_2 || "Deliciously Taste"}
+                    {settings.hero_title_2 || "Deliciously Tastes"}
                   </span>
                 </h1>
                 <p className="text-sm sm:text-2xl font-bold text-[#4B6152] pt-0.5 sm:pt-1">

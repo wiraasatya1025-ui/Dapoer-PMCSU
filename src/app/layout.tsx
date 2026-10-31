@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "DAPOER PMCSU - Catering Pilihan Jakarta",
-    description: "When Tradition Deliciously Taste. Solusi praktis & istimewa catering prasmanan, nasi kotak, dan tumpeng halal Jabodetabek.",
+    description: "When Tradition Deliciously Tastes. Solusi praktis & istimewa catering prasmanan, nasi kotak, dan tumpeng halal Jabodetabek.",
     url: "https://dapoer-pmcsu.vercel.app",
     siteName: "DAPOER PMCSU",
     locale: "id_ID",
