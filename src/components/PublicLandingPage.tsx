@@ -614,7 +614,7 @@ export default function PublicLandingPage({
                     <h3 className="text-xs sm:text-base font-bold text-[#23382C] mb-1 sm:mb-2 group-hover:text-[#9F7A2D] transition-colors font-serif line-clamp-1">
                       {service.name}
                     </h3>
-                    <p className="text-[#55695D] text-[10px] sm:text-xs leading-relaxed mb-2 sm:mb-4 line-clamp-2">
+                    <p className="text-[#55695D] text-[10px] sm:text-xs leading-relaxed mb-2 sm:mb-4">
                       {service.description}
                     </p>
 
