@@ -1650,45 +1650,64 @@ export default function PublicLandingPage({
             </a>
           </div>
 
-          {/* Halal Indonesia Certificate Card & Asosiasi PPJI */}
-          <div className="my-8 p-6 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] max-w-2xl mx-auto shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-2xl bg-white border border-[#CBDFA5] p-2 flex items-center justify-center shrink-0 shadow-xs">
-                <img
-                  src="/qr-halal-clean.png"
-                  alt="QR Barcode Halal Indonesia"
-                  className="w-full h-full object-contain"
-                />
+          {/* Legalitas: Halal Indonesia & Asosiasi PPJI Cards */}
+          <div className="my-8 flex flex-col md:flex-row items-stretch justify-center gap-4 max-w-4xl mx-auto">
+            {/* Frame 1: Sertifikat Halal Indonesia */}
+            <div className="flex-1 p-5 sm:p-6 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white border border-[#CBDFA5] p-2 flex items-center justify-center shrink-0 shadow-xs">
+                  <img
+                    src="/qr-halal-clean.png"
+                    alt="QR Barcode Halal Indonesia"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div>
+                  <span className="text-[10px] font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-2.5 py-0.5 rounded-full inline-block mb-1">
+                    Pindai / Scan QR Resmi
+                  </span>
+                  <h4 className="font-extrabold text-[#23382C] text-sm">
+                    Sertifikat Halal Indonesia
+                  </h4>
+                  <p className="text-xs text-[#55695D] font-mono font-semibold mt-0.5">
+                    No. Reg: ID110025607930825
+                  </p>
+                  <p className="text-[10px] sm:text-[11px] text-[#708474] mt-0.5">
+                    Badan Penyelenggara Jaminan Produk Halal (BPJPH)
+                  </p>
+                </div>
               </div>
-              <div>
-                <span className="text-[10px] font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-2.5 py-0.5 rounded-full inline-block mb-1">
-                  Pindai / Scan QR Resmi
-                </span>
-                <h4 className="font-extrabold text-[#23382C] text-sm">
-                  Sertifikat Halal Indonesia
-                </h4>
-                <p className="text-xs text-[#55695D] font-mono font-semibold mt-0.5">
-                  No. Registrasi: ID110025607930825
-                </p>
-                <p className="text-[11px] text-[#708474] mt-1">
-                  Badan Penyelenggara Jaminan Produk Halal (BPJPH)
-                </p>
+
+              <div className="shrink-0 sm:border-l sm:border-[#CBDFA5]/60 sm:pl-4">
+                <img
+                  src="/logo-halal-clean.png"
+                  alt="Logo Halal Indonesia"
+                  className="h-10 w-auto object-contain mx-auto"
+                />
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-4 shrink-0 sm:border-l sm:border-[#CBDFA5]/60 sm:pl-6">
-              <img
-                src="/logo-halal-clean.png"
-                alt="Logo Halal Indonesia"
-                className="h-10 w-auto object-contain"
-              />
-              <div className="w-px h-8 bg-[#CBDFA5] hidden sm:block"></div>
-              <img
-                src="/logo-ppji.png"
-                alt="PPJI - Perkumpulan Penyelenggara Jasaboga Indonesia"
-                className="h-11 w-auto object-contain rounded-md"
-                title="Anggota Perkumpulan Penyelenggara Jasaboga Indonesia (PPJI)"
-              />
+            {/* Frame 2: Keanggotaan Resmi PPJI */}
+            <div className="p-5 sm:p-6 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] shadow-xs flex items-center justify-between sm:justify-center gap-4 text-left">
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-wider text-[#2E5EAA] bg-[#E8F1FC] border border-[#C5DCFA] px-2.5 py-0.5 rounded-full inline-block mb-1">
+                  Asosiasi Resmi Jasaboga
+                </span>
+                <h4 className="font-extrabold text-[#23382C] text-sm">
+                  Anggota Resmi PPJI
+                </h4>
+                <p className="text-[11px] text-[#55695D] mt-0.5">
+                  Perkumpulan Penyelenggara Jasaboga Indonesia
+                </p>
+              </div>
+
+              <div className="shrink-0 pl-2">
+                <img
+                  src="/logo-ppji.png"
+                  alt="Logo PPJI"
+                  className="h-12 w-auto object-contain rounded-md"
+                />
+              </div>
             </div>
           </div>
 
