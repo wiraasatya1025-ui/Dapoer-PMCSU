@@ -1469,10 +1469,10 @@ export default function PublicLandingPage({
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#8D6B26] block">Minimum Pemesanan</span>
                 <h4 className="font-bold text-[#23382C] text-xs sm:text-sm mt-0.5">
-                  {settings.min_order_text ? settings.min_order_text.split("&bull;")[0].trim() : "Mulai 20 Pax (Nasi Box)"}
+                  {settings.min_order_text ? settings.min_order_text.split("&bull;")[0].trim() : "Mulai 50 Pax"}
                 </h4>
                 <p className="text-[10px] sm:text-[11px] text-[#55695D] mt-1 leading-normal">
-                  {settings.min_order_text || "Untuk buffet/prasmanan min. 50 pax sudah lengkap dengan meja, chafing dish, dan staf."}
+                  {settings.min_order_text || "Mulai 50 Pax untuk paket prasmanan & nasi box pilihan."}
                 </p>
               </div>
             </div>
@@ -1484,10 +1484,10 @@ export default function PublicLandingPage({
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#8D6B26] block">Waktu Reservasi</span>
                 <h4 className="font-bold text-[#23382C] text-sm mt-0.5">
-                  {settings.lead_time_text ? settings.lead_time_text.split("(")[0].trim() : "H-2 Acara Berjalan"}
+                  {settings.lead_time_text ? settings.lead_time_text.split("(")[0].trim() : "H-7 Acara Berjalan"}
                 </h4>
                 <p className="text-[11px] text-[#55695D] mt-1 leading-normal">
-                  {settings.lead_time_text || "Menerima pesanan darurat (H-1) sesuai ketersediaan slot dapur dan menu terpilih."}
+                  {settings.lead_time_text || "H-7 Acara Berjalan"}
                 </p>
               </div>
             </div>
@@ -1498,7 +1498,7 @@ export default function PublicLandingPage({
             {[
               {
                 q: "Berapa minimum pemesanan (pax) untuk acara saya?",
-                a: "Minimum order untuk Nasi Box/Bento adalah 20 pax. Untuk paket Prasmanan (Buffet) lengkap dengan peralatan saji dan waiter adalah mulai dari 50 pax. Kami juga melayani pesanan tumpeng mulai ukuran 10 porsi.",
+                a: "Minimum order untuk pemesanan adalah mulai dari 50 pax lengkap dengan peralatan saji dan standar higienis terbaik. Kami juga melayani pesanan tumpeng dan paket khusus lainnya.",
               },
               {
                 q: "Daerah mana saja yang dijangkau oleh pengiriman DAPOER PMCSU?",
