@@ -657,7 +657,7 @@ export default function PublicLandingPage({
               Katalog Pilihan
             </span>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-normal text-[#9F7A2D] mt-2 sm:mt-3 tracking-tight font-serif">
-              Daftar <span className="italic font-normal text-[#9F7A2D]">menu lengkap</span>
+              Daftar <span className="italic font-normal text-[#9F7A2D]">Menu Lengkap</span>
             </h2>
             <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
               Pilih menu yang Anda minati untuk melihat rincian paket dan langsung memesan via WhatsApp.
