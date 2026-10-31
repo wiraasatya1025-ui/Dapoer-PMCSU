@@ -129,6 +129,21 @@ export default function PublicLandingPage({
     return String(m.category_id) === selectedCat;
   });
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const element = document.getElementById(targetId);
+    if (element) {
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   // Reset carousel ke awal saat kategori berubah
   const handleSetCat = (cat: string) => {
     setSelectedCat(cat);
@@ -271,25 +286,53 @@ export default function PublicLandingPage({
 
           {/* Tengah: Desktop Nav Links */}
           <nav className="hidden lg:flex items-center gap-5 xl:gap-6 text-sm font-bold text-[#2E4235]">
-            <a href="#tentang" className="hover:text-[#9F7A2D] hover:-translate-y-1 transition-all duration-200 whitespace-nowrap">
+            <a
+              href="#tentang"
+              onClick={(e) => handleSmoothScroll(e, "tentang")}
+              className="hover:text-[#9F7A2D] hover:-translate-y-1 transition-all duration-200 whitespace-nowrap cursor-pointer"
+            >
               Tentang Kami
             </a>
-            <a href="#layanan" className="hover:text-[#9F7A2D] hover:-translate-y-1 transition-all duration-200 whitespace-nowrap">
+            <a
+              href="#layanan"
+              onClick={(e) => handleSmoothScroll(e, "layanan")}
+              className="hover:text-[#9F7A2D] hover:-translate-y-1 transition-all duration-200 whitespace-nowrap cursor-pointer"
+            >
               Layanan
             </a>
-            <a href="#menu" className="hover:text-[#9F7A2D] hover:-translate-y-1 transition-all duration-200 whitespace-nowrap">
+            <a
+              href="#menu"
+              onClick={(e) => handleSmoothScroll(e, "menu")}
+              className="hover:text-[#9F7A2D] hover:-translate-y-1 transition-all duration-200 whitespace-nowrap cursor-pointer"
+            >
               Katalog Menu
             </a>
-            <a href="#galeri" className="hover:text-[#9F7A2D] hover:-translate-y-1 transition-all duration-200 whitespace-nowrap">
+            <a
+              href="#galeri"
+              onClick={(e) => handleSmoothScroll(e, "galeri")}
+              className="hover:text-[#9F7A2D] hover:-translate-y-1 transition-all duration-200 whitespace-nowrap cursor-pointer"
+            >
               Galeri Acara
             </a>
-            <a href="#cara-pesan" className="hover:text-[#9F7A2D] hover:-translate-y-1 transition-all duration-200 whitespace-nowrap">
+            <a
+              href="#cara-pesan"
+              onClick={(e) => handleSmoothScroll(e, "cara-pesan")}
+              className="hover:text-[#9F7A2D] hover:-translate-y-1 transition-all duration-200 whitespace-nowrap cursor-pointer"
+            >
               Panduan Pesan
             </a>
-            <a href="#testimoni" className="hover:text-[#9F7A2D] hover:-translate-y-1 transition-all duration-200 whitespace-nowrap">
+            <a
+              href="#testimoni"
+              onClick={(e) => handleSmoothScroll(e, "testimoni")}
+              className="hover:text-[#9F7A2D] hover:-translate-y-1 transition-all duration-200 whitespace-nowrap cursor-pointer"
+            >
               Ulasan
             </a>
-            <a href="#faq" className="hover:text-[#9F7A2D] hover:-translate-y-1 transition-all duration-200 whitespace-nowrap">
+            <a
+              href="#faq"
+              onClick={(e) => handleSmoothScroll(e, "faq")}
+              className="hover:text-[#9F7A2D] hover:-translate-y-1 transition-all duration-200 whitespace-nowrap cursor-pointer"
+            >
               FAQ & Area
             </a>
           </nav>
@@ -342,50 +385,50 @@ export default function PublicLandingPage({
 
             <a
               href="#tentang"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block font-bold text-[#23382C] hover:text-[#9F7A2D]"
+              onClick={(e) => handleSmoothScroll(e, "tentang")}
+              className="block font-bold text-[#23382C] hover:text-[#9F7A2D] cursor-pointer"
             >
               Tentang Kami
             </a>
             <a
               href="#layanan"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block font-bold text-[#23382C] hover:text-[#9F7A2D]"
+              onClick={(e) => handleSmoothScroll(e, "layanan")}
+              className="block font-bold text-[#23382C] hover:text-[#9F7A2D] cursor-pointer"
             >
               Layanan
             </a>
             <a
               href="#menu"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block font-bold text-[#23382C] hover:text-[#9F7A2D]"
+              onClick={(e) => handleSmoothScroll(e, "menu")}
+              className="block font-bold text-[#23382C] hover:text-[#9F7A2D] cursor-pointer"
             >
               Katalog Menu
             </a>
             <a
               href="#galeri"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block font-bold text-[#23382C] hover:text-[#9F7A2D]"
+              onClick={(e) => handleSmoothScroll(e, "galeri")}
+              className="block font-bold text-[#23382C] hover:text-[#9F7A2D] cursor-pointer"
             >
               Galeri Acara
             </a>
             <a
               href="#cara-pesan"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block font-bold text-[#23382C] hover:text-[#9F7A2D]"
+              onClick={(e) => handleSmoothScroll(e, "cara-pesan")}
+              className="block font-bold text-[#23382C] hover:text-[#9F7A2D] cursor-pointer"
             >
               Panduan Pesan
             </a>
             <a
               href="#testimoni"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block font-bold text-[#23382C] hover:text-[#9F7A2D]"
+              onClick={(e) => handleSmoothScroll(e, "testimoni")}
+              className="block font-bold text-[#23382C] hover:text-[#9F7A2D] cursor-pointer"
             >
               Ulasan & Klien
             </a>
             <a
               href="#faq"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block font-bold text-[#23382C] hover:text-[#9F7A2D]"
+              onClick={(e) => handleSmoothScroll(e, "faq")}
+              className="block font-bold text-[#23382C] hover:text-[#9F7A2D] cursor-pointer"
             >
               FAQ & Pengiriman
             </a>
@@ -429,10 +472,10 @@ export default function PublicLandingPage({
 
               {/* Bold Title */}
               <div className="space-y-1 sm:space-y-2">
-                <h1 className="text-2xl sm:text-5xl md:text-6xl lg:text-[60px] xl:text-[68px] font-black text-[#23382C] tracking-tight uppercase leading-[1.08] sm:leading-[1.02] font-serif">
-                  {settings.hero_title_1 || "Catering Lezat,"} <br className="hidden sm:inline" />
+                <h1 className="text-2xl sm:text-5xl md:text-6xl lg:text-[60px] xl:text-[68px] font-medium text-[#23382C] tracking-tight leading-[1.12] sm:leading-[1.08] font-serif">
+                  {settings.hero_title_1 || "When Tradition"} <br className="hidden sm:inline" />
                   <span className="text-[#9F7A2D] italic font-normal inline-block">
-                    {settings.hero_title_2 || "Higienis & Terpercaya"}
+                    {settings.hero_title_2 || "Deliciously Taste"}
                   </span>
                 </h1>
                 <p className="text-sm sm:text-2xl font-bold text-[#4B6152] pt-0.5 sm:pt-1">
@@ -483,10 +526,7 @@ export default function PublicLandingPage({
               <div className="pt-2 sm:pt-4 flex flex-wrap items-center gap-3 sm:gap-4">
                 <a
                   href="#menu"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" });
-                  }}
+                  onClick={(e) => handleSmoothScroll(e, "menu")}
                   className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] active:scale-95 text-[#212E24] font-extrabold text-sm sm:text-base rounded-full shadow-lg shadow-[#C9A24D]/35 hover:shadow-xl transition-all border border-[#DFBF73] cursor-pointer"
                 >
                   <span>Pilih Menu Sekarang</span>

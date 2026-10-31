@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "DAPOER PMCSU - Catering Pilihan Jakarta",
-    description: "Where Traditions Always Tastes Delicious. Solusi praktis & istimewa catering prasmanan, nasi kotak, dan tumpeng halal Jabodetabek.",
+    description: "When Tradition Deliciously Taste. Solusi praktis & istimewa catering prasmanan, nasi kotak, dan tumpeng halal Jabodetabek.",
     url: "https://dapoer-pmcsu.vercel.app",
     siteName: "DAPOER PMCSU",
     locale: "id_ID",
@@ -63,7 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="id"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col">
         <ServiceWorkerRegister />
