@@ -478,9 +478,11 @@ export default function PublicLandingPage({
                     {settings.hero_title_2 || "Deliciously Tastes"}
                   </span>
                 </h1>
-                <p className="text-sm sm:text-2xl font-bold text-[#4B6152] pt-0.5 sm:pt-1">
-                  {settings.hero_subtitle || "Solusi Praktis & Istimewa untuk Setiap Acara Anda"}
-                </p>
+                {settings.hero_subtitle && settings.hero_subtitle.trim().length > 0 && (
+                  <p className="text-sm sm:text-2xl font-bold text-[#4B6152] pt-0.5 sm:pt-1">
+                    {settings.hero_subtitle}
+                  </p>
+                )}
               </div>
 
               {/* Key Features Checklist */}
