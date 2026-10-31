@@ -1433,15 +1433,15 @@ export default function PublicLandingPage({
       {/* Section: Transparansi Area Pengiriman & Syarat (Logistics & FAQ) */}
       <section id="faq" className="relative z-10 py-12 sm:py-20 overflow-hidden">
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+          <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Informasi Logistik & FAQ
             </span>
             <h2 className="text-2xl sm:text-4xl font-normal text-[#9F7A2D] mt-2 sm:mt-3 font-serif">
               Transparansi Area Pengiriman & Syarat
             </h2>
-            <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed max-w-xl mx-auto">
-              Jawaban cepat seputar minimum pemesanan, jangkauan kurir Jabodetabek, dan panduan&nbsp;pembayaran.
+            <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed max-w-full">
+              Jawaban cepat seputar minimum pemesanan, jangkauan kurir Jabodetabek, dan panduan pembayaran.
             </p>
           </div>
 
