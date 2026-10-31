@@ -1650,8 +1650,8 @@ export default function PublicLandingPage({
             </a>
           </div>
 
-          {/* Halal Indonesia Certificate Card & QR Barcode */}
-          <div className="my-8 p-6 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] max-w-xl mx-auto shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+          {/* Halal Indonesia Certificate Card & Asosiasi PPJI */}
+          <div className="my-8 p-6 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] max-w-2xl mx-auto shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 rounded-2xl bg-white border border-[#CBDFA5] p-2 flex items-center justify-center shrink-0 shadow-xs">
                 <img
@@ -1676,11 +1676,18 @@ export default function PublicLandingPage({
               </div>
             </div>
 
-            <div className="shrink-0">
+            <div className="flex items-center justify-center gap-4 shrink-0 sm:border-l sm:border-[#CBDFA5]/60 sm:pl-6">
               <img
                 src="/logo-halal-clean.png"
                 alt="Logo Halal Indonesia"
-                className="h-10 w-auto object-contain mx-auto"
+                className="h-10 w-auto object-contain"
+              />
+              <div className="w-px h-8 bg-[#CBDFA5] hidden sm:block"></div>
+              <img
+                src="/logo-ppji.png"
+                alt="PPJI - Perkumpulan Penyelenggara Jasaboga Indonesia"
+                className="h-11 w-auto object-contain rounded-md"
+                title="Anggota Perkumpulan Penyelenggara Jasaboga Indonesia (PPJI)"
               />
             </div>
           </div>
