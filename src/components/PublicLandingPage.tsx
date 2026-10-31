@@ -472,7 +472,7 @@ export default function PublicLandingPage({
 
               {/* Bold Title */}
               <div className="space-y-1 sm:space-y-2">
-                <h1 className="text-2xl sm:text-5xl md:text-6xl lg:text-[60px] xl:text-[68px] font-medium text-[#23382C] tracking-tight leading-[1.12] sm:leading-[1.08] font-serif">
+                <h1 className="text-2xl sm:text-5xl md:text-6xl lg:text-[60px] xl:text-[68px] font-medium text-[#9F7A2D] tracking-tight leading-[1.12] sm:leading-[1.08] font-serif">
                   {settings.hero_title_1 || "When Tradition"} <br className="hidden sm:inline" />
                   <span className="text-[#9F7A2D] italic font-normal inline-block">
                     {settings.hero_title_2 || "Deliciously Tastes"}
@@ -585,7 +585,7 @@ export default function PublicLandingPage({
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Layanan Kami
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-2 sm:mt-3 tracking-tight font-serif">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#9F7A2D] mt-2 sm:mt-3 tracking-tight font-serif">
               Solusi Kuliner untuk Segala Kebutuhan Acara
             </h2>
             <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
@@ -656,7 +656,7 @@ export default function PublicLandingPage({
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Katalog Pilihan
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-2 sm:mt-3 tracking-tight font-serif">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#9F7A2D] mt-2 sm:mt-3 tracking-tight font-serif">
               Daftar <span className="italic font-normal text-[#9F7A2D]">menu lengkap</span>
             </h2>
             <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
@@ -917,7 +917,7 @@ export default function PublicLandingPage({
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Galeri Acara &bull; Event Highlights
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-2 sm:mt-3 font-serif">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#9F7A2D] mt-2 sm:mt-3 font-serif">
               Portofolio Suasana Acara
             </h2>
             <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
@@ -1122,7 +1122,7 @@ export default function PublicLandingPage({
               <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
                 Cara Pemesanan
               </span>
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-2 sm:mt-3 tracking-tight font-serif">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#9F7A2D] mt-2 sm:mt-3 tracking-tight font-serif">
                 Alur Mudah Pemesanan via WhatsApp
               </h2>
               <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
@@ -1188,7 +1188,7 @@ export default function PublicLandingPage({
                 <span className="inline-block text-xs font-bold uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full mb-3">
                   Tentang Brand Kami
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-black text-[#23382C] mt-1 font-serif">{profile.name}</h2>
+                <h2 className="text-3xl sm:text-4xl font-black text-[#9F7A2D] mt-1 font-serif">{profile.name}</h2>
               </div>
               <p className="text-[#4B6152] text-sm leading-relaxed">{profile.description}</p>
 
@@ -1241,7 +1241,7 @@ export default function PublicLandingPage({
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Ulasan Nyata Google Maps
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#23382C] mt-2 sm:mt-3 font-serif">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#9F7A2D] mt-2 sm:mt-3 font-serif">
               Apa Kata Klien & Tamu Kami?
             </h2>
             <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
@@ -1437,7 +1437,7 @@ export default function PublicLandingPage({
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Informasi Logistik & FAQ
             </span>
-            <h2 className="text-2xl sm:text-4xl font-black text-[#23382C] mt-2 sm:mt-3 font-serif">
+            <h2 className="text-2xl sm:text-4xl font-black text-[#9F7A2D] mt-2 sm:mt-3 font-serif">
               Transparansi Area Pengiriman & Syarat
             </h2>
             <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
