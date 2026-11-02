@@ -105,18 +105,55 @@ export default async function MenuDetailPage({ params }: PageProps) {
     variants = [];
   }
 
-  // Pecah rincian menu / komposisi lauk
+  // Cek apakah menu memiliki pembagian sub-tipe (misal: Type A, Type B, Type C)
+  interface TypeSection {
+    title: string;
+    items: string[];
+    price?: string;
+  }
+
+  let typeSections: TypeSection[] = [];
   let descriptionParts: string[] = [];
+
   if (menu.description) {
-    let rawItems = menu.description;
-    const colonIndex = rawItems.indexOf(":");
-    if (colonIndex !== -1 && colonIndex < 40) {
-      rawItems = rawItems.substring(colonIndex + 1);
+    const typeRegex = /(Type\s+[A-Z](?:\s*\([^)]*\))?):\s*(.*?)(?=(?:Type\s+[A-Z]|$))/gi;
+    let match;
+    while ((match = typeRegex.exec(menu.description)) !== null) {
+      let rawTitle = match[1].trim();
+      const rawContent = match[2].trim().replace(/\.$/, "");
+      
+      // Ambil harga jika ada di dalam tanda kurung judul, misal (Rp 25.000)
+      let priceStr = "";
+      const priceMatch = rawTitle.match(/\((Rp\s*[\d.]+)\)/i);
+      if (priceMatch) {
+        priceStr = priceMatch[1];
+        rawTitle = rawTitle.replace(/\s*\([^)]*\)/, "").trim();
+      }
+
+      const items = rawContent
+        .split(/,|\./)
+        .map((it: string) => it.trim())
+        .filter((it: string) => it.length > 2);
+
+      typeSections.push({
+        title: rawTitle,
+        items,
+        price: priceStr,
+      });
     }
-    descriptionParts = rawItems
-      .split(/,|\./)
-      .map((item: string) => item.trim())
-      .filter((item: string) => item.length > 2);
+
+    // Jika bukan menu multi-tipe, gunakan pemisahan biasa
+    if (typeSections.length === 0) {
+      let rawItems = menu.description;
+      const colonIndex = rawItems.indexOf(":");
+      if (colonIndex !== -1 && colonIndex < 40) {
+        rawItems = rawItems.substring(colonIndex + 1);
+      }
+      descriptionParts = rawItems
+        .split(/,|\./)
+        .map((item: string) => item.trim())
+        .filter((item: string) => item.length > 2);
+    }
   }
 
   const initialWaMessage = defaultTemplate
@@ -336,7 +373,35 @@ export default async function MenuDetailPage({ params }: PageProps) {
                 </h3>
               </div>
 
-              {descriptionParts.length > 0 ? (
+              {typeSections.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+                  {typeSections.map((sec, idx) => (
+                    <div
+                      key={idx}
+                      className="p-4 sm:p-5 rounded-2xl bg-white border border-[#E1DEC9] shadow-xs flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className="flex items-center justify-between gap-2 pb-2.5 mb-3 border-b border-[#EFECE0]">
+                          <span className="font-bold text-sm text-[#23382C] font-serif">{sec.title}</span>
+                          {sec.price && (
+                            <span className="text-xs font-black text-[#8D6B26] bg-[#DFECC0] px-2 py-0.5 rounded-full">
+                              {sec.price}
+                            </span>
+                          )}
+                        </div>
+                        <ul className="space-y-2">
+                          {sec.items.map((item, i) => (
+                            <li key={i} className="flex items-start gap-2 text-xs text-[#3D5245]">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-[#8D6B26] shrink-0 mt-0.5" />
+                              <span className="font-medium leading-relaxed">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : descriptionParts.length > 0 ? (
                 <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[#E1DEC9] shadow-xs">
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
                     {descriptionParts.map((item, idx) => (
@@ -355,42 +420,6 @@ export default async function MenuDetailPage({ params }: PageProps) {
                 </div>
               )}
             </div>
-
-            {/* Varian / Paket Pilihan - Hanya tampil jika ada pilihan tipe/paket yang berbeda (seperti Type A, Type B, dll) */}
-            {(() => {
-              const typeVariants = variants.filter((v) => {
-                const lower = v.name.toLowerCase();
-                return (
-                  lower.includes("type") ||
-                  lower.includes("tipe") ||
-                  lower.includes("paket") ||
-                  (variants.length > 1 && !lower.includes("oseng") && !lower.includes("lauk"))
-                );
-              });
-
-              if (typeVariants.length <= 1) return null;
-
-              return (
-                <div className="bg-[#FCFBF6] p-6 sm:p-8 rounded-3xl border border-[#CBDFA5] shadow-xs space-y-3">
-                  <h3 className="text-sm sm:text-base font-bold text-[#23382C] font-serif border-b border-[#EFECE0] pb-3">
-                    Pilihan Tipe / Paket
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                    {typeVariants.map((v, i) => (
-                      <div
-                        key={i}
-                        className="p-4 rounded-2xl border border-[#E1DEC9] bg-white flex items-center justify-between text-xs shadow-xs"
-                      >
-                        <span className="font-bold text-[#23382C]">{v.name}</span>
-                        <span className="font-black text-[#8D6B26]">
-                          Rp {Number(v.price).toLocaleString("id-ID")}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            })()}
 
             {/* Aksi Pemesanan Direct WhatsApp */}
             <div className="bg-gradient-to-br from-[#23382C] to-[#17251D] p-6 sm:p-8 rounded-3xl text-white shadow-xl space-y-4 border border-[#3A5343]">
