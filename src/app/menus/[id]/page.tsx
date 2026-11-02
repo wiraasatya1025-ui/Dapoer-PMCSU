@@ -6,7 +6,6 @@ import {
   ArrowLeft,
   MessageCircle,
   CheckCircle2,
-  Clock,
   MapPin,
   Sparkles,
   ShieldCheck,
@@ -195,26 +194,6 @@ export default async function MenuDetailPage({ params }: PageProps) {
         <div className="absolute inset-0 bg-[#E6F0CA]/80 backdrop-blur-[0.5px]" />
       </div>
 
-      {/* Top Announcement Bar */}
-      <div className="relative z-40 bg-[#DFECC0]/90 backdrop-blur-sm text-[#3D5245] py-2 overflow-hidden text-xs font-medium border-b border-[#D2E2AF]/60">
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-6 text-xs text-[#3D5245]">
-            <span className="inline-flex items-center gap-2">
-              <Clock className="w-3.5 h-3.5 text-[#C9A24D] shrink-0" />
-              <span className="font-semibold text-[#23382C]">Jam Operasional:</span>
-              <span>{profile.operating_hours || "Buka Setiap Hari: 08.00 - 20.00 WIB"}</span>
-            </span>
-
-          </div>
-          <Link
-            href="/#menu"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#8D6B26] hover:text-[#23382C] transition-colors shrink-0"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Kembali ke Katalog</span>
-          </Link>
-        </div>
-      </div>
 
       {/* Main Header (Sage Green Tone & Halal Badge) */}
       <header className="relative z-30 bg-[#E6F0CA]/90 backdrop-blur-md border-b border-[#D5E5B2] shadow-xs">
