@@ -106,6 +106,7 @@ export default async function MenuDetailPage({ params }: PageProps) {
   }
 
   // Cek apakah menu memiliki pembagian sub-tipe (misal: Type A, Type B, Type C)
+  // atau sub-kategori snack (Manis, Asin, Tradisional)
   interface TypeSection {
     title: string;
     items: string[];
@@ -116,6 +117,7 @@ export default async function MenuDetailPage({ params }: PageProps) {
   let descriptionParts: string[] = [];
 
   if (menu.description) {
+    // Cek pola "Type A:", "Type B:", dst.
     const typeRegex = /(Type\s+[A-Z](?:\s*\([^)]*\))?):\s*(.*?)(?=(?:Type\s+[A-Z]|$))/gi;
     let match;
     while ((match = typeRegex.exec(menu.description)) !== null) {
@@ -140,6 +142,21 @@ export default async function MenuDetailPage({ params }: PageProps) {
         items,
         price: priceStr,
       });
+    }
+
+    // Cek pola kategori snack: "Manis:", "Asin:", "Tradisional:"
+    if (typeSections.length === 0) {
+      const snackRegex = /(Manis|Asin|Tradisional):\s*(.*?)(?=(?:Manis:|Asin:|Tradisional:|$))/gi;
+      let snackMatch;
+      while ((snackMatch = snackRegex.exec(menu.description)) !== null) {
+        const rawTitle = snackMatch[1].trim();
+        const rawContent = snackMatch[2].trim().replace(/\.$/, "");
+        const items = rawContent
+          .split(/,|\./)
+          .map((it: string) => it.trim())
+          .filter((it: string) => it.length > 2);
+        typeSections.push({ title: `Snack ${rawTitle}`, items });
+      }
     }
 
     // Jika bukan menu multi-tipe, gunakan pemisahan biasa
