@@ -923,7 +923,7 @@ export default function PublicLandingPage({
           <div className="flex items-center sm:justify-center gap-2 mb-6 sm:mb-10 overflow-x-auto scrollbar-hide py-1 -mx-4 px-4 sm:mx-0 sm:px-0">
             {[
               { id: "buffet", label: "Tata Letak Meja Buffet" },
-              { id: "pondokan", label: "Dekorasi Pondokan (Stalls)" },
+              { id: "pondokan", label: "Dekorasi Stalls" },
               { id: "staff", label: "Kerapian Staf & Pramusaji" },
               { id: "wedding", label: "Pernikahan" },
               { id: "corporate", label: "Acara Kantor" },
@@ -958,7 +958,7 @@ export default function PublicLandingPage({
                 id: 102,
                 title: "Pondokan Live Cooking Dimsum & Kambing Guling",
                 category: "pondokan",
-                category_label: "Dekorasi Pondokan (Stall)",
+                category_label: "Dekorasi Stalls",
                 image_url: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&auto=format&fit=crop&q=80",
                 note: "Dekorasi booth tradisional modern dengan chef live cooking",
               },
@@ -990,7 +990,7 @@ export default function PublicLandingPage({
                 id: 106,
                 title: "Pondokan Es Doger & Sate Ayam Madura",
                 category: "pondokan",
-                category_label: "Dekorasi Pondokan (Stall)",
+                category_label: "Dekorasi Stalls",
                 image_url: "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=80",
                 note: "Desain stall ramah antrean dengan perlengkapan etnik berkualitas",
               },
@@ -1025,7 +1025,7 @@ export default function PublicLandingPage({
                 label = "Tata Letak Meja Buffet";
               } else if (rawType.includes("pondok") || rawType.includes("stall") || rawType.includes("booth")) {
                 cat = "pondokan";
-                label = "Dekorasi Pondokan (Stall)";
+                label = "Dekorasi Stalls";
               } else if (rawType.includes("staff") || rawType.includes("pramusaji") || rawType.includes("kru")) {
                 cat = "staff";
                 label = "Kerapian Staf Pramusaji";
