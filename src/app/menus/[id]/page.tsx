@@ -308,9 +308,11 @@ export default async function MenuDetailPage({ params }: PageProps) {
                 )}
 
                 {/* Floating Gold Price Badge */}
-                <div className="absolute bottom-3 right-3 bg-[#DEBF7E] text-[#212E24] px-4 py-2 rounded-xl font-black text-sm shadow-md border border-[#EBCE8F]">
-                  Rp {Number(menu.price).toLocaleString("id-ID")}
-                </div>
+                {!menu.name.toLowerCase().includes("snack box") && (
+                  <div className="absolute bottom-3 right-3 bg-[#DEBF7E] text-[#212E24] px-4 py-2 rounded-xl font-black text-sm shadow-md border border-[#EBCE8F]">
+                    Rp {Number(menu.price).toLocaleString("id-ID")}
+                  </div>
+                )}
               </div>
             </div>
 
