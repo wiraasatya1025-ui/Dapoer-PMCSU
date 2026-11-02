@@ -308,7 +308,7 @@ export default async function MenuDetailPage({ params }: PageProps) {
                 )}
 
                 {/* Floating Gold Price Badge */}
-                {!menu.name.toLowerCase().includes("snack box") && !menu.name.toLowerCase().includes("coffee break") && (
+                {!menu.name.toLowerCase().includes("snack") && !menu.name.toLowerCase().includes("coffee break") && (
                   <div className="absolute bottom-3 right-3 bg-[#DEBF7E] text-[#212E24] px-4 py-2 rounded-xl font-black text-sm shadow-md border border-[#EBCE8F]">
                     Rp {Number(menu.price).toLocaleString("id-ID")}
                   </div>
@@ -357,7 +357,7 @@ export default async function MenuDetailPage({ params }: PageProps) {
                 {menu.name}
               </h1>
 
-              {(menu.name.toLowerCase().includes("snack box") || menu.name.toLowerCase().includes("coffee break")) ? (
+              {(menu.name.toLowerCase().includes("snack") || menu.name.toLowerCase().includes("coffee break")) ? (
                 <div className="mt-4 pt-4 border-t border-[#EFECE0]">
                   <span className="text-xs text-[#7A8E81] font-medium italic">
                     Hubungi admin kami untuk penawaran harga &amp; kustomisasi paket terbaik.

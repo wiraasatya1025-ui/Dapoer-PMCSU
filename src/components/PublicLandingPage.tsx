@@ -820,7 +820,7 @@ export default function PublicLandingPage({
                               )}
 
                               {/* Floating Gold Price Badge on Card */}
-                              {!menu.name.toLowerCase().includes("snack box") && !menu.name.toLowerCase().includes("coffee break") && (
+                              {!menu.name.toLowerCase().includes("snack") && !menu.name.toLowerCase().includes("coffee break") && (
                                 <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-[#DEBF7E] text-[#212E24] px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-lg sm:rounded-xl font-black text-[11px] sm:text-xs shadow-md border border-[#EBCE8F]">
                                   Rp {menu.price.toLocaleString("id-ID")}
                                 </div>
@@ -847,7 +847,7 @@ export default function PublicLandingPage({
                               </div>
                                 <div className="pt-2.5 sm:pt-3 border-t border-[#EFECE0] flex items-center justify-between gap-2">
                                   <div>
-                                    {(menu.name.toLowerCase().includes("snack box") || menu.name.toLowerCase().includes("coffee break")) ? (
+                                    {(menu.name.toLowerCase().includes("snack") || menu.name.toLowerCase().includes("coffee break")) ? (
                                       <span className="text-[10px] sm:text-xs font-bold text-[#8D6B26]">Hubungi Admin</span>
                                     ) : (
                                       <>
