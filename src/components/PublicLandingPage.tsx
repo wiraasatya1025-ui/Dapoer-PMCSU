@@ -107,7 +107,9 @@ export default function PublicLandingPage({
   testimonials,
   settings,
 }: PublicPageProps) {
-  const [selectedCat, setSelectedCat] = useState<string>("all");
+  const [selectedCat, setSelectedCat] = useState<string>(
+    categories.length > 0 ? String(categories[0].id) : "all"
+  );
   const [selectedMenu, setSelectedMenu] = useState<Menu | null>(null);
   const [selectedVariant, setSelectedVariant] = useState<Variant | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -705,16 +707,6 @@ export default function PublicLandingPage({
               className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto scrollbar-hide py-2 px-1 scroll-smooth select-none cursor-grab active:cursor-grabbing"
               id="cat-slider"
             >
-              <button
-                onClick={() => handleSetCat("all")}
-                className={`flex-shrink-0 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
-                  selectedCat === "all"
-                    ? "bg-[#D8B669] text-[#212E24] shadow-md shadow-[#D8B669]/30 scale-105 border border-[#E5CA8A]"
-                    : "bg-[#F7F9EC] text-[#415549] hover:bg-white border border-[#D5E5B2]"
-                }`}
-              >
-                Semua
-              </button>
               {categories.map((c) => (
                 <button
                   key={c.id}
