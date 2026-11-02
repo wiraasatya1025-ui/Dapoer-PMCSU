@@ -1398,32 +1398,6 @@ export default function PublicLandingPage({
               </>
             );
           })()}
-
-          {/* Monochrome Corporate Clients Logo Strip */}
-          <div className="pt-8 border-t border-[#CBDFA5]">
-            <p className="text-center text-[11px] uppercase tracking-wider font-extrabold text-[#708474] mb-8">
-              Dipercaya Oleh Berbagai Perusahaan, BUMN, & Komunitas Terkemuka:
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center justify-center">
-              {(() => {
-                const rawClients = settings.corporate_clients || "Bank Mandiri, Telkom Indonesia, Pertamina Group, Kementerian BUMN, Unilever ID, Astra International";
-                const clientList = rawClients
-                  .split(",")
-                  .map((item) => item.trim())
-                  .filter((item) => item.length > 0);
-
-                return clientList.map((clientName, i) => (
-                  <div
-                    key={i}
-                    className="flex flex-col items-center justify-center p-4 rounded-2xl bg-[#FCFBF6]/70 border border-[#CBDFA5]/60 text-[#55695D] hover:text-[#23382C] hover:border-[#D8B669] transition-colors"
-                  >
-                    <Building2 className="w-6 h-6 mb-1 opacity-70" />
-                    <span className="text-[11px] font-bold tracking-tight text-center">{clientName}</span>
-                  </div>
-                ));
-              })()}
-            </div>
-          </div>
         </div>
       </section>
 
