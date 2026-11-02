@@ -925,7 +925,8 @@ export default function PublicLandingPage({
               { id: "buffet", label: "Tata Letak Meja Buffet" },
               { id: "pondokan", label: "Dekorasi Pondokan (Stalls)" },
               { id: "staff", label: "Kerapian Staf & Pramusaji" },
-              { id: "event", label: "Pernikahan & Acara Kantor" },
+              { id: "wedding", label: "Pernikahan" },
+              { id: "corporate", label: "Acara Kantor" },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -980,8 +981,8 @@ export default function PublicLandingPage({
               {
                 id: 105,
                 title: "Resepsi Pernikahan Ballroom Kuningan",
-                category: "event",
-                category_label: "Pernikahan & Acara Kantor",
+                category: "wedding",
+                category_label: "Pernikahan",
                 image_url: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&auto=format&fit=crop&q=80",
                 note: "Pelayanan 1.200 porsi tamu undangan berjalan lancar dan teratur",
               },
@@ -1004,8 +1005,8 @@ export default function PublicLandingPage({
               {
                 id: 108,
                 title: "Corporate Gala Dinner & Awarding Night",
-                category: "event",
-                category_label: "Pernikahan & Acara Kantor",
+                category: "corporate",
+                category_label: "Acara Kantor",
                 image_url: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&auto=format&fit=crop&q=80",
                 note: "Standar VIP untuk pertemuan direksi dan tamu kehormatan",
               },
@@ -1014,9 +1015,12 @@ export default function PublicLandingPage({
             // Item yang diunggah dari CMS admin
             const dbItems = galleries.map((g) => {
               const rawType = (g.event_type || "").toLowerCase();
-              let cat = "event";
-              let label = "Dokumentasi Acara";
-              if (rawType.includes("buffet") || rawType.includes("prasmanan") || rawType.includes("meja")) {
+              let cat = "corporate";
+              let label = "Acara Kantor";
+              if (rawType.includes("nikah") || rawType.includes("wedding") || rawType.includes("resepsi") || rawType.includes("akad")) {
+                cat = "wedding";
+                label = "Pernikahan";
+              } else if (rawType.includes("buffet") || rawType.includes("prasmanan") || rawType.includes("meja")) {
                 cat = "buffet";
                 label = "Tata Letak Meja Buffet";
               } else if (rawType.includes("pondok") || rawType.includes("stall") || rawType.includes("booth")) {
