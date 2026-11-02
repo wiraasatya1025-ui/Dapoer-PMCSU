@@ -355,13 +355,21 @@ export default async function MenuDetailPage({ params }: PageProps) {
                 {menu.name}
               </h1>
 
-              <div className="mt-4 pt-4 border-t border-[#EFECE0] flex items-baseline gap-2">
-                <span className="text-xs text-[#7A8E81] font-medium">Harga mulai dari:</span>
-                <span className="text-2xl sm:text-3xl font-black text-[#8D6B26]">
-                  Rp {Number(menu.price).toLocaleString("id-ID")}
-                </span>
-                <span className="text-xs text-[#7A8E81]">/ porsi / paket</span>
-              </div>
+              {menu.name.toLowerCase().includes("snack box") ? (
+                <div className="mt-4 pt-4 border-t border-[#EFECE0]">
+                  <span className="text-xs text-[#7A8E81] font-medium italic">
+                    Hubungi admin kami untuk penawaran harga &amp; kustomisasi paket snack box terbaik.
+                  </span>
+                </div>
+              ) : (
+                <div className="mt-4 pt-4 border-t border-[#EFECE0] flex items-baseline gap-2">
+                  <span className="text-xs text-[#7A8E81] font-medium">Harga mulai dari:</span>
+                  <span className="text-2xl sm:text-3xl font-black text-[#8D6B26]">
+                    Rp {Number(menu.price).toLocaleString("id-ID")}
+                  </span>
+                  <span className="text-xs text-[#7A8E81]">/ porsi / paket</span>
+                </div>
+              )}
             </div>
 
             {/* Rincian Komposisi Lengkap */}
@@ -383,7 +391,7 @@ export default async function MenuDetailPage({ params }: PageProps) {
                       <div>
                         <div className="flex items-center justify-between gap-2 pb-2.5 mb-3 border-b border-[#EFECE0]">
                           <span className="font-bold text-sm text-[#23382C] font-serif">{sec.title}</span>
-                          {sec.price && (
+                          {sec.price && !menu.name.toLowerCase().includes("snack box") && (
                             <span className="text-xs font-black text-[#8D6B26] bg-[#DFECC0] px-2 py-0.5 rounded-full">
                               {sec.price}
                             </span>

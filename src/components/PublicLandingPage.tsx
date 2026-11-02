@@ -843,11 +843,17 @@ export default function PublicLandingPage({
                                   </div>
                                 )}
                               </div>
-                              <div className="pt-2.5 sm:pt-3 border-t border-[#EFECE0] flex items-center justify-between gap-2">
-                                <div>
-                                  <span className="text-[9px] sm:text-[10px] text-[#7A8E81] block font-medium">Mulai</span>
-                                  <span className="text-xs sm:text-sm font-extrabold text-[#8D6B26]">Rp {menu.price.toLocaleString("id-ID")}</span>
-                                </div>
+                                <div className="pt-2.5 sm:pt-3 border-t border-[#EFECE0] flex items-center justify-between gap-2">
+                                  <div>
+                                    {menu.name.toLowerCase().includes("snack box") ? (
+                                      <span className="text-[10px] sm:text-xs font-bold text-[#8D6B26]">Hubungi Admin</span>
+                                    ) : (
+                                      <>
+                                        <span className="text-[9px] sm:text-[10px] text-[#7A8E81] block font-medium">Mulai</span>
+                                        <span className="text-xs sm:text-sm font-extrabold text-[#8D6B26]">Rp {menu.price.toLocaleString("id-ID")}</span>
+                                      </>
+                                    )}
+                                  </div>
                                 <button
                                   onClick={(e) => { e.stopPropagation(); handleOpenDetail(menu); }}
                                   disabled={!menu.is_available}
@@ -1733,10 +1739,18 @@ export default function PublicLandingPage({
               {/* Price & Action */}
               <div className="pt-4 border-t border-[#eeebe2] flex items-center justify-between">
                 <div>
-                  <span className="text-[11px] text-stone-400 block font-medium">Harga Pesanan:</span>
-                  <span className="text-xl font-black text-[#23382C]">
-                    Rp {(selectedVariant ? selectedVariant.price : selectedMenu.price).toLocaleString("id-ID")}
-                  </span>
+                  {selectedMenu.name.toLowerCase().includes("snack box") ? (
+                    <span className="text-xs text-[#7A8E81] font-medium italic">
+                      Konsultasikan kebutuhan porsi &amp; snack
+                    </span>
+                  ) : (
+                    <>
+                      <span className="text-[11px] text-stone-400 block font-medium">Harga Pesanan:</span>
+                      <span className="text-xl font-black text-[#23382C]">
+                        Rp {(selectedVariant ? selectedVariant.price : selectedMenu.price).toLocaleString("id-ID")}
+                      </span>
+                    </>
+                  )}
                 </div>
 
                 <a
