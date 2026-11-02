@@ -1728,7 +1728,7 @@ export default function PublicLandingPage({
                 </p>
               </div>
 
-              {/* Varian Selection if any */}
+              {/* Varian Selection if any (hanya tampil jika ada pilihan tipe/paket seperti Type A, Type B, dll) */}
               {(() => {
                 let variants: Variant[] = [];
                 try {
@@ -1737,13 +1737,23 @@ export default function PublicLandingPage({
                   variants = [];
                 }
 
-                if (variants.length === 0) return null;
+                const typeVariants = variants.filter((v) => {
+                  const lower = v.name.toLowerCase();
+                  return (
+                    lower.includes("type") ||
+                    lower.includes("tipe") ||
+                    lower.includes("paket") ||
+                    (variants.length > 1 && !lower.includes("oseng") && !lower.includes("lauk"))
+                  );
+                });
+
+                if (typeVariants.length <= 1) return null;
 
                 return (
                   <div className="space-y-2 pt-2 border-t border-stone-100">
-                    <label className="text-xs font-bold text-[#23382C] block">Pilih Varian / Paket:</label>
+                    <label className="text-xs font-bold text-[#23382C] block">Pilihan Tipe / Paket:</label>
                     <div className="space-y-2">
-                      {variants.map((v, i) => {
+                      {typeVariants.map((v, i) => {
                         const isSelected = selectedVariant?.name === v.name;
                         return (
                           <div

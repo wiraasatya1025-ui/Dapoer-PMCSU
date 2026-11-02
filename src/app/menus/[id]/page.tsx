@@ -337,45 +337,60 @@ export default async function MenuDetailPage({ params }: PageProps) {
               </div>
 
               {descriptionParts.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-                  {descriptionParts.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-start gap-2.5 p-3 rounded-2xl bg-white border border-[#E1DEC9] text-xs text-[#3D5245] shadow-xs"
-                    >
-                      <CheckCircle2 className="w-4 h-4 text-[#8D6B26] shrink-0 mt-0.5" />
-                      <span className="font-semibold leading-relaxed">{item}</span>
-                    </div>
-                  ))}
+                <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[#E1DEC9] shadow-xs">
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                    {descriptionParts.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-xs text-[#3D5245]">
+                        <CheckCircle2 className="w-4 h-4 text-[#8D6B26] shrink-0 mt-0.5" />
+                        <span className="font-semibold leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ) : (
-                <p className="text-xs sm:text-sm text-[#4B6152] leading-relaxed">
-                  {menu.description || "Hubungi admin kami untuk informasi rincian lengkap menu ini."}
-                </p>
+                <div className="p-4 rounded-2xl bg-white border border-[#E1DEC9]">
+                  <p className="text-xs sm:text-sm text-[#4B6152] leading-relaxed">
+                    {menu.description || "Hubungi admin kami untuk informasi rincian lengkap menu ini."}
+                  </p>
+                </div>
               )}
             </div>
 
-            {/* Varian / Paket Pilihan (jika ada) */}
-            {variants.length > 0 && (
-              <div className="bg-[#FCFBF6] p-6 sm:p-8 rounded-3xl border border-[#CBDFA5] shadow-xs space-y-3">
-                <h3 className="text-sm sm:text-base font-bold text-[#23382C] font-serif border-b border-[#EFECE0] pb-3">
-                  Pilihan Varian / Tipe
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                  {variants.map((v, i) => (
-                    <div
-                      key={i}
-                      className="p-4 rounded-2xl border border-[#E1DEC9] bg-white flex items-center justify-between text-xs shadow-xs"
-                    >
-                      <span className="font-bold text-[#23382C]">{v.name}</span>
-                      <span className="font-black text-[#8D6B26]">
-                        Rp {Number(v.price).toLocaleString("id-ID")}
-                      </span>
-                    </div>
-                  ))}
+            {/* Varian / Paket Pilihan - Hanya tampil jika ada pilihan tipe/paket yang berbeda (seperti Type A, Type B, dll) */}
+            {(() => {
+              const typeVariants = variants.filter((v) => {
+                const lower = v.name.toLowerCase();
+                return (
+                  lower.includes("type") ||
+                  lower.includes("tipe") ||
+                  lower.includes("paket") ||
+                  (variants.length > 1 && !lower.includes("oseng") && !lower.includes("lauk"))
+                );
+              });
+
+              if (typeVariants.length <= 1) return null;
+
+              return (
+                <div className="bg-[#FCFBF6] p-6 sm:p-8 rounded-3xl border border-[#CBDFA5] shadow-xs space-y-3">
+                  <h3 className="text-sm sm:text-base font-bold text-[#23382C] font-serif border-b border-[#EFECE0] pb-3">
+                    Pilihan Tipe / Paket
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                    {typeVariants.map((v, i) => (
+                      <div
+                        key={i}
+                        className="p-4 rounded-2xl border border-[#E1DEC9] bg-white flex items-center justify-between text-xs shadow-xs"
+                      >
+                        <span className="font-bold text-[#23382C]">{v.name}</span>
+                        <span className="font-black text-[#8D6B26]">
+                          Rp {Number(v.price).toLocaleString("id-ID")}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              );
+            })()}
 
             {/* Aksi Pemesanan Direct WhatsApp */}
             <div className="bg-gradient-to-br from-[#23382C] to-[#17251D] p-6 sm:p-8 rounded-3xl text-white shadow-xl space-y-4 border border-[#3A5343]">
