@@ -847,7 +847,7 @@ export default function PublicLandingPage({
                               </div>
                                 <div className="pt-2.5 sm:pt-3 border-t border-[#EFECE0] flex items-center justify-between gap-2">
                                   <div>
-                                    {menu.name.toLowerCase().includes("snack box") ? (
+                                    {(menu.name.toLowerCase().includes("snack box") || menu.name.toLowerCase().includes("coffee break")) ? (
                                       <span className="text-[10px] sm:text-xs font-bold text-[#8D6B26]">Hubungi Admin</span>
                                     ) : (
                                       <>
