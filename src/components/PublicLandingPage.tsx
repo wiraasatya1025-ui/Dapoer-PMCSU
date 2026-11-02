@@ -820,9 +820,11 @@ export default function PublicLandingPage({
                               )}
 
                               {/* Floating Gold Price Badge on Card */}
-                              <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-[#DEBF7E] text-[#212E24] px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-lg sm:rounded-xl font-black text-[11px] sm:text-xs shadow-md border border-[#EBCE8F]">
-                                Rp {menu.price.toLocaleString("id-ID")}
-                              </div>
+                              {!menu.name.toLowerCase().includes("snack box") && (
+                                <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-[#DEBF7E] text-[#212E24] px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-lg sm:rounded-xl font-black text-[11px] sm:text-xs shadow-md border border-[#EBCE8F]">
+                                  Rp {menu.price.toLocaleString("id-ID")}
+                                </div>
+                              )}
                             </Link>
 
                             {/* Body */}
