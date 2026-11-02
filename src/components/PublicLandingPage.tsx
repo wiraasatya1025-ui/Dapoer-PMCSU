@@ -117,7 +117,7 @@ export default function PublicLandingPage({
   const menuScrollRef = useRef<HTMLDivElement>(null);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const testimonialScrollRef = useRef<HTMLDivElement>(null);
-  const [activeGalleryTab, setActiveGalleryTab] = useState<string>("all");
+  const [activeGalleryTab, setActiveGalleryTab] = useState<string>("buffet");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeNavPopup, setActiveNavPopup] = useState<string | null>(null);
 
@@ -922,7 +922,6 @@ export default function PublicLandingPage({
           {/* Sub-filter Kategori Suasana Acara (Horizontal swipe on mobile, wrap on desktop) */}
           <div className="flex items-center sm:justify-center gap-2 mb-6 sm:mb-10 overflow-x-auto scrollbar-hide py-1 -mx-4 px-4 sm:mx-0 sm:px-0">
             {[
-              { id: "all", label: "Semua Dokumentasi" },
               { id: "buffet", label: "Tata Letak Meja Buffet" },
               { id: "pondokan", label: "Dekorasi Pondokan (Stalls)" },
               { id: "staff", label: "Kerapian Staf & Pramusaji" },
