@@ -27,6 +27,7 @@ export async function generateStaticParams() {
 
 interface PageProps {
   params: Promise<{ id: string }>;
+  searchParams?: Promise<{ cat?: string }>;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -52,8 +53,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function MenuDetailPage({ params }: PageProps) {
+export default async function MenuDetailPage({ params, searchParams }: PageProps) {
   const { id } = await params;
+  const sParams = searchParams ? await searchParams : {};
   const numId = parseInt(id, 10);
   if (isNaN(numId)) {
     notFound();
@@ -73,6 +75,11 @@ export default async function MenuDetailPage({ params }: PageProps) {
   if (!menu) {
     notFound();
   }
+
+  // Tentukan kategori tujuan kembali (dari query param atau dari category_id menu ini)
+  const returnCatId = sParams.cat || menu.category_id || "";
+  const returnUrl = returnCatId ? `/?cat=${returnCatId}#menu` : "/#menu";
+  const returnCategoryName = menu.categories?.name || "Katalog";
 
   const profile = profileRes?.data || {
     name: "DAPOER PMCSU",
@@ -223,12 +230,12 @@ export default async function MenuDetailPage({ params }: PageProps) {
           {/* Action Button */}
           <div className="flex items-center gap-3">
             <Link
-              href="/#menu"
+              href={returnUrl}
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/90 border border-[#CBDFA5] text-[#23382C] hover:bg-[#D8B669] hover:border-[#D8B669] hover:text-[#212E24] text-xs font-bold shadow-xs transition-all active:scale-95"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span className="hidden sm:inline">Lihat Semua Menu</span>
-              <span className="sm:hidden">Katalog</span>
+              <span className="hidden sm:inline">Kembali ke {returnCategoryName}</span>
+              <span className="sm:hidden">Kembali</span>
             </Link>
           </div>
         </div>
@@ -242,7 +249,7 @@ export default async function MenuDetailPage({ params }: PageProps) {
             Beranda
           </Link>
           <ChevronRight className="w-3.5 h-3.5 text-[#8D6B26]" />
-          <Link href="/#menu" className="hover:text-[#23382C] transition-colors">
+          <Link href={returnUrl} className="hover:text-[#23382C] transition-colors">
             Katalog Menu
           </Link>
           {menu.categories?.name && (

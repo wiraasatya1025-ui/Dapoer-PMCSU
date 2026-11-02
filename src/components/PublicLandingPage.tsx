@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import {
   UtensilsCrossed,
@@ -120,6 +120,23 @@ export default function PublicLandingPage({
   const [activeGalleryTab, setActiveGalleryTab] = useState<string>("buffet");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeNavPopup, setActiveNavPopup] = useState<string | null>(null);
+
+  // Baca parameter kategori dari URL query string (?cat=...) saat pertama kali dibuka / kembali
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const catParam = params.get("cat");
+      if (catParam) {
+        // Cek apakah catParam cocok dengan ID kategori atau slug
+        const matched = categories.find(
+          (c) => String(c.id) === catParam || c.slug === catParam
+        );
+        if (matched) {
+          setSelectedCat(String(matched.id));
+        }
+      }
+    }
+  }, [categories]);
 
   const waPhone = settings.wa_phone || "6281234567890";
   const rawTemplate =
@@ -792,7 +809,7 @@ export default function PublicLandingPage({
                             className="flex-shrink-0 snap-center w-[250px] sm:w-[280px] lg:w-[calc(33.333%-16px)] bg-[#FCFBF6] rounded-2xl sm:rounded-3xl border border-[#E1DEC9] overflow-hidden flex flex-col cursor-pointer transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-[#C9A24D]/15 hover:border-[#C9A24D]"
                           >
                             {/* Image */}
-                            <Link href={`/menus/${menu.id}`} className="h-36 sm:h-48 bg-[#F1EFE6] relative overflow-hidden block">
+                            <Link href={`/menus/${menu.id}?cat=${menu.category_id}`} className="h-36 sm:h-48 bg-[#F1EFE6] relative overflow-hidden block">
                               {menu.image_url ? (
                                 <img src={menu.image_url} alt={menu.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                               ) : (
@@ -830,10 +847,10 @@ export default function PublicLandingPage({
                             {/* Body */}
                             <div className="p-3.5 sm:p-5 flex-1 flex flex-col justify-between">
                               <div>
-                                <Link href={`/menus/${menu.id}`} className="text-sm sm:text-base font-bold text-[#23382C] line-clamp-1 hover:text-[#9F7A2D] transition-colors block mb-0.5 sm:mb-1 font-serif">
+                                <Link href={`/menus/${menu.id}?cat=${menu.category_id}`} className="text-sm sm:text-base font-bold text-[#23382C] line-clamp-1 hover:text-[#9F7A2D] transition-colors block mb-0.5 sm:mb-1 font-serif">
                                   {menu.name}
                                 </Link>
-                                <Link href={`/menus/${menu.id}`} className="block mb-2 sm:mb-3">
+                                <Link href={`/menus/${menu.id}?cat=${menu.category_id}`} className="block mb-2 sm:mb-3">
                                   <p className="text-[11px] sm:text-xs text-[#55695D] line-clamp-2 leading-relaxed">{menu.description || "Hubungi admin untuk kustomisasi lauk dan menu."}</p>
                                   <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-[#9F7A2D] mt-1 hover:underline">Lihat Menu Lengkap &rarr;</span>
                                 </Link>
