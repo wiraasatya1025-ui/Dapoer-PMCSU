@@ -204,11 +204,7 @@ export default async function MenuDetailPage({ params }: PageProps) {
               <span className="font-semibold text-[#23382C]">Jam Operasional:</span>
               <span>{profile.operating_hours || "Buka Setiap Hari: 08.00 - 20.00 WIB"}</span>
             </span>
-            <span className="hidden sm:inline-flex items-center gap-2">
-              <span className="text-[#A5BA8C] font-bold">&bull;</span>
-              <Sparkles className="w-3.5 h-3.5 text-[#C9A24D] shrink-0" />
-              <span className="text-[#8D6B26] font-semibold">Tersertifikasi Halal Resmi ID110025607930825</span>
-            </span>
+
           </div>
           <Link
             href="/#menu"
