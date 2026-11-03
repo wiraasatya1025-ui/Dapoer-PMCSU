@@ -1299,7 +1299,7 @@ export default function PublicLandingPage({
                 <div className="flex items-center text-[#F59E0B]">
                   {"★★★★★"}
                 </div>
-                <span>Lihat Ulasan di Google Maps</span>
+                <span>Lihat Ulasan di Google Review</span>
                 <ExternalLink className="w-3.5 h-3.5 text-[#8D6B26]" />
               </a>
             </div>
