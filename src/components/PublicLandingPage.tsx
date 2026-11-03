@@ -1296,7 +1296,7 @@ export default function PublicLandingPage({
                     ? profile.maps_url.startsWith("http")
                       ? profile.maps_url
                       : `https://${profile.maps_url}`
-                    : "https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z/data=!4m18!1m9!3m8!1s0x2e69f272f042f0fd:0x5fa547fbfd9ec7ef!2sPasar+Minggu+Catering+Service!8m2!3d-6.2900409!4d106.8438304!9m1!1b1!16s%2Fg%2F11cm13p_qy!3m7!1s0x2e69f272f042f0fd:0x5fa547fbfd9ec7ef!8m2!3d-6.2900409!4d106.8438304!9m1!1b1!16s%2Fg%2F11cm13p_qy?hl=id"
+                    : "https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z/data=!3m1!4b1!4m6!3m5!1s0x2e69f272f042f0fd:0x5fa547fbfd9ec7ef!8m2!3d-6.2900409!4d106.8438304!16s%2Fg%2F11cm13p_qy?hl=id"
                 }
                 target="_blank"
                 rel="noopener noreferrer"
