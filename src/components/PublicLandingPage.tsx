@@ -133,22 +133,16 @@ export default function PublicLandingPage({
         );
         if (matched) {
           setSelectedCat(String(matched.id));
-          // Tunggu halaman render penuh, lalu jump dekat + smooth scroll ke posisi tepat
-          const scrollToMenu = () => {
+          // Langsung lompat ke section menu tanpa animasi scroll dari atas
+          const jumpToMenu = () => {
             const menuSection = document.getElementById("menu");
-            if (!menuSection) return;
-            const targetY = menuSection.getBoundingClientRect().top + window.scrollY - 80;
-            // Instantly lompat ke 250px di atas target
-            window.scrollTo({ top: Math.max(0, targetY - 250), behavior: "instant" });
-            // Dua frame kemudian smooth scroll ke posisi tepat
-            requestAnimationFrame(() => {
-              requestAnimationFrame(() => {
-                window.scrollTo({ top: targetY, behavior: "smooth" });
-              });
-            });
+            if (menuSection) {
+              menuSection.scrollIntoView({ behavior: "instant" });
+            } else {
+              requestAnimationFrame(jumpToMenu);
+            }
           };
-          // Tunggu 200ms agar semua elemen (gambar, dll) selesai render
-          setTimeout(scrollToMenu, 200);
+          requestAnimationFrame(jumpToMenu);
         }
       }
     }
