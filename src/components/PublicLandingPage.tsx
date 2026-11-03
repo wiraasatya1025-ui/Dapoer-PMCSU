@@ -225,24 +225,23 @@ export default function PublicLandingPage({
 
   return (
     <div className="min-h-screen bg-[#E6F0CA] text-[#23382C] flex flex-col font-sans selection:bg-[#C9A24D] selection:text-white relative">
-      {/* Continuous Seamless Full-Page Photographic Background (Optimized for GPU Rasterization) */}
+      {/* Continuous Seamless Full-Page Photographic Background */}
       <div 
-        className="fixed inset-0 z-0 pointer-events-none transform-gpu will-change-transform"
+        className="fixed inset-0 z-0 pointer-events-none transform-gpu"
         style={{ transform: "translateZ(0)" }}
       >
         <img
-          src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1920&q=75"
+          src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=2200&q=80"
           alt="Continuous Catering Background"
-          className="w-full h-full object-cover object-center opacity-15"
-          loading="eager"
+          className="w-full h-full object-cover object-center opacity-25 mix-blend-multiply"
           decoding="async"
         />
-        {/* Continuous Soft Sage Overlay */}
-        <div className="absolute inset-0 bg-[#E6F0CA]/85" />
+        {/* Continuous Soft Sage Overlay (Tanpa backdrop-blur berat agar tidak lag di Chrome) */}
+        <div className="absolute inset-0 bg-[#E6F0CA]/80" />
       </div>
 
       {/* Top Announcement Bar with Running Marquee Text */}
-      <div className="relative z-40 bg-[#DFECC0]/90 backdrop-blur-sm text-[#3D5245] py-2 overflow-hidden text-xs font-medium border-b border-[#D2E2AF]/60">
+      <div className="relative z-40 bg-[#DFECC0] text-[#3D5245] py-2 overflow-hidden text-xs font-medium border-b border-[#D2E2AF]/60">
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between gap-4">
           {/* Running Marquee Container */}
           <div className="flex-1 overflow-hidden relative select-none">
@@ -297,7 +296,7 @@ export default function PublicLandingPage({
       </div>
 
       {/* Main Header with Soft Sage Green Background */}
-      <header className="z-40 bg-[#E6F0CA]/90 backdrop-blur-md border-b border-[#D5E5B2] shadow-xs">
+      <header className="z-40 bg-[#E6F0CA]/95 border-b border-[#D5E5B2] shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           {/* Pojok Kiri: Halal Indonesia Badge & Logo Brand */}
           <div className="flex items-center gap-4 sm:gap-6 shrink-0">
@@ -1565,7 +1564,7 @@ export default function PublicLandingPage({
     </div>
 
       {/* Footer (Warm Golden Ochre Marquee Tone matching the banner in Image 1) */}
-      <footer className="relative z-10 bg-[#DFECC0]/80 backdrop-blur-xs text-[#3D5245] pt-12 pb-6 px-4 border-t border-[#D5E5B2]/60 overflow-hidden">
+      <footer className="relative z-10 bg-[#DFECC0]/85 text-[#3D5245] pt-12 pb-6 px-4 border-t border-[#D5E5B2]/60 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto">
           {/* Ringkasan Logistik & Area Pengiriman di Footer */}
           <div className="mb-10 pb-8 border-b border-[#CBDFA5] grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">

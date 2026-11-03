@@ -192,24 +192,22 @@ export default async function MenuDetailPage({ params, searchParams }: PageProps
 
   return (
     <div className="min-h-screen bg-[#E6F0CA] text-[#23382C] flex flex-col font-sans selection:bg-[#C9A24D] selection:text-white relative">
-      {/* Continuous Seamless Full-Page Photographic Background (Optimized for GPU Rasterization) */}
+      {/* Continuous Seamless Full-Page Photographic Background */}
       <div 
-        className="fixed inset-0 z-0 pointer-events-none transform-gpu will-change-transform"
+        className="fixed inset-0 z-0 pointer-events-none transform-gpu"
         style={{ transform: "translateZ(0)" }}
       >
         <img
-          src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1920&q=75"
+          src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=2200&q=80"
           alt="Continuous Catering Background"
-          className="w-full h-full object-cover object-center opacity-15"
-          loading="eager"
+          className="w-full h-full object-cover object-center opacity-25 mix-blend-multiply"
           decoding="async"
         />
-        <div className="absolute inset-0 bg-[#E6F0CA]/85" />
+        <div className="absolute inset-0 bg-[#E6F0CA]/80" />
       </div>
 
-
       {/* Main Header (Sage Green Tone & Halal Badge) */}
-      <header className="relative z-30 bg-[#E6F0CA]/90 backdrop-blur-md border-b border-[#D5E5B2] shadow-xs">
+      <header className="relative z-30 bg-[#E6F0CA]/95 border-b border-[#D5E5B2] shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           {/* Logo & Halal Badge */}
           <div className="flex items-center gap-4 sm:gap-6 shrink-0">
