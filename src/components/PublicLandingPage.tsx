@@ -133,11 +133,17 @@ export default function PublicLandingPage({
         );
         if (matched) {
           setSelectedCat(String(matched.id));
-          // Langsung lompat ke section menu tanpa animasi scroll dari atas
+          // Langsung lompat tepat ke posisi filter kategori & kartu menu (seperti gambar 2)
           const jumpToMenu = () => {
-            const menuSection = document.getElementById("menu");
-            if (menuSection) {
-              menuSection.scrollIntoView({ behavior: "instant" });
+            const targetEl = document.getElementById("kategori-menu") || document.getElementById("menu");
+            if (targetEl) {
+              const headerOffset = 90;
+              const elementPosition = targetEl.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "instant",
+              });
             } else {
               requestAnimationFrame(jumpToMenu);
             }
@@ -716,7 +722,7 @@ export default function PublicLandingPage({
           </div>
 
           {/* Category Filter - Horizontal Scroll Slider with Navigation Arrows */}
-          <div className="relative mb-6 sm:mb-12 max-w-5xl mx-auto px-6 sm:px-10">
+          <div id="kategori-menu" className="relative mb-6 sm:mb-12 max-w-5xl mx-auto px-6 sm:px-10 scroll-mt-24">
             {/* Left Scroll Button */}
             <button
               onClick={() => {
