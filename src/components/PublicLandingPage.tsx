@@ -133,6 +133,17 @@ export default function PublicLandingPage({
         );
         if (matched) {
           setSelectedCat(String(matched.id));
+          // Langsung lompat ke section menu tanpa scroll animasi dari atas
+          const jumpToMenu = () => {
+            const menuSection = document.getElementById("menu");
+            if (menuSection) {
+              menuSection.scrollIntoView({ behavior: "instant" });
+            } else {
+              // Coba lagi setelah render berikutnya
+              requestAnimationFrame(jumpToMenu);
+            }
+          };
+          requestAnimationFrame(jumpToMenu);
         }
       }
     }

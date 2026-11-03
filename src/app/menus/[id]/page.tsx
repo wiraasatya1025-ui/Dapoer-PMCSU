@@ -78,7 +78,8 @@ export default async function MenuDetailPage({ params, searchParams }: PageProps
 
   // Tentukan kategori tujuan kembali (dari query param atau dari category_id menu ini)
   const returnCatId = sParams.cat || menu.category_id || "";
-  const returnUrl = returnCatId ? `/?cat=${returnCatId}#menu` : "/#menu";
+  // Tanpa #menu hash — scroll ke section menu ditangani oleh JS di PublicLandingPage (instant, tidak dari atas)
+  const returnUrl = returnCatId ? `/?cat=${returnCatId}` : "/";
   const returnCategoryName = menu.categories?.name || "Katalog";
 
   const profile = profileRes?.data || {
