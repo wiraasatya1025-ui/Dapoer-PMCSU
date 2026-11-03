@@ -133,22 +133,22 @@ export default function PublicLandingPage({
         );
         if (matched) {
           setSelectedCat(String(matched.id));
-          // Langsung lompat ke dekat section menu, lalu smooth scroll sedikit ke posisi tepat
-          const jumpToMenu = () => {
+          // Tunggu halaman render penuh, lalu jump dekat + smooth scroll ke posisi tepat
+          const scrollToMenu = () => {
             const menuSection = document.getElementById("menu");
-            if (menuSection) {
-              const targetTop = window.pageYOffset + menuSection.getBoundingClientRect().top - 80;
-              // Langsung posisikan 300px di atas section (tanpa animasi)
-              window.scrollTo({ top: Math.max(0, targetTop - 300), behavior: "instant" });
-              // Lalu smooth scroll sedikit ke posisi tepat
+            if (!menuSection) return;
+            const targetY = menuSection.getBoundingClientRect().top + window.scrollY - 80;
+            // Instantly lompat ke 250px di atas target
+            window.scrollTo({ top: Math.max(0, targetY - 250), behavior: "instant" });
+            // Dua frame kemudian smooth scroll ke posisi tepat
+            requestAnimationFrame(() => {
               requestAnimationFrame(() => {
-                menuSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                window.scrollTo({ top: targetY, behavior: "smooth" });
               });
-            } else {
-              requestAnimationFrame(jumpToMenu);
-            }
+            });
           };
-          requestAnimationFrame(jumpToMenu);
+          // Tunggu 200ms agar semua elemen (gambar, dll) selesai render
+          setTimeout(scrollToMenu, 200);
         }
       }
     }
