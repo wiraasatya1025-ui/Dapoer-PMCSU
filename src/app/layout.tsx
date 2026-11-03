@@ -63,7 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="id"
-      className={`${plusJakartaSans.variable} ${playfairDisplay.variable} h-full antialiased scroll-smooth`}
+      className={`${plusJakartaSans.variable} ${playfairDisplay.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
         <ServiceWorkerRegister />
