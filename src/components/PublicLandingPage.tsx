@@ -225,15 +225,20 @@ export default function PublicLandingPage({
 
   return (
     <div className="min-h-screen bg-[#E6F0CA] text-[#23382C] flex flex-col font-sans selection:bg-[#C9A24D] selection:text-white relative">
-      {/* Continuous Seamless Full-Page Photographic Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      {/* Continuous Seamless Full-Page Photographic Background (Optimized for GPU Rasterization) */}
+      <div 
+        className="fixed inset-0 z-0 pointer-events-none transform-gpu will-change-transform"
+        style={{ transform: "translateZ(0)" }}
+      >
         <img
-          src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=2500&q=85"
+          src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1920&q=75"
           alt="Continuous Catering Background"
-          className="w-full h-full object-cover object-center opacity-25 mix-blend-multiply"
+          className="w-full h-full object-cover object-center opacity-15"
+          loading="eager"
+          decoding="async"
         />
         {/* Continuous Soft Sage Overlay */}
-        <div className="absolute inset-0 bg-[#E6F0CA]/80 backdrop-blur-[0.5px]" />
+        <div className="absolute inset-0 bg-[#E6F0CA]/85" />
       </div>
 
       {/* Top Announcement Bar with Running Marquee Text */}
