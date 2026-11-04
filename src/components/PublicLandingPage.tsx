@@ -154,10 +154,38 @@ export default function PublicLandingPage({
     }
   }, [categories]);
 
-  const waPhone = settings.wa_phone || "6281234567890";
+  // Scroll-triggered animations menggunakan IntersectionObserver
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            // Sekali tampil, lepas observasi agar tidak re-trigger yang membuat lag
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    const elements = document.querySelectorAll(".reveal-init, .reveal-left, .reveal-right, .reveal-zoom");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [categories, menus, services, galleries, testimonials, activeGalleryTab]);
   const rawTemplate =
     settings.wa_template ||
     `Halo *{brand_name}*,\n\nSaya tertarik dan ingin memesan menu catering:\n🍱 *Nama Menu:* {menu_name}\n💵 *Harga:* {menu_price}\n✨ *Pilihan:* {menu_variant}\n\n*Format Data Acara:*\n• Nama Pemesan:\n• Tanggal & Waktu Acara:\n• Jumlah Porsi (Pax):\n• Alamat Pengantaran:\n\nMohon info ketersediaan dan detail selengkapnya. Terima kasih!`;
+
+  const waPhone = (profile.phone || "6282128755593").replace(/\D/g, "");
 
   const filteredMenus = menus.filter((m) => {
     if (selectedCat === "all") return true;
@@ -500,7 +528,7 @@ export default function PublicLandingPage({
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 xl:gap-12 items-center">
             {/* Left Column: Heading, Subtitle, Checklists & Action */}
-            <div className="lg:col-span-7 xl:col-span-8 space-y-4 sm:space-y-6">
+            <div className="lg:col-span-7 xl:col-span-8 space-y-4 sm:space-y-6 reveal-left">
               {/* Top Tagline */}
               <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#DFECC0] border border-[#CBDFA5] text-[#8D6B26] text-[11px] sm:text-xs font-black uppercase tracking-wider shadow-xs">
                 <Sparkles className="w-3.5 h-3.5 text-[#C9A24D]" />
@@ -568,7 +596,7 @@ export default function PublicLandingPage({
                 <a
                   href="#menu"
                   onClick={(e) => handleSmoothScroll(e, "menu")}
-                  className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] active:scale-95 text-[#212E24] font-extrabold text-sm sm:text-base rounded-full shadow-lg shadow-[#C9A24D]/35 hover:shadow-xl transition-all border border-[#DFBF73] cursor-pointer"
+                  className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] active:scale-95 text-[#212E24] font-extrabold text-sm sm:text-base rounded-full shadow-lg shadow-[#C9A24D]/35 hover:shadow-xl transition-all border border-[#DFBF73] cursor-pointer pulse-cta"
                 >
                   <span>Pilih Menu Sekarang</span>
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -606,8 +634,8 @@ export default function PublicLandingPage({
             </div>
 
             {/* Right Column: Logo PMC SU */}
-            <div className="lg:col-span-5 xl:col-span-4 flex items-center justify-center pt-4 sm:pt-6 lg:pt-0">
-              <div className="w-44 h-44 sm:w-72 sm:h-72 xl:w-80 xl:h-80 rounded-3xl bg-white p-4 sm:p-8 flex items-center justify-center shadow-lg shadow-[#23382C]/10 border-2 border-[#D5E5B2] hover:scale-105 transition-transform overflow-hidden">
+            <div className="lg:col-span-5 xl:col-span-4 flex items-center justify-center pt-4 sm:pt-6 lg:pt-0 reveal-zoom delay-150">
+              <div className="w-44 h-44 sm:w-72 sm:h-72 xl:w-80 xl:h-80 rounded-3xl bg-white p-4 sm:p-8 flex items-center justify-center shadow-lg shadow-[#23382C]/10 border-2 border-[#D5E5B2] hover:scale-105 transition-transform overflow-hidden animate-float">
                 <img
                   src={profile.logo_url || "/logo-dapoer-pmcsu.png"}
                   alt={profile.name}
@@ -622,7 +650,7 @@ export default function PublicLandingPage({
       {/* Section: Layanan Catering */}
       <section id="layanan" className="relative py-12 sm:py-24 text-[#23382C] overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-16">
+          <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-16 reveal-init">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Layanan Kami
             </span>
@@ -643,10 +671,12 @@ export default function PublicLandingPage({
                 features = [];
               }
 
+              const delayClass = idx === 0 ? "" : idx === 1 ? "delay-100" : idx === 2 ? "delay-200" : idx === 3 ? "delay-300" : "delay-400";
+
               return (
                 <div
                   key={service.id}
-                  className="bg-[#FCFBF6] rounded-2xl sm:rounded-3xl p-3 sm:p-6 border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 flex flex-col justify-between group"
+                  className={`bg-[#FCFBF6] rounded-2xl sm:rounded-3xl p-3 sm:p-6 border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 flex flex-col justify-between group reveal-init ${delayClass}`}
                 >
                   <div>
                     <div className="w-7 h-7 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-gradient-to-br from-[#DFECC0] to-[#CFE2A8] border border-[#CBDFA5] text-[#8D6B26] flex items-center justify-center font-black text-xs sm:text-lg mb-2 sm:mb-4 group-hover:scale-105 transition-transform">
@@ -693,7 +723,7 @@ export default function PublicLandingPage({
         className="relative py-12 sm:py-24 text-[#23382C] overflow-hidden"
       >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
+          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10 reveal-init">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Katalog Pilihan
             </span>
@@ -952,7 +982,7 @@ export default function PublicLandingPage({
       {/* Section: Galeri Acara (Event Highlights) - Portofolio Suasana Acara */}
       <section id="galeri" className="relative py-12 sm:py-24 text-[#23382C] overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10">
+          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-10 reveal-init">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Galeri Acara &bull; Event Highlights
             </span>
@@ -1095,10 +1125,12 @@ export default function PublicLandingPage({
 
             return (
               <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-                {filteredItems.map((item) => (
+                {filteredItems.map((item, idx) => {
+                  const delay = idx % 4 === 1 ? "delay-100" : idx % 4 === 2 ? "delay-200" : idx % 4 === 3 ? "delay-300" : "";
+                  return (
                   <div
                     key={item.id}
-                    className="group rounded-2xl sm:rounded-3xl overflow-hidden bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col"
+                    className={`group rounded-2xl sm:rounded-3xl overflow-hidden bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col reveal-zoom ${delay}`}
                   >
                     <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">
                       <img
@@ -1123,7 +1155,8 @@ export default function PublicLandingPage({
                       </div>
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             );
           })()}
@@ -1160,7 +1193,7 @@ export default function PublicLandingPage({
         {/* Section: Panduan Pemesanan */}
         <section id="cara-pesan" className="relative z-10 pt-12 sm:pt-24 pb-8 sm:pb-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-16 reveal-init">
               <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
                 Cara Pemesanan
               </span>
@@ -1173,7 +1206,7 @@ export default function PublicLandingPage({
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group">
+              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group reveal-init">
                 <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-sm sm:text-base flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-xs">
                   1
                 </span>
@@ -1184,7 +1217,7 @@ export default function PublicLandingPage({
                   Jelajahi ragam pilihan menu makanan, minuman, dan paket prasmanan sesuai selera Anda.
                 </p>
               </div>
-              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group">
+              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group reveal-init delay-150">
                 <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-sm sm:text-base flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-xs">
                   2
                 </span>
@@ -1195,7 +1228,7 @@ export default function PublicLandingPage({
                   Pilih varian atau paket yang diinginkan lalu tekan tombol pemesanan WhatsApp otomatis.
                 </p>
               </div>
-              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group">
+              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group reveal-init delay-300">
                 <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-sm sm:text-base flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-xs">
                   3
                 </span>
@@ -1206,7 +1239,7 @@ export default function PublicLandingPage({
                   Kirim pesan ke admin, lengkapi tanggal acara, jumlah porsi, serta alamat pengantaran.
                 </p>
               </div>
-              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group">
+              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group reveal-init delay-400">
                 <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-sm sm:text-base flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-xs">
                   4
                 </span>
@@ -1225,7 +1258,7 @@ export default function PublicLandingPage({
         <section id="tentang" className="relative z-10 pt-8 sm:pt-12 pb-12 sm:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+            <div className="space-y-6 reveal-left">
               <div>
                 <span className="inline-block text-xs font-bold uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full mb-3">
                   Tentang Brand Kami
@@ -1246,7 +1279,7 @@ export default function PublicLandingPage({
             </div>
 
             {/* Lokasi & Kontak Box */}
-            <div className="bg-[#FCFBF6] p-8 rounded-3xl border border-[#E1DEC9] shadow-xs space-y-6">
+            <div className="bg-[#FCFBF6] p-8 rounded-3xl border border-[#E1DEC9] shadow-xs space-y-6 reveal-right">
               <h3 className="text-xl font-bold text-[#23382C] flex items-center gap-2 font-serif">
                 <MapPin className="w-5 h-5 text-[#9F7A2D]" />
                 <span>Alamat & Lokasi Dapur Kami</span>
@@ -1279,7 +1312,7 @@ export default function PublicLandingPage({
       {/* Section: Bukti Sosial & Ulasan (Social Proof & Testimonials) */}
       <section id="testimoni" className="relative z-10 py-12 sm:py-20 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-14 reveal-init">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Ulasan Nyata Google Maps
             </span>
@@ -1364,7 +1397,7 @@ export default function PublicLandingPage({
 
             return (
               <>
-                <div className="relative mb-16 group">
+                <div className="relative mb-16 group reveal-init delay-150">
                   {/* Horizontal Scrollable Row with Native Touch Momentum */}
                   <div
                     ref={testimonialScrollRef}
@@ -1443,7 +1476,7 @@ export default function PublicLandingPage({
       {/* Section: Transparansi Area Pengiriman & Syarat (Logistics & FAQ) */}
       <section id="faq" className="relative z-10 py-12 sm:py-20 overflow-hidden">
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
+          <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12 reveal-init">
             <span className="text-xs font-black uppercase tracking-wider text-[#8D6B26] bg-[#DFECC0] border border-[#CBDFA5] px-3.5 py-1.5 rounded-full inline-block">
               Informasi Logistik & FAQ
             </span>
@@ -1457,7 +1490,7 @@ export default function PublicLandingPage({
 
           {/* Quick Highlight Cards: Minimum Order & Coverage */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-5 mb-6 sm:mb-10">
-            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] shadow-xs flex items-start gap-3 sm:gap-4">
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] shadow-xs flex items-start gap-3 sm:gap-4 reveal-init">
               <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#DFECC0] flex items-center justify-center text-[#212E24] shrink-0">
                 <Truck className="w-4 h-4 sm:w-5 sm:h-5 text-[#8D6B26]" />
               </div>
@@ -1472,7 +1505,7 @@ export default function PublicLandingPage({
               </div>
             </div>
 
-            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] shadow-xs flex items-start gap-3 sm:gap-4">
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] shadow-xs flex items-start gap-3 sm:gap-4 reveal-init delay-150">
               <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#DFECC0] flex items-center justify-center text-[#212E24] shrink-0">
                 <UtensilsCrossed className="w-4 h-4 sm:w-5 sm:h-5 text-[#8D6B26]" />
               </div>
@@ -1487,7 +1520,7 @@ export default function PublicLandingPage({
               </div>
             </div>
 
-            <div className="p-6 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] shadow-xs flex items-start gap-4">
+            <div className="p-6 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] shadow-xs flex items-start gap-4 reveal-init delay-300">
               <div className="w-10 h-10 rounded-2xl bg-[#DFECC0] flex items-center justify-center text-[#212E24] shrink-0">
                 <Clock className="w-5 h-5 text-[#8D6B26]" />
               </div>
