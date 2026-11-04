@@ -634,8 +634,8 @@ export default function PublicLandingPage({
             </div>
 
             {/* Right Column: Logo PMC SU */}
-            <div className="lg:col-span-5 xl:col-span-4 flex items-center justify-center pt-4 sm:pt-6 lg:pt-0 reveal-zoom delay-150">
-              <div className="w-44 h-44 sm:w-72 sm:h-72 xl:w-80 xl:h-80 rounded-3xl bg-white p-4 sm:p-8 flex items-center justify-center shadow-lg shadow-[#23382C]/10 border-2 border-[#D5E5B2] hover:scale-105 transition-transform overflow-hidden animate-float">
+            <div className="lg:col-span-5 xl:col-span-4 flex items-center justify-center pt-4 sm:pt-6 lg:pt-0">
+              <div className="w-44 h-44 sm:w-72 sm:h-72 xl:w-80 xl:h-80 rounded-3xl bg-white p-4 sm:p-8 flex items-center justify-center shadow-lg shadow-[#23382C]/10 border-2 border-[#D5E5B2] hover:scale-105 transition-transform overflow-hidden">
                 <img
                   src={profile.logo_url || "/logo-dapoer-pmcsu.png"}
                   alt={profile.name}

@@ -107,9 +107,8 @@ body {
 /* Scroll-triggered reveal animations (GPU-accelerated, zero-layout-shift) */
 .reveal-init {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .reveal-init.revealed {
@@ -119,9 +118,8 @@ body {
 
 .reveal-left {
   opacity: 0;
-  transform: translateX(-32px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateX(-24px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .reveal-left.revealed {
@@ -131,9 +129,8 @@ body {
 
 .reveal-right {
   opacity: 0;
-  transform: translateX(32px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateX(24px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .reveal-right.revealed {
@@ -143,9 +140,8 @@ body {
 
 .reveal-zoom {
   opacity: 0;
-  transform: scale(0.94);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: scale(0.96);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .reveal-zoom.revealed {
@@ -154,20 +150,20 @@ body {
 }
 
 /* Stagger delay utility classes */
-.delay-100 { transition-delay: 100ms; }
-.delay-150 { transition-delay: 150ms; }
-.delay-200 { transition-delay: 200ms; }
-.delay-300 { transition-delay: 300ms; }
-.delay-400 { transition-delay: 400ms; }
-.delay-500 { transition-delay: 500ms; }
+.delay-100 { transition-delay: 80ms; }
+.delay-150 { transition-delay: 120ms; }
+.delay-200 { transition-delay: 160ms; }
+.delay-300 { transition-delay: 240ms; }
+.delay-400 { transition-delay: 320ms; }
+.delay-500 { transition-delay: 400ms; }
 
-/* Micro-interaction pulses for key CTA elements */
+/* Micro-interaction pulses for key CTA elements - uses transform/opacity to avoid box-shadow repaint */
 @keyframes softPulseGlow {
   0%, 100% {
-    box-shadow: 0 4px 14px 0 rgba(215, 180, 101, 0.35);
+    transform: scale(1);
   }
   50% {
-    box-shadow: 0 6px 22px 4px rgba(215, 180, 101, 0.55);
+    transform: scale(1.02);
   }
 }
 
