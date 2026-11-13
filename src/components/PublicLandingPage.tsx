@@ -1205,50 +1205,42 @@ export default function PublicLandingPage({
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group reveal-init">
-                <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-sm sm:text-base flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-xs">
-                  1
-                </span>
-                <h4 className="font-bold text-[#23382C] text-sm sm:text-base mb-1 group-hover:text-[#9F7A2D] transition-colors font-serif">
-                  Pilih Menu
-                </h4>
-                <p className="text-[#55695D] text-[11px] sm:text-xs leading-relaxed">
-                  Jelajahi ragam pilihan menu makanan, minuman, dan paket prasmanan sesuai selera Anda.
-                </p>
-              </div>
-              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group reveal-init delay-150">
-                <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-sm sm:text-base flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-xs">
-                  2
-                </span>
-                <h4 className="font-bold text-[#23382C] text-sm sm:text-base mb-1 group-hover:text-[#9F7A2D] transition-colors font-serif">
-                  Pesan via WA
-                </h4>
-                <p className="text-[#55695D] text-[11px] sm:text-xs leading-relaxed">
-                  Pilih varian atau paket yang diinginkan lalu tekan tombol pemesanan WhatsApp otomatis.
-                </p>
-              </div>
-              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group reveal-init delay-300">
-                <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-sm sm:text-base flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-xs">
-                  3
-                </span>
-                <h4 className="font-bold text-[#23382C] text-sm sm:text-base mb-1 group-hover:text-[#9F7A2D] transition-colors font-serif">
-                  Konsultasi Detail
-                </h4>
-                <p className="text-[#55695D] text-[11px] sm:text-xs leading-relaxed">
-                  Kirim pesan ke admin, lengkapi tanggal acara, jumlah porsi, serta alamat pengantaran.
-                </p>
-              </div>
-              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group reveal-init delay-400">
-                <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-sm sm:text-base flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-xs">
-                  4
-                </span>
-                <h4 className="font-bold text-[#23382C] text-sm sm:text-base mb-1 group-hover:text-[#9F7A2D] transition-colors font-serif">
-                  Konfirmasi & Antar
-                </h4>
-                <p className="text-[#55695D] text-[11px] sm:text-xs leading-relaxed">
-                  Admin mengonfirmasi rincian pesanan dan hidangan lezat siap diantar tepat waktu.
-                </p>
-              </div>
+              {[
+                {
+                  title: settings.step1_title || "Pilih Menu",
+                  desc: settings.step1_desc || "Jelajahi ragam pilihan menu makanan, minuman, dan paket prasmanan sesuai selera Anda.",
+                },
+                {
+                  title: settings.step2_title || "Pesan via WA",
+                  desc: settings.step2_desc || "Pilih varian atau paket yang diinginkan lalu tekan tombol pemesanan WhatsApp otomatis.",
+                },
+                {
+                  title: settings.step3_title || "Konsultasi Detail",
+                  desc: settings.step3_desc || "Kirim pesan ke admin, lengkapi tanggal acara, jumlah porsi, serta alamat pengantaran.",
+                },
+                {
+                  title: settings.step4_title || "Konfirmasi & Antar",
+                  desc: settings.step4_desc || "Admin mengonfirmasi rincian pesanan dan hidangan lezat siap diantar tepat waktu.",
+                },
+              ].map((step, idx) => {
+                const delays = ["", "delay-150", "delay-300", "delay-400"];
+                return (
+                  <div
+                    key={idx}
+                    className={`p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#FCFBF6] border border-[#E1DEC9] hover:border-[#C9A24D] shadow-xs hover:shadow-xl hover:shadow-[#C9A24D]/15 transition-all duration-300 group reveal-init ${delays[idx]}`}
+                  >
+                    <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#D8B669] text-[#212E24] font-black text-sm sm:text-base flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform shadow-xs">
+                      {idx + 1}
+                    </span>
+                    <h4 className="font-bold text-[#23382C] text-sm sm:text-base mb-1 group-hover:text-[#9F7A2D] transition-colors font-serif">
+                      {step.title}
+                    </h4>
+                    <p className="text-[#55695D] text-[11px] sm:text-xs leading-relaxed">
+                      {step.desc}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -1486,53 +1478,71 @@ export default function PublicLandingPage({
 
           {/* Accordion FAQ List */}
           <div className="space-y-3">
-            {[
-              {
-                q: "Berapa minimum pemesanan (pax) untuk acara saya?",
-                a: "Minimum order untuk pemesanan adalah mulai dari 50 pax lengkap dengan peralatan saji dan standar higienis terbaik. Kami juga melayani pesanan tumpeng dan paket khusus lainnya.",
-              },
-              {
-                q: "Daerah mana saja yang dijangkau oleh pengiriman DAPOER PMCSU?",
-                a: "Kami melayani pengantaran ke seluruh area Jabodetabek (Jakarta Pusat, Selatan, Timur, Barat, Utara, Depok, Tangerang Kota, Tangerang Selatan, Bekasi, hingga sebagian Bogor). Khusus area Jakarta Selatan tersedia promo subsidi ongkir.",
-              },
-              {
-                q: "Bagaimana cara pembayaran dan sistem pelunasan catering?",
-                a: "Pemesanan dinyatakan terkonfirmasi setelah pembayaran DP (Down Payment) sebesar 30%–50%. Pelunasan dapat dilakukan maksimal H-1 sebelum tanggal pengantaran atau sesuai kesepakatan invoice korporat.",
-              },
-              {
-                q: "Apakah bisa request tester menu (food tasting) sebelum deal besar?",
-                a: "Tentu bisa! Untuk pesanan resepsi pernikahan atau corporate event di atas 300 pax, kami menyediakan complimentary food tasting di dapur utama kami atau dikirimkan tester sample box ke alamat Anda.",
-              },
-              {
-                q: "Apakah seluruh hidangan terjamin 100% Halal?",
-                a: "Ya, 100% halal. Seluruh bahan hewani (daging sapi, ayam) disembelih secara syar'i bersertifikasi halal, dan dapur kami menerapkan sistem pemisahan bebas dari bahan non-halal maupun kontaminasi silang.",
-              },
-            ].map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div
-                  key={idx}
-                  className="rounded-2xl bg-[#FCFBF6] border border-[#CBDFA5] overflow-hidden transition-all duration-200"
-                >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-[#23382C] text-sm hover:text-[#9F7A2D] transition-colors"
+            {(() => {
+              let parsedFaq: { q: string; a?: string; d?: string }[] = [];
+              try {
+                if (settings.faq_data) {
+                  const data = JSON.parse(settings.faq_data);
+                  if (Array.isArray(data) && data.length > 0) {
+                    parsedFaq = data;
+                  }
+                }
+              } catch (e) {
+                console.error("Error parsing faq_data:", e);
+              }
+
+              const list = parsedFaq.length > 0
+                ? parsedFaq.map(item => ({ q: item.q, a: item.a || item.d || "" }))
+                : [
+                    {
+                      q: "Berapa minimum pemesanan (pax) untuk acara saya?",
+                      a: "Minimum order untuk pemesanan adalah mulai dari 50 pax lengkap dengan peralatan saji dan standar higienis terbaik. Kami juga melayani pesanan tumpeng dan paket khusus lainnya.",
+                    },
+                    {
+                      q: "Daerah mana saja yang dijangkau oleh pengiriman DAPOER PMCSU?",
+                      a: "Kami melayani pengantaran ke seluruh area Jabodetabek (Jakarta Pusat, Selatan, Timur, Barat, Utara, Depok, Tangerang Kota, Tangerang Selatan, Bekasi, hingga sebagian Bogor). Khusus area Jakarta Selatan tersedia promo subsidi ongkir.",
+                    },
+                    {
+                      q: "Bagaimana cara pembayaran dan sistem pelunasan catering?",
+                      a: "Pemesanan dinyatakan terkonfirmasi setelah pembayaran DP (Down Payment) sebesar 30%–50%. Pelunasan dapat dilakukan maksimal H-1 sebelum tanggal pengantaran atau sesuai kesepakatan invoice korporat.",
+                    },
+                    {
+                      q: "Apakah bisa request tester menu (food tasting) sebelum deal besar?",
+                      a: "Tentu bisa! Untuk pesanan resepsi pernikahan atau corporate event di atas 300 pax, kami menyediakan complimentary food tasting di dapur utama kami atau dikirimkan tester sample box ke alamat Anda.",
+                    },
+                    {
+                      q: "Apakah seluruh hidangan terjamin 100% Halal?",
+                      a: "Ya, 100% halal. Seluruh bahan hewani (daging sapi, ayam) disembelih secara syar'i bersertifikasi halal, dan dapur kami menerapkan sistem pemisahan bebas dari bahan non-halal maupun kontaminasi silang.",
+                    },
+                  ];
+
+              return list.map((faq, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <div
+                    key={idx}
+                    className="rounded-2xl bg-[#FCFBF6] border border-[#CBDFA5] overflow-hidden transition-all duration-200"
                   >
-                    <span>{faq.q}</span>
-                    <ChevronDown
-                      className={`w-4 h-4 text-[#8D6B26] shrink-0 transition-transform duration-200 ${
-                        isOpen ? "rotate-180 text-[#9F7A2D]" : ""
-                      }`}
-                    />
-                  </button>
-                  {isOpen && (
-                    <div className="px-5 pb-5 pt-0 text-xs text-[#55695D] leading-relaxed border-t border-[#E1DEC9]/40 pt-3">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : idx)}
+                      className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-[#23382C] text-sm hover:text-[#9F7A2D] transition-colors"
+                    >
+                      <span>{faq.q}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-[#8D6B26] shrink-0 transition-transform duration-200 ${
+                          isOpen ? "rotate-180 text-[#9F7A2D]" : ""
+                        }`}
+                      />
+                    </button>
+                    {isOpen && (
+                      <div className="px-5 pb-5 pt-0 text-xs text-[#55695D] leading-relaxed border-t border-[#E1DEC9]/40 pt-3">
+                        {faq.a}
+                      </div>
+                    )}
+                  </div>
+                );
+              });
+            })()}
           </div>
         </div>
       </section>

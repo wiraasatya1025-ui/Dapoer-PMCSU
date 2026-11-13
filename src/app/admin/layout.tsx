@@ -13,6 +13,9 @@ import {
   Settings,
   LogOut,
   ExternalLink,
+  Building2,
+  ListOrdered,
+  HelpCircle,
 } from "lucide-react";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -27,12 +30,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const navItems = [
     { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
+    { label: "Tentang Kami", href: "/admin/settings", icon: Building2 },
+    { label: "Layanan", href: "/admin/services", icon: Briefcase },
     { label: "Katalog Menu", href: "/admin/menus", icon: BookOpen },
     { label: "Kategori Menu", href: "/admin/categories", icon: FolderTree },
-    { label: "Layanan", href: "/admin/services", icon: Briefcase },
-    { label: "Portofolio Acara", href: "/admin/gallery", icon: ImageIcon },
-    { label: "Testimoni", href: "/admin/testimonials", icon: MessageSquareQuote },
-    { label: "Tentang Kami & WhatsApp", href: "/admin/settings", icon: Settings },
+    { label: "Galeri Acara", href: "/admin/gallery", icon: ImageIcon },
+    { label: "Panduan Pesan", href: "/admin/how-to-order", icon: ListOrdered },
+    { label: "Ulasan", href: "/admin/testimonials", icon: MessageSquareQuote },
+    { label: "FAQ & Area", href: "/admin/faq", icon: HelpCircle },
   ];
 
   return (

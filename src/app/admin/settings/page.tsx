@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { MessageSquare, Building2, MapPin, Phone, Camera, Clock, CheckCircle } from "lucide-react";
+import { MessageSquare, Building2, MapPin, Camera, CheckCircle } from "lucide-react";
 
 export default function AdminSettingsPage() {
   const [loading, setLoading] = useState(true);
@@ -38,14 +38,6 @@ export default function AdminSettingsPage() {
     trust_badge_3: "",
     // E-Brosur / PDF
     pdf_catalog_url: "",
-    // Logistik & Area Pengiriman
-    delivery_area_text: "",
-    min_order_text: "",
-    lead_time_text: "",
-    // FAQ JSON
-    faq_data: "",
-    // Klien Korporat
-    corporate_clients: "",
   });
 
   const fetchData = async () => {
@@ -83,11 +75,6 @@ export default function AdminSettingsPage() {
           trust_badge_2: s.trust_badge_2 || "Standar Higienis & Dapur Steril",
           trust_badge_3: s.trust_badge_3 || "Bahan Pangan Segar Pilihan",
           pdf_catalog_url: s.pdf_catalog_url || "",
-          delivery_area_text: s.delivery_area_text || "Seluruh Jabodetabek (Jakarta, Bogor, Depok, Tangerang, Bekasi)",
-          min_order_text: s.min_order_text || "Mulai 20 Pax (Nasi Box) &bull; Prasmanan min. 50 Pax",
-          lead_time_text: s.lead_time_text || "H-2 Acara Berjalan (Menerima pesanan darurat)",
-          faq_data: s.faq_data || "",
-          corporate_clients: s.corporate_clients || "Bank Mandiri, Telkom Indonesia, Pertamina Group, Kementerian BUMN, Unilever ID, Astra International",
         });
       }
     } catch (err) {
@@ -129,7 +116,7 @@ export default function AdminSettingsPage() {
         <div>
           <h1 className="text-2xl font-bold text-stone-900">Tentang Kami & Pengaturan WhatsApp</h1>
           <p className="text-stone-500 text-sm mt-0.5">
-            Kelola profil tentang brand, visi misi, kontak, jam operasional, dan format pesan WhatsApp otomatis pelanggan.
+            Kelola profil brand, visi misi, kontak, jam operasional, dan format pesan WhatsApp otomatis pelanggan.
           </p>
         </div>
         <div className="flex items-center gap-3">
@@ -438,56 +425,6 @@ export default function AdminSettingsPage() {
           <span className="text-[11px] text-stone-400 mt-1 block">
             Jika diisi link Google Drive / PDF Cloud, tombol "Unduh Menu PDF" akan langsung membuka link ini.
           </span>
-        </div>
-      </div>
-
-      {/* Logistik & FAQ & Klien Korporat */}
-      <div className="bg-white rounded-2xl border border-stone-200/80 p-6 shadow-sm space-y-4">
-        <h2 className="text-base font-bold text-stone-900 flex items-center gap-2">
-          <Clock className="w-5 h-5 text-[#8D6B26]" />
-          <span>Informasi Logistik, Area Pengiriman & Klien Korporat</span>
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <label className="block text-xs font-semibold text-stone-700 mb-1">Jangkauan Area Pengiriman</label>
-            <input
-              type="text"
-              value={formData.delivery_area_text}
-              onChange={(e) => setFormData({ ...formData, delivery_area_text: e.target.value })}
-              className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm"
-            />
-          </div>
-          <div>
-            <label className="block text-xs font-semibold text-stone-700 mb-1">Minimum Pemesanan (Pax)</label>
-            <input
-              type="text"
-              value={formData.min_order_text}
-              onChange={(e) => setFormData({ ...formData, min_order_text: e.target.value })}
-              className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm"
-            />
-          </div>
-          <div>
-            <label className="block text-xs font-semibold text-stone-700 mb-1">Ketentuan Lead Time Reservasi</label>
-            <input
-              type="text"
-              value={formData.lead_time_text}
-              onChange={(e) => setFormData({ ...formData, lead_time_text: e.target.value })}
-              className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-xs font-semibold text-stone-700 mb-1">
-            Daftar Logo Klien Perusahaan (Pisahkan dengan koma)
-          </label>
-          <input
-            type="text"
-            value={formData.corporate_clients}
-            onChange={(e) => setFormData({ ...formData, corporate_clients: e.target.value })}
-            placeholder="Contoh: Bank Mandiri, Telkom Indonesia, Pertamina, BCA, Unilever"
-            className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm"
-          />
         </div>
       </div>
     </form>
