@@ -117,6 +117,7 @@ export default function PublicLandingPage({
   const menuScrollRef = useRef<HTMLDivElement>(null);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const testimonialScrollRef = useRef<HTMLDivElement>(null);
+  const [isTestimonialHovered, setIsTestimonialHovered] = useState(false);
   const [activeGalleryTab, setActiveGalleryTab] = useState<string>("buffet");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeNavPopup, setActiveNavPopup] = useState<string | null>(null);
@@ -153,6 +154,31 @@ export default function PublicLandingPage({
       }
     }
   }, [categories]);
+
+  // Auto-play review berjalan otomatis ke samping setiap 3.5 detik (pause saat kursor di atasnya / disentuh)
+  useEffect(() => {
+    if (isTestimonialHovered) return;
+
+    const interval = setInterval(() => {
+      const container = testimonialScrollRef.current;
+      if (!container) return;
+
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      const cardWidth = container.firstElementChild
+        ? (container.firstElementChild as HTMLElement).offsetWidth + 20
+        : 320;
+
+      // Jika sudah hampir mentok di ujung kanan, kembali ke paling awal (looping mulus)
+      if (container.scrollLeft >= maxScroll - 20) {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+        setTestimonialIndex(0);
+      } else {
+        container.scrollBy({ left: cardWidth, behavior: "smooth" });
+      }
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [isTestimonialHovered, testimonials]);
 
   // Scroll-triggered animations menggunakan IntersectionObserver
   useEffect(() => {
@@ -1397,7 +1423,13 @@ export default function PublicLandingPage({
 
             return (
               <>
-                <div className="relative mb-16 group reveal-init delay-150">
+                <div 
+                  className="relative mb-16 group reveal-init delay-150"
+                  onMouseEnter={() => setIsTestimonialHovered(true)}
+                  onMouseLeave={() => setIsTestimonialHovered(false)}
+                  onTouchStart={() => setIsTestimonialHovered(true)}
+                  onTouchEnd={() => setIsTestimonialHovered(false)}
+                >
                   {/* Horizontal Scrollable Row with Native Touch Momentum */}
                   <div
                     ref={testimonialScrollRef}
