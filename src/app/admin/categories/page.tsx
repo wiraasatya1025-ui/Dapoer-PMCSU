@@ -75,7 +75,7 @@ export default function AdminCategoriesPage() {
         {/* Form Tambah */}
         <div className="bg-white p-5 rounded-2xl border border-stone-200/80 shadow-sm h-fit">
           <h2 className="text-base font-bold text-stone-900 mb-3 flex items-center gap-2">
-            <Plus className="w-4 h-4 text-orange-600" />
+            <Plus className="w-4 h-4 text-[#8D6B26]" />
             <span>Tambah Kategori</span>
           </h2>
           <form onSubmit={handleAdd} className="space-y-3">
@@ -87,7 +87,7 @@ export default function AdminCategoriesPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Contoh: Coffee Break & Pastry"
-                className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
+                className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A24D]/30 focus:border-[#C9A24D]"
               />
             </div>
             <div>
@@ -96,12 +96,12 @@ export default function AdminCategoriesPage() {
                 type="number"
                 value={sortOrder}
                 onChange={(e) => setSortOrder(Number(e.target.value))}
-                className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
+                className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A24D]/30 focus:border-[#C9A24D]"
               />
             </div>
             <button
               type="submit"
-              className="w-full py-2.5 bg-orange-600 hover:bg-orange-700 text-white rounded-xl text-sm font-semibold shadow-sm transition-all mt-2"
+              className="w-full py-2.5 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] text-[#212E24] border border-[#DFBF73] text-white rounded-xl text-sm font-semibold shadow-sm transition-all mt-2"
             >
               Simpan Kategori
             </button>

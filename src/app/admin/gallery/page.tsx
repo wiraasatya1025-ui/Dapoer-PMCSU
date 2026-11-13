@@ -107,7 +107,7 @@ export default function AdminGalleryPage() {
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-orange-600 hover:bg-orange-700 text-white rounded-xl text-sm font-semibold shadow-sm"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] text-[#212E24] border border-[#DFBF73] text-white rounded-xl text-sm font-semibold shadow-sm"
         >
           <Plus className="w-4 h-4" />
           <span>Upload Foto Acara</span>
@@ -140,7 +140,7 @@ export default function AdminGalleryPage() {
                 </button>
               </div>
               <div className="p-3">
-                <span className="text-[11px] font-semibold text-orange-600 uppercase block">{item.event_type || "Acara"}</span>
+                <span className="text-[11px] font-semibold text-[#8D6B26] uppercase block">{item.event_type || "Acara"}</span>
                 <h4 className="font-semibold text-stone-900 text-xs line-clamp-1">{item.title}</h4>
                 {item.event_date && (
                   <span className="text-[11px] text-stone-400 flex items-center gap-1 mt-1">

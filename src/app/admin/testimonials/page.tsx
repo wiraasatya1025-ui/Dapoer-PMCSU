@@ -83,7 +83,7 @@ export default function AdminTestimonialsPage() {
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-orange-600 hover:bg-orange-700 text-white rounded-xl text-sm font-semibold shadow-sm"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] text-[#212E24] border border-[#DFBF73] text-white rounded-xl text-sm font-semibold shadow-sm"
         >
           <Plus className="w-4 h-4" />
           <span>Tambah Testimoni</span>

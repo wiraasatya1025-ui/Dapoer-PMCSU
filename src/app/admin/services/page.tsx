@@ -135,7 +135,7 @@ export default function AdminServicesPage() {
         </div>
         <button
           onClick={handleOpenAdd}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-orange-600 hover:bg-orange-700 text-white rounded-xl text-sm font-semibold shadow-sm transition-all"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] text-[#212E24] border border-[#DFBF73] text-white rounded-xl text-sm font-semibold shadow-sm transition-all"
         >
           <Plus className="w-4 h-4" />
           <span>Tambah Layanan</span>
@@ -169,7 +169,7 @@ export default function AdminServicesPage() {
                     <div className="flex items-center gap-1">
                       <button
                         onClick={() => handleOpenEdit(s)}
-                        className="p-1.5 text-stone-400 hover:text-orange-600 rounded-lg hover:bg-orange-50"
+                        className="p-1.5 text-stone-400 hover:text-[#8D6B26] rounded-lg hover:bg-[#DFECC0]"
                       >
                         <Edit2 className="w-4 h-4" />
                       </button>
@@ -188,7 +188,7 @@ export default function AdminServicesPage() {
                     <div className="space-y-1 mb-4">
                       {features.map((f, i) => (
                         <div key={i} className="text-xs text-stone-600 flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#DFECC0]0"></span>
                           <span>{f}</span>
                         </div>
                       ))}

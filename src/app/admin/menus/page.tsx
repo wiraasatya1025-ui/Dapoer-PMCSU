@@ -212,7 +212,7 @@ export default function AdminMenusPage() {
         </div>
         <button
           onClick={handleOpenAdd}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-orange-600 hover:bg-orange-700 text-white rounded-xl text-sm font-semibold shadow-sm transition-all shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] text-[#212E24] border border-[#DFBF73] text-white rounded-xl text-sm font-semibold shadow-sm transition-all shrink-0"
         >
           <Plus className="w-4 h-4" />
           <span>Tambah Menu Baru</span>
@@ -228,7 +228,7 @@ export default function AdminMenusPage() {
             placeholder="Cari nama menu..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
+            className="w-full pl-10 pr-4 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A24D]/30 focus:border-[#C9A24D]"
           />
         </div>
         <div className="flex items-center gap-2">
@@ -236,7 +236,7 @@ export default function AdminMenusPage() {
           <select
             value={selectedCat}
             onChange={(e) => setSelectedCat(e.target.value)}
-            className="bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
+            className="bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A24D]/30 focus:border-[#C9A24D]"
           >
             <option value="all">Semua Kategori</option>
             {categories.map((c) => (
@@ -310,7 +310,7 @@ export default function AdminMenusPage() {
                       </td>
                       <td className="py-3 px-4">
                         {variantsCount > 0 ? (
-                          <span className="text-xs px-2 py-0.5 bg-orange-50 text-orange-700 rounded-md font-medium border border-orange-200/60">
+                          <span className="text-xs px-2 py-0.5 bg-[#DFECC0] text-orange-700 rounded-md font-medium border border-[#CBDFA5]/60">
                             {variantsCount} varian paket
                           </span>
                         ) : (
@@ -334,7 +334,7 @@ export default function AdminMenusPage() {
                         <div className="inline-flex items-center gap-2">
                           <button
                             onClick={() => handleOpenEdit(m)}
-                            className="p-1.5 text-stone-500 hover:text-orange-600 hover:bg-orange-50 rounded-lg transition-colors"
+                            className="p-1.5 text-stone-500 hover:text-[#8D6B26] hover:bg-[#DFECC0] rounded-lg transition-colors"
                             title="Edit"
                           >
                             <Edit2 className="w-4 h-4" />
@@ -384,7 +384,7 @@ export default function AdminMenusPage() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Contoh: Paket Nasi Kotak Rendang"
-                    className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
+                    className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A24D]/30 focus:border-[#C9A24D]"
                   />
                 </div>
                 <div>
@@ -392,7 +392,7 @@ export default function AdminMenusPage() {
                   <select
                     value={formData.category_id}
                     onChange={(e) => setFormData({ ...formData, category_id: e.target.value })}
-                    className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
+                    className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A24D]/30 focus:border-[#C9A24D]"
                   >
                     <option value="">Pilih Kategori</option>
                     {categories.map((c) => (
@@ -414,7 +414,7 @@ export default function AdminMenusPage() {
                     value={formData.price}
                     onChange={(e) => setFormData({ ...formData, price: Number(e.target.value) })}
                     placeholder="Contoh: 35000"
-                    className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
+                    className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A24D]/30 focus:border-[#C9A24D]"
                   />
                 </div>
                 <div>
@@ -423,7 +423,7 @@ export default function AdminMenusPage() {
                     type="number"
                     value={formData.sort_order}
                     onChange={(e) => setFormData({ ...formData, sort_order: Number(e.target.value) })}
-                    className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
+                    className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A24D]/30 focus:border-[#C9A24D]"
                   />
                 </div>
               </div>
@@ -436,7 +436,7 @@ export default function AdminMenusPage() {
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   placeholder="Rincian lauk, isi porsi, atau keunggulan menu..."
-                  className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
+                  className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A24D]/30 focus:border-[#C9A24D]"
                 />
               </div>
 
@@ -454,7 +454,7 @@ export default function AdminMenusPage() {
                     placeholder="Atau masukkan URL gambar..."
                     value={formData.image_url}
                     onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
-                    className="flex-1 px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500"
+                    className="flex-1 px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C9A24D]/30 focus:border-[#C9A24D]"
                   />
                 </div>
                 {formData.image_url && (
@@ -465,7 +465,7 @@ export default function AdminMenusPage() {
               </div>
 
               {/* Varian / Pilihan Paket */}
-              <div className="p-4 bg-orange-50/50 rounded-xl border border-orange-100">
+              <div className="p-4 bg-[#DFECC0]/50 rounded-xl border border-orange-100">
                 <div className="flex items-center justify-between mb-2">
                   <div>
                     <span className="text-xs font-bold text-stone-800">Pilihan Varian / Paket (Opsional)</span>
@@ -474,7 +474,7 @@ export default function AdminMenusPage() {
                   <button
                     type="button"
                     onClick={handleAddVariant}
-                    className="text-xs font-semibold text-orange-600 hover:text-orange-700 bg-white border border-orange-200 px-2.5 py-1 rounded-lg"
+                    className="text-xs font-semibold text-[#8D6B26] hover:text-orange-700 bg-white border border-[#CBDFA5] px-2.5 py-1 rounded-lg"
                   >
                     + Tambah Varian
                   </button>
@@ -514,7 +514,7 @@ export default function AdminMenusPage() {
                     type="checkbox"
                     checked={formData.is_available}
                     onChange={(e) => setFormData({ ...formData, is_available: e.target.checked })}
-                    className="rounded text-orange-600 focus:ring-orange-500 h-4 w-4"
+                    className="rounded text-[#8D6B26] focus:ring-[#C9A24D] h-4 w-4"
                   />
                   <span>Tersedia untuk Dipesan</span>
                 </label>
@@ -523,7 +523,7 @@ export default function AdminMenusPage() {
                     type="checkbox"
                     checked={formData.is_featured}
                     onChange={(e) => setFormData({ ...formData, is_featured: e.target.checked })}
-                    className="rounded text-orange-600 focus:ring-orange-500 h-4 w-4"
+                    className="rounded text-[#8D6B26] focus:ring-[#C9A24D] h-4 w-4"
                   />
                   <span>Menu Unggulan (Tampil di Beranda)</span>
                 </label>
@@ -539,7 +539,7 @@ export default function AdminMenusPage() {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-xl text-sm font-semibold shadow-sm"
+                  className="px-5 py-2 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] text-[#212E24] border border-[#DFBF73] text-white rounded-xl text-sm font-semibold shadow-sm"
                 >
                   Simpan Menu
                 </button>
