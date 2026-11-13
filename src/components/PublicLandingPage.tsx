@@ -183,7 +183,8 @@ export default function PublicLandingPage({
     settings.wa_template ||
     `Halo *{brand_name}*,\n\nSaya tertarik dan ingin memesan menu catering:\n🍱 *Nama Menu:* {menu_name}\n💵 *Harga:* {menu_price}\n✨ *Pilihan:* {menu_variant}\n\n*Format Data Acara:*\n• Nama Pemesan:\n• Tanggal & Waktu Acara:\n• Jumlah Porsi (Pax):\n• Alamat Pengantaran:\n\nMohon info ketersediaan dan detail selengkapnya. Terima kasih!`;
 
-  const waPhone = (profile.phone || "6282128755593").replace(/\D/g, "");
+  // Nomor WhatsApp: prioritas settings.wa_phone (dari Admin > Pengaturan), fallback ke profile.phone
+  const waPhone = (settings.wa_phone || profile.phone || "6282128755593").replace(/\D/g, "");
 
   const filteredMenus = menus.filter((m) => {
     if (selectedCat === "all") return true;
