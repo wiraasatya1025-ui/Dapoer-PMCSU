@@ -42,29 +42,32 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#E6F0CA] text-[#23382C] flex flex-col justify-center items-center p-4 relative overflow-hidden font-sans">
-      {/* Background Ambience Layer */}
+    <div className="min-h-screen bg-[#E6F0CA] text-[#23382C] flex flex-col justify-center items-center p-4 relative font-sans">
+      {/* Background SAMA PERSIS dengan Website Utama */}
       <div 
-        className="fixed inset-0 pointer-events-none z-0 bg-cover bg-center bg-fixed opacity-30 mix-blend-multiply"
-        style={{
-          backgroundImage: "url('/catering-landing-bg-seamless.png')",
-        }}
-      />
-      
-      {/* Subtle radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#DFECC0]/50 rounded-full blur-3xl pointer-events-none z-0" />
+        className="fixed inset-0 z-0 pointer-events-none transform-gpu"
+        style={{ transform: "translateZ(0)" }}
+      >
+        <img
+          src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=2200&q=80"
+          alt="Continuous Catering Background"
+          className="w-full h-full object-cover object-center opacity-25 mix-blend-multiply"
+          decoding="async"
+        />
+        <div className="absolute inset-0 bg-[#E6F0CA]/80" />
+      </div>
 
       <div className="w-full max-w-md bg-[#FCFBF6] rounded-3xl shadow-xl shadow-[#23382C]/10 border border-[#CBDFA5] overflow-hidden relative z-10">
-        {/* Header */}
-        <div className="bg-gradient-to-b from-[#23382C] to-[#2D4536] px-8 pt-8 pb-7 text-white text-center relative border-b border-[#CBDFA5]/30">
-          <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-3.5 p-2 shadow-lg shadow-black/20 border-2 border-[#D5E5B2]">
+        {/* Header - Bersih & Elegan sesuai Website Utama */}
+        <div className="bg-[#DFECC0] px-8 pt-8 pb-7 text-center relative border-b border-[#CBDFA5]">
+          <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-3.5 p-2 shadow-sm border border-[#D5E5B2]">
             <img src="/logo-dapoer-pmcsu.png" alt="Dapoer PMCSU Logo" className="w-full h-full object-contain" />
           </div>
-          <span className="text-[10px] font-bold uppercase tracking-wider text-[#D8B669] bg-[#344F3F] border border-[#486B56] px-2.5 py-1 rounded-full inline-block mb-2">
+          <span className="text-[10px] font-black uppercase tracking-wider text-[#8D6B26] bg-[#CBDFA5]/60 border border-[#B8D18C] px-3 py-1 rounded-full inline-block mb-2">
             Panel Pengelolaan Konten
           </span>
-          <h1 className="text-2xl font-bold tracking-tight font-serif text-[#FAF7EE]">DAPOER PMCSU</h1>
-          <p className="text-[#BFCFBF] text-xs mt-1 font-medium">Masuk untuk mengelola katalog menu, galeri & ulasan</p>
+          <h1 className="text-2xl font-normal tracking-tight font-serif text-[#9F7A2D]">DAPOER PMCSU</h1>
+          <p className="text-[#4B6152] text-xs mt-1 font-medium">Masuk untuk mengelola katalog menu, galeri & ulasan</p>
         </div>
 
         {/* Form */}

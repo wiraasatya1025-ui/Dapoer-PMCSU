@@ -32,25 +32,25 @@ export default async function AdminDashboardPage() {
   const waPhone = settingsRes.data?.value || "6281234567890";
 
   const stats = [
-    { label: "Katalog Menu", count: menuCount, href: "/admin/menus", icon: BookOpen, color: "bg-[#23382C] text-[#D8B669]" },
-    { label: "Kategori Menu", count: categoryCount, href: "/admin/categories", icon: FolderTree, color: "bg-[#8D6B26] text-white" },
-    { label: "Layanan", count: serviceCount, href: "/admin/services", icon: Briefcase, color: "bg-[#4B6152] text-white" },
-    { label: "Portofolio Acara", count: galleryCount, href: "/admin/gallery", icon: ImageIcon, color: "bg-[#667C6E] text-white" },
-    { label: "Testimoni", count: testiCount, href: "/admin/testimonials", icon: MessageSquareQuote, color: "bg-[#D8B669] text-[#212E24]" },
+    { label: "Katalog Menu", count: menuCount, href: "/admin/menus", icon: BookOpen, color: "bg-[#DFECC0] text-[#8D6B26]" },
+    { label: "Kategori Menu", count: categoryCount, href: "/admin/categories", icon: FolderTree, color: "bg-[#DFECC0] text-[#8D6B26]" },
+    { label: "Layanan", count: serviceCount, href: "/admin/services", icon: Briefcase, color: "bg-[#DFECC0] text-[#8D6B26]" },
+    { label: "Portofolio Acara", count: galleryCount, href: "/admin/gallery", icon: ImageIcon, color: "bg-[#DFECC0] text-[#8D6B26]" },
+    { label: "Testimoni", count: testiCount, href: "/admin/testimonials", icon: MessageSquareQuote, color: "bg-[#DFECC0] text-[#8D6B26]" },
   ];
 
   return (
     <div className="space-y-6 sm:space-y-8">
-      {/* Welcome Banner */}
-      <div className="bg-gradient-to-r from-[#23382C] via-[#2A4335] to-[#344F3F] text-white p-6 sm:p-8 rounded-3xl shadow-lg shadow-[#23382C]/10 border border-[#CBDFA5]/30 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      {/* Welcome Banner - Sesuai Card Gaya Landing Page */}
+      <div className="bg-[#FCFBF6] p-6 sm:p-8 rounded-3xl shadow-sm border border-[#CBDFA5] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <span className="text-[10px] sm:text-xs uppercase tracking-wider text-[#D8B669] font-bold bg-[#1C2C23] border border-[#3E5C49] px-2.5 py-1 rounded-full inline-block mb-1">
+          <span className="text-[10px] sm:text-xs uppercase tracking-wider text-[#8D6B26] font-black bg-[#DFECC0] border border-[#CBDFA5] px-3 py-1 rounded-full inline-block mb-1.5">
             Database Supabase Cloud Terhubung
           </span>
-          <h1 className="text-2xl sm:text-3xl font-normal mt-2 text-[#FAF7EE] font-serif">
+          <h1 className="text-2xl sm:text-3xl font-normal mt-1 text-[#9F7A2D] font-serif">
             {brand.name || "DAPOER PMCSU"}
           </h1>
-          <p className="text-[#CFDCCD] text-xs sm:text-sm mt-1 max-w-xl leading-relaxed">
+          <p className="text-[#4B6152] text-xs sm:text-sm mt-1 max-w-xl leading-relaxed">
             Kelola menu prasmanan, tumpeng, varian snack, ulasan Google Maps, portofolio acara, dan template WhatsApp secara real-time.
           </p>
         </div>
