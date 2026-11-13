@@ -1380,7 +1380,13 @@ export default function PublicLandingPage({
                 <div className="absolute top-0 bottom-0 left-0 w-8 sm:w-20 bg-gradient-to-r from-[#E6F0CA] to-transparent z-10 pointer-events-none" />
                 <div className="absolute top-0 bottom-0 right-0 w-8 sm:w-20 bg-gradient-to-l from-[#E6F0CA] to-transparent z-10 pointer-events-none" />
 
-                <div className="animate-marquee-slow gap-4 md:gap-6 px-4">
+                <div 
+                  className="animate-marquee-slow gap-4 md:gap-6 px-4"
+                  onMouseEnter={(e) => { e.currentTarget.style.animationPlayState = 'paused'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.animationPlayState = 'running'; }}
+                  onTouchStart={(e) => { e.currentTarget.style.animationPlayState = 'paused'; }}
+                  onTouchEnd={(e) => { e.currentTarget.style.animationPlayState = 'running'; }}
+                >
                   {marqueeList.map((t, idx) => (
                     <div
                       key={`${t.id}-${idx}`}

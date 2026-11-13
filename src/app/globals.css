@@ -48,11 +48,12 @@ body {
 .animate-marquee-slow {
   display: flex;
   width: max-content;
-  animation: marquee 45s linear infinite;
+  will-change: transform;
+  animation: marquee 35s linear infinite;
 }
 
 .animate-marquee-slow:hover {
-  animation-play-state: paused;
+  animation-play-state: paused !important;
 }
 
 @keyframes float {
