@@ -115,9 +115,6 @@ export default function PublicLandingPage({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [carouselIndex, setCarouselIndex] = useState(0);
   const menuScrollRef = useRef<HTMLDivElement>(null);
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
-  const testimonialScrollRef = useRef<HTMLDivElement>(null);
-  const [isTestimonialHovered, setIsTestimonialHovered] = useState(false);
   const [activeGalleryTab, setActiveGalleryTab] = useState<string>("buffet");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeNavPopup, setActiveNavPopup] = useState<string | null>(null);
@@ -154,31 +151,6 @@ export default function PublicLandingPage({
       }
     }
   }, [categories]);
-
-  // Auto-play review berjalan otomatis ke samping setiap 3.5 detik (pause saat kursor di atasnya / disentuh)
-  useEffect(() => {
-    if (isTestimonialHovered) return;
-
-    const interval = setInterval(() => {
-      const container = testimonialScrollRef.current;
-      if (!container) return;
-
-      const maxScroll = container.scrollWidth - container.clientWidth;
-      const cardWidth = container.firstElementChild
-        ? (container.firstElementChild as HTMLElement).offsetWidth + 20
-        : 320;
-
-      // Jika sudah hampir mentok di ujung kanan, kembali ke paling awal (looping mulus)
-      if (container.scrollLeft >= maxScroll - 20) {
-        container.scrollTo({ left: 0, behavior: "smooth" });
-        setTestimonialIndex(0);
-      } else {
-        container.scrollBy({ left: cardWidth, behavior: "smooth" });
-      }
-    }, 3500);
-
-    return () => clearInterval(interval);
-  }, [isTestimonialHovered, testimonials]);
 
   // Scroll-triggered animations menggunakan IntersectionObserver
   useEffect(() => {
@@ -1364,142 +1336,79 @@ export default function PublicLandingPage({
             </div>
           </div>
 
-          {/* Testimonial Cards - Responsive Slider (Touch-swipe & Smooth Arrows) */}
+          {/* Testimonial Cards - Infinite Smooth Running Marquee (Berjalan Otomatis Mulus Tanpa Putus) */}
           {(() => {
-            const testimonialList = testimonials && testimonials.length > 0
+            const rawList = testimonials && testimonials.length > 0
               ? testimonials
               : [
                   {
                     id: 1,
                     client_name: "meeva kitchen",
-                    role_or_event: "Ulasan Google Maps",
+                    role_or_event: "Google Maps Review • Rating 5.0",
                     rating: 5,
-                    comment: "Rasanya enak, pelayanannya ramah dan cepat. Recommended banget!",
+                    comment: "Packaging 4,5 dari 5. Rasa 4,5 dari 5. Kebersihan 5 dari 5. Secara keseluruhan nilainya 5 - Rekomen banget.",
                   },
                   {
                     id: 2,
                     client_name: "Susila Hesti Purnami",
-                    role_or_event: "Ulasan Google Maps",
+                    role_or_event: "Local Guide Google • 100 Ulasan",
                     rating: 4,
-                    comment: "Makanannya enak, porsinya pas. Cuma tempatnya agak kecil.",
+                    comment: "Pasar Minggu Catering Service ini salah satu supplier jasa catering makan siang online yang terkemuka di Jakarta. Makanannya enak dan harganya bersahabat.",
                   },
                   {
                     id: 3,
-                    client_name: "Nina Nasution",
-                    role_or_event: "Ulasan Google Maps",
+                    client_name: "Ni a",
+                    role_or_event: "Local Guide Google • 171 Ulasan",
                     rating: 5,
-                    comment: "Cateringnya mantap, harga terjangkau, rasa juara!",
+                    comment: "Ayam bumbu rujaknya JUARA!!!",
+                  },
+                  {
+                    id: 4,
+                    client_name: "Nina Nasution",
+                    role_or_event: "Google Maps Review • Rating 5.0",
+                    rating: 5,
+                    comment: "Cateringnya mantap, harga terjangkau, rasa juara! Porsi sangat pas dan pengantaran tepat waktu.",
                   },
                 ];
 
-            const scrollSlide = (direction: "left" | "right") => {
-              const container = testimonialScrollRef.current;
-              if (!container) return;
-              const cardWidth = container.firstElementChild ? (container.firstElementChild as HTMLElement).offsetWidth + 20 : 320;
-              container.scrollBy({
-                left: direction === "left" ? -cardWidth : cardWidth,
-                behavior: "smooth",
-              });
-            };
-
-            const scrollToIndex = (index: number) => {
-              const container = testimonialScrollRef.current;
-              if (!container) return;
-              const cardWidth = container.firstElementChild ? (container.firstElementChild as HTMLElement).offsetWidth + 20 : 320;
-              container.scrollTo({
-                left: index * cardWidth,
-                behavior: "smooth",
-              });
-              setTestimonialIndex(index);
-            };
-
-            const handleScroll = () => {
-              const container = testimonialScrollRef.current;
-              if (!container) return;
-              const cardWidth = container.firstElementChild ? (container.firstElementChild as HTMLElement).offsetWidth + 20 : 320;
-              const newIndex = Math.round(container.scrollLeft / cardWidth);
-              setTestimonialIndex(Math.min(newIndex, testimonialList.length - 1));
-            };
+            // Gandakan list untuk infinite loop marquee yang seamless
+            const marqueeList = [...rawList, ...rawList];
 
             return (
-              <>
-                <div 
-                  className="relative mb-16 group reveal-init delay-150"
-                  onMouseEnter={() => setIsTestimonialHovered(true)}
-                  onMouseLeave={() => setIsTestimonialHovered(false)}
-                  onTouchStart={() => setIsTestimonialHovered(true)}
-                  onTouchEnd={() => setIsTestimonialHovered(false)}
-                >
-                  {/* Horizontal Scrollable Row with Native Touch Momentum */}
-                  <div
-                    ref={testimonialScrollRef}
-                    onScroll={handleScroll}
-                    className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-4 px-4 sm:px-8 md:px-12 scrollbar-hide -mx-4 sm:mx-0"
-                    style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-                  >
-                    {testimonialList.map((t) => (
-                      <div
-                        key={t.id}
-                        className="flex-shrink-0 snap-center w-[340px] lg:w-[calc(33.333%-16px)] p-6 sm:p-7 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-                      >
-                        <div>
-                          <div className="flex items-center gap-1 mb-4 text-[#D8B669]">
-                            {Array.from({ length: t.rating || 5 }).map((_, i) => (
-                              <Star key={i} className="w-4 h-4 fill-[#D8B669]" />
-                            ))}
-                          </div>
-                          <p className="text-xs sm:text-sm text-[#3D5245] leading-relaxed italic mb-6">
-                            &ldquo;{t.comment}&rdquo;
-                          </p>
+              <div className="relative mb-16 overflow-hidden py-4 -mx-4 sm:mx-0 select-none">
+                {/* Fade gradient edges kiri & kanan agar animasi terlihat halus */}
+                <div className="absolute top-0 bottom-0 left-0 w-8 sm:w-20 bg-gradient-to-r from-[#E6F0CA] to-transparent z-10 pointer-events-none" />
+                <div className="absolute top-0 bottom-0 right-0 w-8 sm:w-20 bg-gradient-to-l from-[#E6F0CA] to-transparent z-10 pointer-events-none" />
+
+                <div className="animate-marquee-slow gap-4 md:gap-6 px-4">
+                  {marqueeList.map((t, idx) => (
+                    <div
+                      key={`${t.id}-${idx}`}
+                      className="flex-shrink-0 w-[300px] sm:w-[360px] p-6 sm:p-7 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className="flex items-center gap-1 mb-4 text-[#D8B669]">
+                          {Array.from({ length: t.rating || 5 }).map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-[#D8B669]" />
+                          ))}
                         </div>
-                        <div className="pt-4 border-t border-[#CBDFA5]/60 flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-[#DFECC0] border border-[#CBDFA5] flex items-center justify-center font-bold text-[#23382C] text-sm shrink-0">
-                            {t.client_name ? t.client_name.charAt(0) : "K"}
-                          </div>
-                          <div className="min-w-0">
-                            <h5 className="font-bold text-[#23382C] text-xs truncate">{t.client_name}</h5>
-                            <p className="text-[11px] text-[#8D6B26] font-medium truncate">{t.role_or_event}</p>
-                          </div>
+                        <p className="text-xs sm:text-sm text-[#3D5245] leading-relaxed italic mb-6">
+                          &ldquo;{t.comment}&rdquo;
+                        </p>
+                      </div>
+                      <div className="pt-4 border-t border-[#CBDFA5]/60 flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-[#DFECC0] border border-[#CBDFA5] flex items-center justify-center font-bold text-[#23382C] text-sm shrink-0">
+                          {t.client_name ? t.client_name.charAt(0) : "K"}
+                        </div>
+                        <div className="min-w-0">
+                          <h5 className="font-bold text-[#23382C] text-xs truncate">{t.client_name}</h5>
+                          <p className="text-[11px] text-[#8D6B26] font-medium truncate">{t.role_or_event}</p>
                         </div>
                       </div>
-                    ))}
-                  </div>
-
-                  {/* Arrow Buttons (Desktop & Tablet) */}
-                  <button
-                    onClick={() => scrollSlide("left")}
-                    aria-label="Geser Ulasan Kiri"
-                    className="flex absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10 active:scale-95 cursor-pointer"
-                  >
-                    <ChevronRight className="w-5 h-5 rotate-180" />
-                  </button>
-                  <button
-                    onClick={() => scrollSlide("right")}
-                    aria-label="Geser Ulasan Kanan"
-                    className="flex absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-[#D5E5B2] text-[#23382C] rounded-full shadow-md items-center justify-center hover:bg-[#D8B669] hover:border-[#D8B669] transition-all z-10 active:scale-95 cursor-pointer"
-                  >
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
-
-                  {/* Dot Indicators */}
-                  {testimonialList.length > 1 && (
-                    <div className="flex items-center justify-center gap-1.5 sm:gap-2 mt-4 sm:mt-6">
-                      {testimonialList.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => scrollToIndex(idx)}
-                          aria-label={`Ke ulasan ${idx + 1}`}
-                          className={`rounded-full transition-all duration-300 ${
-                            idx === testimonialIndex
-                              ? "w-6 h-2.5 bg-[#D8B669]"
-                              : "w-2.5 h-2.5 bg-[#CBDFA5] hover:bg-[#B6CD8E]"
-                          }`}
-                        />
-                      ))}
                     </div>
-                  )}
+                  ))}
                 </div>
-              </>
+              </div>
             );
           })()}
         </div>
