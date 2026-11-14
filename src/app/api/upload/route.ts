@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
-import path from "path";
-import fs from "fs/promises";
 import sharp from "sharp";
 import { getSession } from "@/lib/auth";
+import { supabaseAdmin } from "@/lib/supabase";
 
 export async function POST(request: Request) {
   const session = await getSession();
@@ -21,25 +20,41 @@ export async function POST(request: Request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Ensure uploads directory exists in public
-    const uploadsDir = path.join(process.cwd(), "public", "uploads");
-    await fs.mkdir(uploadsDir, { recursive: true });
+    // Auto optimize & compress with sharp to WebP format
+    let optimizedBuffer: Buffer;
+    try {
+      optimizedBuffer = await sharp(buffer)
+        .resize({ width: 1200, withoutEnlargement: true })
+        .webp({ quality: 80 })
+        .toBuffer();
+    } catch {
+      // Fallback jika format tidak bisa diproses sharp (misal svg atau format tertentu)
+      optimizedBuffer = buffer;
+    }
 
     // Generate unique webp filename
     const filename = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}.webp`;
-    const filePath = path.join(uploadsDir, filename);
 
-    // Auto optimize & compress with sharp to WebP format
-    await sharp(buffer)
-      .resize({ width: 1200, withoutEnlargement: true })
-      .webp({ quality: 80 })
-      .toFile(filePath);
+    // Upload directly to Supabase Storage bucket 'uploads'
+    const { error: uploadError } = await supabaseAdmin.storage
+      .from("uploads")
+      .upload(filename, optimizedBuffer, {
+        contentType: "image/webp",
+        upsert: true,
+      });
 
-    const publicUrl = `/uploads/${filename}`;
+    if (uploadError) {
+      console.error("Supabase storage upload error:", uploadError);
+      return NextResponse.json({ error: "Gagal menyimpan gambar ke storage" }, { status: 500 });
+    }
+
+    const { data: publicUrlData } = supabaseAdmin.storage
+      .from("uploads")
+      .getPublicUrl(filename);
 
     return NextResponse.json({
       success: true,
-      url: publicUrl,
+      url: publicUrlData.publicUrl,
     });
   } catch (error) {
     console.error("Upload error:", error);

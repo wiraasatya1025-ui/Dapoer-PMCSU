@@ -48,6 +48,7 @@ export default function AdminMenusPage() {
     is_featured: false,
     sort_order: 0,
   });
+  const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
 
   const fetchData = async () => {
@@ -161,6 +162,11 @@ export default function AdminMenusPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (uploading) {
+      alert("Mohon tunggu hingga proses unggah gambar selesai.");
+      return;
+    }
+    setSaving(true);
     const payload = {
       ...formData,
       id: editingId,
@@ -168,19 +174,25 @@ export default function AdminMenusPage() {
       price: Number(formData.price),
     };
 
-    const method = editingId ? "PUT" : "POST";
-    const res = await fetch("/api/menus", {
-      method,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    try {
+      const method = editingId ? "PUT" : "POST";
+      const res = await fetch("/api/menus", {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    if (res.ok) {
-      setIsModalOpen(false);
-      fetchData();
-    } else {
-      const data = await res.json();
-      alert("Gagal menyimpan menu: " + (data.error || ""));
+      if (res.ok) {
+        setIsModalOpen(false);
+        fetchData();
+      } else {
+        const data = await res.json();
+        alert("Gagal menyimpan menu: " + (data.error || ""));
+      }
+    } catch {
+      alert("Terjadi kesalahan saat menyimpan menu.");
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -539,9 +551,10 @@ export default function AdminMenusPage() {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] text-[#212E24] border border-[#DFBF73] text-white rounded-xl text-sm font-semibold shadow-sm"
+                  disabled={saving || uploading}
+                  className="px-5 py-2 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] text-[#212E24] border border-[#DFBF73] text-white rounded-xl text-sm font-semibold shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Simpan Menu
+                  {saving ? "Menyimpan..." : "Simpan Menu"}
                 </button>
               </div>
             </form>
