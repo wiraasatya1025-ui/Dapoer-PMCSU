@@ -32,7 +32,33 @@ export default function FaqAdminPage() {
       setFormData(fd);
       try {
         const parsed = JSON.parse(fd.faq_data || "[]");
-        if (Array.isArray(parsed)) setFaqItems(parsed);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setFaqItems(parsed.map(item => ({ q: item.q || "", d: item.d || item.a || "" })));
+        } else {
+          // Jika kosong di database, tampilkan 5 FAQ bawaan agar tidak kosong saat admin membukanya
+          setFaqItems([
+            {
+              q: "Berapa minimum pemesanan (pax) untuk acara saya?",
+              d: "Minimum order untuk pemesanan adalah mulai dari 50 pax lengkap dengan peralatan saji dan standar higienis terbaik. Kami juga melayani pesanan tumpeng dan paket khusus lainnya.",
+            },
+            {
+              q: "Daerah mana saja yang dijangkau oleh pengiriman DAPOER PMCSU?",
+              d: "Kami melayani pengantaran ke seluruh area Jabodetabek (Jakarta Pusat, Selatan, Timur, Barat, Utara, Depok, Tangerang Kota, Tangerang Selatan, Bekasi, hingga sebagian Bogor). Khusus area Jakarta Selatan tersedia promo subsidi ongkir.",
+            },
+            {
+              q: "Bagaimana cara pembayaran dan sistem pelunasan catering?",
+              d: "Pemesanan dinyatakan terkonfirmasi setelah pembayaran DP (Down Payment) sebesar 30%–50%. Pelunasan dapat dilakukan maksimal H-1 sebelum tanggal pengantaran atau sesuai kesepakatan invoice korporat.",
+            },
+            {
+              q: "Apakah bisa request tester menu (food tasting) sebelum deal besar?",
+              d: "Tentu bisa! Untuk pesanan resepsi pernikahan atau corporate event di atas 300 pax, kami menyediakan complimentary food tasting di dapur utama kami atau dikirimkan tester sample box ke alamat Anda.",
+            },
+            {
+              q: "Apakah seluruh hidangan terjamin 100% Halal?",
+              d: "Ya, 100% halal. Seluruh bahan hewani (daging sapi, ayam) disembelih secara syar'i bersertifikasi halal, dan dapur kami menerapkan sistem pemisahan bebas dari bahan non-halal maupun kontaminasi silang.",
+            },
+          ]);
+        }
       } catch {
         setFaqItems([]);
       }
