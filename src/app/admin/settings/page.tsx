@@ -61,7 +61,7 @@ export default function AdminSettingsPage() {
           email: data.profile.email || "",
           instagram: data.profile.instagram || "",
           operating_hours: data.profile.operating_hours || "",
-          wa_phone: s.wa_phone || "6281234567890",
+          wa_phone: s.wa_phone || "62811107742",
           wa_template: s.wa_template || "",
           hero_tagline: s.hero_tagline || "Catering Pilihan Jakarta",
           hero_title_1: s.hero_title_1 || "Catering Lezat,",

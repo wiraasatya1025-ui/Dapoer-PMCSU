@@ -71,6 +71,7 @@ interface Testimonial {
   role_or_event: string;
   rating: number;
   comment: string;
+  avatar_url?: string;
 }
 
 interface Profile {
@@ -184,7 +185,7 @@ export default function PublicLandingPage({
     `Halo {brand_name},\n\nSaya tertarik dan ingin memesan menu catering:\n🍱 Nama Menu: {menu_name}\n💵 Harga: {menu_price}\n✨ Pilihan: {menu_variant}\n\nFormat Data Acara:\n• Nama Pemesan:\n• Tanggal & Waktu Acara:\n• Jumlah Porsi (Pax):\n• Alamat Pengantaran:\n\nMohon info ketersediaan dan detail selengkapnya. Terima kasih!`;
 
   // Nomor WhatsApp: prioritas settings.wa_phone (dari Admin > Pengaturan), fallback ke profile.phone
-  const waPhone = (settings.wa_phone || profile.phone || "6282128755593").replace(/\D/g, "");
+  const waPhone = (settings.wa_phone || profile.phone || "62811107742").replace(/\D/g, "");
 
   const filteredMenus = menus.filter((m) => {
     if (selectedCat === "all") return true;
@@ -1311,9 +1312,9 @@ export default function PublicLandingPage({
               Apa Kata Klien & Tamu Kami?
             </h2>
             <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
-              Pengalaman nyata pelanggan dari ulasan bintang 4 & 5 di Google Maps untuk prasmanan pernikahan, gathering kantor, selamatan, dan syukuran keluarga.
+              Pengalaman nyata pelanggan dari ulasan Google Maps, liputan televisi, serta testimoni Instagram untuk prasmanan pernikahan, gathering kantor, selamatan, dan syukuran keluarga.
             </p>
-            <div className="mt-4 flex items-center justify-center gap-2">
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5">
               <a
                 href="https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z/data=!4m18!1m9!3m8!1s0x2e69f272f042f0fd:0x5fa547fbfd9ec7ef!2sPasar+Minggu+Catering+Service!8m2!3d-6.2900409!4d106.8438304!9m1!1b1!16s%2Fg%2F11cm13p_qy!3m7!1s0x2e69f272f042f0fd:0x5fa547fbfd9ec7ef!8m2!3d-6.2900409!4d106.8438304!9m1!1b1!16s%2Fg%2F11cm13p_qy?hl=id"
                 target="_blank"
@@ -1323,7 +1324,22 @@ export default function PublicLandingPage({
                 <div className="flex items-center text-[#F59E0B]">
                   {"★★★★★"}
                 </div>
-                <span>Lihat Ulasan di Google Review</span>
+                <span>Ulasan Google Review</span>
+                <ExternalLink className="w-3.5 h-3.5 text-[#8D6B26]" />
+              </a>
+
+              <a
+                href={profile.instagram || "https://www.instagram.com/pasarminggucatering/"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#CBDFA5] text-[#23382C] hover:text-[#9F7A2D] text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer"
+              >
+                <svg className="w-3.5 h-3.5 text-[#E1306C] fill-currentColor" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>Testimoni di Instagram</span>
                 <ExternalLink className="w-3.5 h-3.5 text-[#8D6B26]" />
               </a>
             </div>
@@ -1380,32 +1396,61 @@ export default function PublicLandingPage({
                   onTouchStart={(e) => { e.currentTarget.style.animationPlayState = 'paused'; }}
                   onTouchEnd={(e) => { e.currentTarget.style.animationPlayState = 'running'; }}
                 >
-                  {marqueeList.map((t, idx) => (
-                    <div
-                      key={`${t.id}-${idx}`}
-                      className="flex-shrink-0 w-[300px] sm:w-[360px] p-6 sm:p-7 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-                    >
-                      <div>
-                        <div className="flex items-center gap-1 mb-4 text-[#D8B669]">
-                          {Array.from({ length: t.rating || 5 }).map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-[#D8B669]" />
-                          ))}
+                  {marqueeList.map((t, idx) => {
+                    const isInstagram = t.avatar_url && t.avatar_url.includes("instagram.com");
+                    return (
+                      <div
+                        key={`${t.id}-${idx}`}
+                        className="flex-shrink-0 w-[300px] sm:w-[360px] p-6 sm:p-7 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between mb-4">
+                            <div className="flex items-center gap-1 text-[#D8B669]">
+                              {Array.from({ length: t.rating || 5 }).map((_, i) => (
+                                <Star key={i} className="w-4 h-4 fill-[#D8B669]" />
+                              ))}
+                            </div>
+                            {isInstagram && (
+                              <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#C13584] bg-[#FDF2F8] px-2 py-0.5 rounded-full border border-pink-200">
+                                <svg className="w-3 h-3 text-[#E1306C]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                                Instagram
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-xs sm:text-sm text-[#3D5245] leading-relaxed italic mb-6">
+                            &ldquo;{t.comment}&rdquo;
+                          </p>
                         </div>
-                        <p className="text-xs sm:text-sm text-[#3D5245] leading-relaxed italic mb-6">
-                          &ldquo;{t.comment}&rdquo;
-                        </p>
+                        <div className="pt-4 border-t border-[#CBDFA5]/60 flex items-center justify-between gap-3">
+                          <div className="flex items-center gap-3 min-w-0">
+                            <div className="w-10 h-10 rounded-full bg-[#DFECC0] border border-[#CBDFA5] flex items-center justify-center font-bold text-[#23382C] text-sm shrink-0">
+                              {t.client_name ? t.client_name.charAt(0) : "K"}
+                            </div>
+                            <div className="min-w-0">
+                              <h5 className="font-bold text-[#23382C] text-xs truncate">{t.client_name}</h5>
+                              <p className="text-[11px] text-[#8D6B26] font-medium truncate">{t.role_or_event}</p>
+                            </div>
+                          </div>
+
+                          {t.avatar_url && t.avatar_url.startsWith("http") && (
+                            <a
+                              href={t.avatar_url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="shrink-0 p-2 rounded-xl bg-[#DFECC0]/80 hover:bg-[#DFECC0] text-[#23382C] hover:text-[#9F7A2D] transition-colors border border-[#CBDFA5]"
+                              title="Buka Post / Video Instagram"
+                            >
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </a>
+                          )}
+                        </div>
                       </div>
-                      <div className="pt-4 border-t border-[#CBDFA5]/60 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-[#DFECC0] border border-[#CBDFA5] flex items-center justify-center font-bold text-[#23382C] text-sm shrink-0">
-                          {t.client_name ? t.client_name.charAt(0) : "K"}
-                        </div>
-                        <div className="min-w-0">
-                          <h5 className="font-bold text-[#23382C] text-xs truncate">{t.client_name}</h5>
-                          <p className="text-[11px] text-[#8D6B26] font-medium truncate">{t.role_or_event}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             );

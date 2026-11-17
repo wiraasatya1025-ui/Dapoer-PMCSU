@@ -9,6 +9,7 @@ interface Testimonial {
   role_or_event: string;
   rating: number;
   comment: string;
+  avatar_url?: string;
   sort_order: number;
 }
 
@@ -22,6 +23,7 @@ export default function AdminTestimonialsPage() {
     role_or_event: "",
     rating: 5,
     comment: "",
+    avatar_url: "",
     sort_order: 0,
   });
 
@@ -57,7 +59,7 @@ export default function AdminTestimonialsPage() {
 
     if (res.ok) {
       setIsModalOpen(false);
-      setFormData({ client_name: "", role_or_event: "", rating: 5, comment: "", sort_order: 0 });
+      setFormData({ client_name: "", role_or_event: "", rating: 5, comment: "", avatar_url: "", sort_order: 0 });
       fetchData();
     } else {
       alert("Gagal menambahkan ulasan.");
@@ -153,7 +155,17 @@ export default function AdminTestimonialsPage() {
                   type="text"
                   value={formData.role_or_event}
                   onChange={(e) => setFormData({ ...formData, role_or_event: e.target.value })}
-                  placeholder="Contoh: Panitia Seminar Kampus"
+                  placeholder="Contoh: Panitia Seminar Kampus / Instagram Testimoni"
+                  className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-stone-700 mb-1">Tautan / Link Post (Opsional - misal Instagram)</label>
+                <input
+                  type="url"
+                  value={formData.avatar_url}
+                  onChange={(e) => setFormData({ ...formData, avatar_url: e.target.value })}
+                  placeholder="https://www.instagram.com/reel/..."
                   className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm"
                 />
               </div>
@@ -188,7 +200,10 @@ export default function AdminTestimonialsPage() {
                 >
                   Batal
                 </button>
-                <button type="submit" className="px-5 py-2 bg-orange-600 text-white rounded-xl text-xs font-semibold">
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-gradient-to-r from-[#D7B465] to-[#BFA052] hover:from-[#C9A24D] hover:to-[#B08E40] text-[#212E24] border border-[#DFBF73] text-white rounded-xl text-xs font-semibold shadow-sm"
+                >
                   Simpan Testimoni
                 </button>
               </div>
