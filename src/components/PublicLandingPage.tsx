@@ -1435,12 +1435,14 @@ export default function PublicLandingPage({
                         <p className="text-[11px] text-[#8D6B26] font-medium truncate">{t.role_or_event}</p>
                       </div>
                     </div>
-                    <ExternalLink className="w-3.5 h-3.5 shrink-0 text-[#CBDFA5] group-hover:text-[#9F7A2D] transition-colors" />
+                    {cardLink && (
+                      <ExternalLink className="w-3.5 h-3.5 shrink-0 text-[#CBDFA5] group-hover:text-[#9F7A2D] transition-colors" />
+                    )}
                   </div>
                 </>
               );
 
-              const cardClass = "group flex-shrink-0 w-[300px] sm:w-[360px] p-6 sm:p-7 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer";
+              const cardClass = `group flex-shrink-0 w-[300px] sm:w-[360px] p-6 sm:p-7 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between ${cardLink ? 'cursor-pointer' : ''}`;
 
               return cardLink ? (
                 <a
@@ -1449,7 +1451,7 @@ export default function PublicLandingPage({
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cardClass}
-                  title={isInstagram ? "Buka Post Instagram" : "Lihat Ulasan di Google Maps"}
+                  title="Buka Post Instagram"
                 >
                   {cardContent}
                 </a>
