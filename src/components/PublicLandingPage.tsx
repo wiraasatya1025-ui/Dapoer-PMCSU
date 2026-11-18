@@ -1356,7 +1356,7 @@ export default function PublicLandingPage({
                     role_or_event: "Google Maps Review • Rating 5.0",
                     rating: 5,
                     comment: "Packaging 4,5 dari 5. Rasa 4,5 dari 5. Kebersihan 5 dari 5. Secara keseluruhan nilainya 5 - Rekomen banget.",
-                    avatar_url: undefined as string | undefined,
+                    avatar_url: "https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z" as string | undefined,
                   },
                   {
                     id: 2,
@@ -1364,7 +1364,7 @@ export default function PublicLandingPage({
                     role_or_event: "Local Guide Google • 100 Ulasan",
                     rating: 4,
                     comment: "Pasar Minggu Catering Service ini salah satu supplier jasa catering makan siang online yang terkemuka di Jakarta. Makanannya enak dan harganya bersahabat.",
-                    avatar_url: undefined as string | undefined,
+                    avatar_url: "https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z" as string | undefined,
                   },
                   {
                     id: 3,
@@ -1372,7 +1372,7 @@ export default function PublicLandingPage({
                     role_or_event: "Local Guide Google • 171 Ulasan",
                     rating: 5,
                     comment: "Ayam bumbu rujaknya JUARA!!!",
-                    avatar_url: undefined as string | undefined,
+                    avatar_url: "https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z" as string | undefined,
                   },
                   {
                     id: 4,
@@ -1380,7 +1380,7 @@ export default function PublicLandingPage({
                     role_or_event: "Google Maps Review • Rating 5.0",
                     rating: 5,
                     comment: "Cateringnya mantap, harga terjangkau, rasa juara! Porsi sangat pas dan pengantaran tepat waktu.",
-                    avatar_url: undefined as string | undefined,
+                    avatar_url: "https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z" as string | undefined,
                   },
                 ];
 
@@ -1388,68 +1388,77 @@ export default function PublicLandingPage({
             const googleList = rawList.filter(t => !(t.avatar_url && t.avatar_url.includes("instagram.com")));
             const igList = rawList.filter(t => t.avatar_url && t.avatar_url.includes("instagram.com"));
 
-            // Helper render card
-            const renderCard = (t: typeof rawList[0], idx: number, isInstagram: boolean) => (
-              <div
-                key={`${t.id}-${idx}`}
-                className="flex-shrink-0 w-[300px] sm:w-[360px] p-6 sm:p-7 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-1 text-[#D8B669]">
-                      {Array.from({ length: t.rating || 5 }).map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#D8B669]" />
-                      ))}
+            // Helper render card — seluruh card bisa diklik
+            const renderCard = (t: typeof rawList[0], idx: number, isInstagram: boolean) => {
+              const cardLink = t.avatar_url && t.avatar_url.startsWith("http") ? t.avatar_url : undefined;
+              const cardContent = (
+                <>
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-1 text-[#D8B669]">
+                        {Array.from({ length: t.rating || 5 }).map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-[#D8B669]" />
+                        ))}
+                      </div>
+                      {isInstagram ? (
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#C13584] bg-[#FDF2F8] px-2 py-0.5 rounded-full border border-pink-200">
+                          <svg className="w-3 h-3 text-[#E1306C]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                          </svg>
+                          Instagram
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#1A73E8] bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100">
+                          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                          </svg>
+                          Google Review
+                        </span>
+                      )}
                     </div>
-                    {isInstagram ? (
-                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#C13584] bg-[#FDF2F8] px-2 py-0.5 rounded-full border border-pink-200">
-                        <svg className="w-3 h-3 text-[#E1306C]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                        Instagram
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#1A73E8] bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100">
-                        <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                        </svg>
-                        Google Review
-                      </span>
-                    )}
+                    <p className="text-xs sm:text-sm text-[#3D5245] leading-relaxed italic mb-6">
+                      &ldquo;{t.comment}&rdquo;
+                    </p>
                   </div>
-                  <p className="text-xs sm:text-sm text-[#3D5245] leading-relaxed italic mb-6">
-                    &ldquo;{t.comment}&rdquo;
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-[#CBDFA5]/60 flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-10 h-10 rounded-full bg-[#DFECC0] border border-[#CBDFA5] flex items-center justify-center font-bold text-[#23382C] text-sm shrink-0">
-                      {t.client_name ? t.client_name.charAt(0).toUpperCase() : "K"}
+                  <div className="pt-4 border-t border-[#CBDFA5]/60 flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="w-10 h-10 rounded-full bg-[#DFECC0] border border-[#CBDFA5] flex items-center justify-center font-bold text-[#23382C] text-sm shrink-0">
+                        {t.client_name ? t.client_name.charAt(0).toUpperCase() : "K"}
+                      </div>
+                      <div className="min-w-0">
+                        <h5 className="font-bold text-[#23382C] text-xs truncate">{t.client_name}</h5>
+                        <p className="text-[11px] text-[#8D6B26] font-medium truncate">{t.role_or_event}</p>
+                      </div>
                     </div>
-                    <div className="min-w-0">
-                      <h5 className="font-bold text-[#23382C] text-xs truncate">{t.client_name}</h5>
-                      <p className="text-[11px] text-[#8D6B26] font-medium truncate">{t.role_or_event}</p>
-                    </div>
+                    <ExternalLink className="w-3.5 h-3.5 shrink-0 text-[#CBDFA5] group-hover:text-[#9F7A2D] transition-colors" />
                   </div>
-                  {t.avatar_url && t.avatar_url.startsWith("http") && (
-                    <a
-                      href={t.avatar_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="shrink-0 p-2 rounded-xl bg-[#DFECC0]/80 hover:bg-[#DFECC0] text-[#23382C] hover:text-[#9F7A2D] transition-colors border border-[#CBDFA5]"
-                      title="Buka Post / Video Instagram"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                  )}
+                </>
+              );
+
+              const cardClass = "group flex-shrink-0 w-[300px] sm:w-[360px] p-6 sm:p-7 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer";
+
+              return cardLink ? (
+                <a
+                  key={`${t.id}-${idx}`}
+                  href={cardLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cardClass}
+                  title={isInstagram ? "Buka Post Instagram" : "Lihat Ulasan di Google Maps"}
+                >
+                  {cardContent}
+                </a>
+              ) : (
+                <div key={`${t.id}-${idx}`} className={cardClass}>
+                  {cardContent}
                 </div>
-              </div>
-            );
+              );
+            };
 
             const googleMarquee = [...googleList, ...googleList];
             const igMarquee = [...igList, ...igList];
@@ -1462,7 +1471,7 @@ export default function PublicLandingPage({
                     <div className="absolute top-0 bottom-0 left-0 w-8 sm:w-20 bg-gradient-to-r from-[#E6F0CA] to-transparent z-10 pointer-events-none" />
                     <div className="absolute top-0 bottom-0 right-0 w-8 sm:w-20 bg-gradient-to-l from-[#E6F0CA] to-transparent z-10 pointer-events-none" />
                     <div
-                      className="animate-marquee-slow gap-4 md:gap-6 px-4"
+                      className="animate-marquee-reviews gap-4 md:gap-6 px-4"
                       onMouseEnter={(e) => { e.currentTarget.style.animationPlayState = 'paused'; }}
                       onMouseLeave={(e) => { e.currentTarget.style.animationPlayState = 'running'; }}
                       onTouchStart={(e) => { e.currentTarget.style.animationPlayState = 'paused'; }}
@@ -1473,13 +1482,13 @@ export default function PublicLandingPage({
                   </div>
                 )}
 
-                {/* ── Baris 2: Instagram Reviews (arah kanan ke kiri berlawanan) ── */}
+                {/* ── Baris 2: Instagram Reviews (arah berlawanan) ── */}
                 {igList.length > 0 && (
                   <div className="relative overflow-hidden py-2 -mx-4 sm:mx-0">
                     <div className="absolute top-0 bottom-0 left-0 w-8 sm:w-20 bg-gradient-to-r from-[#E6F0CA] to-transparent z-10 pointer-events-none" />
                     <div className="absolute top-0 bottom-0 right-0 w-8 sm:w-20 bg-gradient-to-l from-[#E6F0CA] to-transparent z-10 pointer-events-none" />
                     <div
-                      className="animate-marquee-slow-reverse gap-4 md:gap-6 px-4"
+                      className="animate-marquee-reviews-reverse gap-4 md:gap-6 px-4"
                       onMouseEnter={(e) => { e.currentTarget.style.animationPlayState = 'paused'; }}
                       onMouseLeave={(e) => { e.currentTarget.style.animationPlayState = 'running'; }}
                       onTouchStart={(e) => { e.currentTarget.style.animationPlayState = 'paused'; }}
