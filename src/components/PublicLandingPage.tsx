@@ -1329,12 +1329,7 @@ export default function PublicLandingPage({
               </a>
 
               <a
-                href={(() => {
-                  const ig = profile.instagram || "pasarminggucatering";
-                  if (ig.startsWith("http")) return ig;
-                  const username = ig.replace(/^@/, "").trim();
-                  return `https://www.instagram.com/${username}/`;
-                })()}
+                href="https://www.instagram.com/pasarminggucatering/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#CBDFA5] text-[#23382C] hover:text-[#9F7A2D] text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer"
