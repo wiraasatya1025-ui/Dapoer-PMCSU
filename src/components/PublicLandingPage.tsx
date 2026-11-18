@@ -1314,39 +1314,12 @@ export default function PublicLandingPage({
             <p className="text-[#4B6152] text-xs sm:text-sm mt-2 sm:mt-3 leading-relaxed">
               Pengalaman nyata pelanggan dari ulasan Google Maps, liputan televisi, serta testimoni Instagram untuk prasmanan pernikahan, gathering kantor, selamatan, dan syukuran keluarga.
             </p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5">
-              <a
-                href="https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z/data=!4m18!1m9!3m8!1s0x2e69f272f042f0fd:0x5fa547fbfd9ec7ef!2sPasar+Minggu+Catering+Service!8m2!3d-6.2900409!4d106.8438304!9m1!1b1!16s%2Fg%2F11cm13p_qy!3m7!1s0x2e69f272f042f0fd:0x5fa547fbfd9ec7ef!8m2!3d-6.2900409!4d106.8438304!9m1!1b1!16s%2Fg%2F11cm13p_qy?hl=id"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#CBDFA5] text-[#23382C] hover:text-[#9F7A2D] text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer"
-              >
-                <div className="flex items-center text-[#F59E0B]">
-                  {"★★★★★"}
-                </div>
-                <span>Ulasan Google Review</span>
-                <ExternalLink className="w-3.5 h-3.5 text-[#8D6B26]" />
-              </a>
-
-              <a
-                href="https://www.instagram.com/pasarminggucatering/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#CBDFA5] text-[#23382C] hover:text-[#9F7A2D] text-xs font-bold shadow-xs hover:shadow-md transition-all cursor-pointer"
-              >
-                <svg className="w-3.5 h-3.5 text-[#E1306C] fill-currentColor" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-                <span>Testimoni di Instagram</span>
-                <ExternalLink className="w-3.5 h-3.5 text-[#8D6B26]" />
-              </a>
-            </div>
           </div>
 
           {/* Testimonial Cards - 2 Baris Terpisah: Google Reviews & Instagram Reviews */}
           {(() => {
+            const googleGeneralUrl = "https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z/data=!4m18!1m9!3m8!1s0x2e69f272f042f0fd:0x5fa547fbfd9ec7ef!2sPasar+Minggu+Catering+Service!8m2!3d-6.2900409!4d106.8438304!9m1!1b1!16s%2Fg%2F11cm13p_qy!3m7!1s0x2e69f272f042f0fd:0x5fa547fbfd9ec7ef!8m2!3d-6.2900409!4d106.8438304!9m1!1b1!16s%2Fg%2F11cm13p_qy?hl=id";
+
             const rawList = testimonials && testimonials.length > 0
               ? testimonials
               : [
@@ -1356,7 +1329,7 @@ export default function PublicLandingPage({
                     role_or_event: "Google Maps Review • Rating 5.0",
                     rating: 5,
                     comment: "Packaging 4,5 dari 5. Rasa 4,5 dari 5. Kebersihan 5 dari 5. Secara keseluruhan nilainya 5 - Rekomen banget.",
-                    avatar_url: "https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z" as string | undefined,
+                    avatar_url: undefined as string | undefined,
                   },
                   {
                     id: 2,
@@ -1364,7 +1337,7 @@ export default function PublicLandingPage({
                     role_or_event: "Local Guide Google • 100 Ulasan",
                     rating: 4,
                     comment: "Pasar Minggu Catering Service ini salah satu supplier jasa catering makan siang online yang terkemuka di Jakarta. Makanannya enak dan harganya bersahabat.",
-                    avatar_url: "https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z" as string | undefined,
+                    avatar_url: undefined as string | undefined,
                   },
                   {
                     id: 3,
@@ -1372,7 +1345,7 @@ export default function PublicLandingPage({
                     role_or_event: "Local Guide Google • 171 Ulasan",
                     rating: 5,
                     comment: "Ayam bumbu rujaknya JUARA!!!",
-                    avatar_url: "https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z" as string | undefined,
+                    avatar_url: undefined as string | undefined,
                   },
                   {
                     id: 4,
@@ -1380,7 +1353,7 @@ export default function PublicLandingPage({
                     role_or_event: "Google Maps Review • Rating 5.0",
                     rating: 5,
                     comment: "Cateringnya mantap, harga terjangkau, rasa juara! Porsi sangat pas dan pengantaran tepat waktu.",
-                    avatar_url: "https://www.google.com/maps/place/Pasar+Minggu+Catering+Service/@-6.2900409,106.8438304,17z" as string | undefined,
+                    avatar_url: undefined as string | undefined,
                   },
                 ];
 
@@ -1390,7 +1363,11 @@ export default function PublicLandingPage({
 
             // Helper render card — seluruh card bisa diklik
             const renderCard = (t: typeof rawList[0], idx: number, isInstagram: boolean) => {
-              const cardLink = t.avatar_url && t.avatar_url.startsWith("http") ? t.avatar_url : undefined;
+              // Jika Instagram pakai avatar_url spesifiknya, jika Google review otomatis ke ulasan umum Google Maps
+              const cardLink = isInstagram
+                ? (t.avatar_url && t.avatar_url.startsWith("http") ? t.avatar_url : "https://www.instagram.com/pasarminggucatering/")
+                : (t.avatar_url && t.avatar_url.startsWith("http") ? t.avatar_url : googleGeneralUrl);
+
               const cardContent = (
                 <>
                   <div>
@@ -1435,30 +1412,24 @@ export default function PublicLandingPage({
                         <p className="text-[11px] text-[#8D6B26] font-medium truncate">{t.role_or_event}</p>
                       </div>
                     </div>
-                    {cardLink && (
-                      <ExternalLink className="w-3.5 h-3.5 shrink-0 text-[#CBDFA5] group-hover:text-[#9F7A2D] transition-colors" />
-                    )}
+                    <ExternalLink className="w-3.5 h-3.5 shrink-0 text-[#CBDFA5] group-hover:text-[#9F7A2D] transition-colors" />
                   </div>
                 </>
               );
 
-              const cardClass = `group flex-shrink-0 w-[300px] sm:w-[360px] p-6 sm:p-7 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between ${cardLink ? 'cursor-pointer' : ''}`;
+              const cardClass = "group flex-shrink-0 w-[300px] sm:w-[360px] p-6 sm:p-7 rounded-3xl bg-[#FCFBF6] border border-[#CBDFA5] hover:border-[#D8B669] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between cursor-pointer";
 
-              return cardLink ? (
+              return (
                 <a
                   key={`${t.id}-${idx}`}
                   href={cardLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cardClass}
-                  title="Buka Post Instagram"
+                  title={isInstagram ? "Buka Post / Video Instagram" : "Buka Ulasan Google Maps"}
                 >
                   {cardContent}
                 </a>
-              ) : (
-                <div key={`${t.id}-${idx}`} className={cardClass}>
-                  {cardContent}
-                </div>
               );
             };
 
