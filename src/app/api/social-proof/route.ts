@@ -76,6 +76,58 @@ export async function POST(request: Request) {
   }
 }
 
+export async function PUT(request: Request) {
+  const session = await getSession();
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+  try {
+    const body = await request.json();
+    const { type, id } = body;
+
+    if (!id) return NextResponse.json({ error: "ID wajib disertakan" }, { status: 400 });
+
+    if (type === "testimonial") {
+      const { client_name, role_or_event, rating, comment, avatar_url, sort_order } = body;
+      const { error } = await supabaseAdmin
+        .from("testimonials")
+        .update({
+          client_name,
+          role_or_event: role_or_event || "",
+          rating: Number(rating) || 5,
+          comment,
+          avatar_url: avatar_url || null,
+          sort_order: Number(sort_order) || 0,
+        })
+        .eq("id", Number(id));
+
+      if (error) throw error;
+      return NextResponse.json({ success: true });
+    }
+
+    if (type === "gallery") {
+      const { title, image_url, event_type, event_date, sort_order } = body;
+      const { error } = await supabaseAdmin
+        .from("galleries")
+        .update({
+          title,
+          image_url,
+          event_type: event_type || "",
+          event_date: event_date || "",
+          sort_order: Number(sort_order) || 0,
+        })
+        .eq("id", Number(id));
+
+      if (error) throw error;
+      return NextResponse.json({ success: true });
+    }
+
+    return NextResponse.json({ error: "Tipe tidak valid" }, { status: 400 });
+  } catch (error) {
+    console.error("Put error:", error);
+    return NextResponse.json({ error: "Gagal memperbarui data" }, { status: 500 });
+  }
+}
+
 export async function DELETE(request: Request) {
   const session = await getSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
